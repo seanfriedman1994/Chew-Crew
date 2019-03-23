@@ -9,10 +9,10 @@ import { Dish } from '../../../shared/dish.model';
 })
 export class FavoritesComponent implements OnInit {
   dishes: Dish[] = [
-    new Dish(
-      'A Test Dish', 
-      'Description test', 
-      'https://c.pxhere.com/photos/33/ed/food_burger_sandwich_bacon_dinner-44324.jpg!d')
+    // new Dish(
+    //   'A Test Dish', 
+    //   'Description test', 
+    //   'https://c.pxhere.com/photos/33/ed/food_burger_sandwich_bacon_dinner-44324.jpg!d')
 
   ];
 

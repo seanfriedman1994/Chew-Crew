@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +17,10 @@ import { DishItemComponent } from './dishes/dish-list/dish-item/dish-item.compon
 import { GroupEditComponent } from './groups/group-edit/group-edit.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import { FavoritesComponent } from './profile/favorites/favorites.component';
+//import { HttpClient } from '@angular/common/http';
+import { DishesService } from './dishes/dishes.service';
+import { DishCreateComponent } from './dishes/dish-create/dish-create.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -33,11 +38,18 @@ import { FavoritesComponent } from './profile/favorites/favorites.component';
     DishItemComponent,
     GroupEditComponent,
     ProfileEditComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    DishCreateComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule
+   // HttpClient
   ],
   providers: [],
   bootstrap: [AppComponent]

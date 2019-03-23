@@ -1,5 +1,7 @@
 const express = require('express');
 
+const Dish = require('./models/dish');
+
 const app = express();
 
 app.use('/api/dishes', (req, res, next) => {

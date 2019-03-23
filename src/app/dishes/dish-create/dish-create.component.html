@@ -1,0 +1,47 @@
+<mat-card>
+  <form (submit)="onAddDish(dishForm)" #dishForm="ngForm">
+    <mat-form-field>
+      <input 
+      matInput
+      type="text"
+      name="name"
+      ngModel
+      required
+      placeholder="Dish Name"
+      #name="ngModel">
+      <mat-error *ngIf="name.invalid">Please enter a dish name!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea 
+      matInput
+      rows="6"
+      name="description"
+      ngModel
+      required
+      placeholder="Description"
+      #description="ngModel"></textarea>
+      <mat-error *ngIf="description.invalid">Please enter a dish description!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+      matInput
+      type="text"
+      name="tags"
+      ngModel
+      placeholder="Tags (seperate with commas)"
+      #tags="ngModel">
+      <mat-error *ngIf="tags.invalid">Please enter some tags!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+      matInput
+      type="text"
+      name="imagePath"
+      placeholder="Dish Image">
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Save Dish</button>
+  </form>
+</mat-card>
