@@ -1,3 +1,14 @@
+## HOW TO USE
+-in a terminal within the project type the following (without the ""):
+    "ng serve"
+    -this will run the website on localhost:4200
+
+-in a seperate terminal within the project type the following (without the ""):
+    "npm run start:server"
+    -this will run the development server which will connect to the database. I have it setup where anytime code is changed the server is restarted and updated.
+
+-the database itself is on MongoDB. Direct access to the website is not necessary for front end development, but will be for api development. If you would like access to the database create an account and i will invite you to access the cluster. Cluster link: https://cloud.mongodb.com/v2/5c95ca07d5ec135005eb2781#clusters
+
 # PotluckProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
