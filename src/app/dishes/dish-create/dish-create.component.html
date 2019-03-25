@@ -1,11 +1,12 @@
 <mat-card>
-  <form (submit)="onAddDish(dishForm)" #dishForm="ngForm">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSaveDish(dishForm)" #dishForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
       <input 
       matInput
       type="text"
       name="name"
-      ngModel
+      [ngModel]="dish?.name"
       required
       placeholder="Dish Name"
       #name="ngModel">
@@ -16,7 +17,7 @@
       matInput
       rows="6"
       name="description"
-      ngModel
+      [ngModel]="dish?.description"
       required
       placeholder="Description"
       #description="ngModel"></textarea>
@@ -27,7 +28,7 @@
       matInput
       type="text"
       name="tags"
-      ngModel
+      [ngModel]="dish?.tags"
       placeholder="Tags (seperate with commas)"
       #tags="ngModel">
       <mat-error *ngIf="tags.invalid">Please enter some tags!</mat-error>
@@ -37,7 +38,7 @@
       matInput
       type="text"
       name="imagePath"
-      ngModel
+      [ngModel]="dish?.imagePath"
       placeholder="Dish Image"
       #imagePath="ngModel">
       <mat-error *ngIf="imagePath.invalid">Please enter an image Path!</mat-error>

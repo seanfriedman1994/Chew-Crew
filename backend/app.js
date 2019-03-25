@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const Dish = require('./models/dish');
+const dishesRoutes = require("./routes/dishes");
 
 const app = express();
 
@@ -27,36 +27,6 @@ app.use((req, res, next) => {
     next();
 }); //solves CORS issue
 
-app.post("/api/dishes", (req, res, next) => {
-    const dish = new Dish({
-        name: req.body.name,
-        description: req.body.description,
-        tags: req.body.tags,
-        imagePath: req.body.imagePath
-    });
-    dish.save().then(createdDish => {
-        res.status(201).json({
-             message: "Dish added successfully",
-             dishId: createdDish._id
-        });
-    });
-});
-
-
-app.get("/api/dishes", (req, res, next) => {
-    Dish.find().then(documents => {
-        res.status(200).json({
-            message: "Dishes fetched successfully!",
-            dishes: documents
-        });
-    });
-});
-
-app.delete("/api/dishes/:id", (req, res, next) => {
-    Dish.deleteOne({_id: req.params.id}).then(result => {
-        console.log(result);
-        res.status(200).json({message: "Dish deleted!"});
-    });
-});
+app.use("/api/dishes", dishesRoutes);
 
 module.exports = app;

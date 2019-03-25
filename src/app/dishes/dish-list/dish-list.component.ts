@@ -22,16 +22,18 @@ export class DishListComponent implements OnInit, OnDestroy {
   
 //   ];
   dishes: Dish[] = [];
-
+  isLoading = false;
   private dishesSub: Subscription;
 
   constructor(public dishesService: DishesService) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.dishesService.getDishes();
     this.dishesSub = this.dishesService.getDishUpdateListener()
     .subscribe((dishes: Dish[]) => {
-          this.dishes = dishes;
+        this.isLoading = false;
+        this.dishes = dishes;
         });
   }
 
