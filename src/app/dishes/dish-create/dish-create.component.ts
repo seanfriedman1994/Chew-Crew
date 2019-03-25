@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { NgForm } from "@angular/forms";
-import { Dish } from '../../../shared/dish.model';
 import { DishesService } from '../dishes.service';
 
 

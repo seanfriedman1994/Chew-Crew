@@ -37,7 +37,10 @@
       matInput
       type="text"
       name="imagePath"
-      placeholder="Dish Image">
+      ngModel
+      placeholder="Dish Image"
+      #imagePath="ngModel">
+      <mat-error *ngIf="imagePath.invalid">Please enter an image Path!</mat-error>
     </mat-form-field>
     <button
       mat-raised-button

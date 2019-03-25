@@ -1,3 +1,28 @@
+<mat-accordion multi="true" *ngIf="dishes.length > 0">
+  <mat-expansion-panel *ngFor="let dish of dishes">
+    <mat-expansion-panel-header>
+      {{ dish.name }}
+    </mat-expansion-panel-header>
+    <p>{{ dish.description }}</p>
+    <p> {{ dish.tags }} </p>
+    <p> {{ dish.imagePath }}</p>
+    <!-- <span class="pull-right">
+        <img 
+        [src]="dish.imagePath" 
+        alt="{{ dish.imagePath }}" 
+        class="img-responsive" 
+        style="max-height: 50px;">
+      </span> -->
+      <mat-action-row>
+        <button mat-button color="primary">EDIT</button>
+        <button mat-button color="warn" (click)="onDelete(dish.id)">DELETE</button>
+      </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="dishes.length <= 0">No dishes added yet!</p>
+
+<!-- 
+
 <div class="row">
   <div class="col-xs-12">
     <button class="btn btn-success">New Dish</button>
@@ -22,4 +47,4 @@
     </a>
     <app-dish-item></app-dish-item>
   </div>
-</div>
+</div> -->

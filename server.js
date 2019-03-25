@@ -1,5 +1,5 @@
-const http = require('http');
-const app = require('./backend/app');
+const app = require("./backend/app");
+const http = require("http");
 const debug = require("debug")("node-angular");
 
 
@@ -17,7 +17,7 @@ const normalizePort = val => {
     }
 
     return false;
-}
+};
 
 const onError = error => {
     if(error.svscall !== "listen")
