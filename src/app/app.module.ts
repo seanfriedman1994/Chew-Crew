@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DishesService } from './dishes/dishes.service';
 import { DishCreateComponent } from './dishes/dish-create/dish-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
