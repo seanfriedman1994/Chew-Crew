@@ -11,3 +11,15 @@ mat-spinner
 {
     margin: auto;
 }
+
+.dish-image 
+{
+    
+    max-height: 50px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.dish-description
+{
+    margin-bottom: 100px;
+}

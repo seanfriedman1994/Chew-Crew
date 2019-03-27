@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { DishDetailComponent } from './dish-detail/dish-detail.component';
 import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
@@ -25,8 +24,8 @@ export class DishesService {
                     name: dish.name,
                     description: dish.description,
                     tags: dish.tags,
-                    imagePath: dish.imagePath,
-                    id: dish._id
+                    id: dish._id,
+                    imagePath: dish.imagePath
                 };
             });
         }))
@@ -43,40 +42,66 @@ export class DishesService {
 
     getDish(id: string) 
     {
-        return this.http.get<{_id: string, name: string, description: string, tags: string, imagePath: string}>("http://localhost:3000/api/dishes/" + id);
+        return this.http.get<{_id: string, name: string, description: string, tags: string, imagePath: string}
+        >("http://localhost:3000/api/dishes/" + id);
     }
 
-    addDish(name: string, description: string, imagePath: string, tags: string) 
+    addDish(name: string, description: string, tags: string, image: File) 
     {
-        const dish: Dish = {
-            id: null, 
-            name: name, 
-            description: description, 
-            imagePath: imagePath, 
-            tags: tags
-        };
-        this.http.post<{message: string, dishId: string}>("http://localhost:3000/api/dishes", dish)
+        const dishData = new FormData();
+        dishData.append("name", name);
+        dishData.append("description", description);
+        dishData.append("tags", tags);
+        dishData.append("image", image, name);
+
+        this.http.post<{message: string, dish: Dish}>("http://localhost:3000/api/dishes", dishData)
         .subscribe((responseData) => {
-            const id = responseData.dishId;
-            dish.id = id;
+            const dish: Dish = {
+                id: responseData.dish.id, 
+                name: name, 
+                description: description,
+                tags: tags,
+                imagePath: responseData.dish.imagePath
+            };
             this.dishes.push(dish);
             this.dishesUpdated.next([...this.dishes]);
             this.router.navigate(["/"]);
         });
     }
 
-    updateDish(id: string, name: string, description: string, imagePath: string, tags: string){
-        const dish: Dish = {
-            id: id,
-            name: name,
-            description: description,
-            tags: tags,
-            imagePath: imagePath
-        };
-        this.http.put("http://localhost:3000/api/dishes/" + id, dish)
+    updateDish(id: string, name: string, description: string, tags: string, image: File | string){
+        let dishData: Dish | FormData;
+        if(typeof(image) === 'object')
+        {
+            dishData = new FormData();
+            dishData.append("id", id);
+            dishData.append("name", name);
+            dishData.append("description", description);
+            dishData.append("tags", tags);
+            dishData.append("image", image, name);
+
+        }
+        else
+        {
+            dishData = {
+                id: id,
+                name: name,
+                description,
+                tags: tags,
+                imagePath: image
+            };
+        }
+        this.http.put("http://localhost:3000/api/dishes/" + id, dishData)
         .subscribe(response => {
             const updatedDishes = [...this.dishes];
-            const oldDishIndex = updatedDishes.findIndex(d => d.id === dish.id);
+            const oldDishIndex = updatedDishes.findIndex(d => d.id === id);
+            const dish: Dish = {
+                id: id,
+                name: name,
+                description,
+                tags: tags,
+                imagePath: ""
+            };
             updatedDishes[oldDishIndex] = dish;
             this.dishes = updatedDishes;
             this.dishesUpdated.next([...this.dishes]);

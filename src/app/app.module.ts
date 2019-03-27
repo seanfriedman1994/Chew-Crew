@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatProgressSpinnerModule} from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatProgressSpinnerModule, MatChipsModule, MatDividerModule, MatListModule, MatIconModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,7 +18,6 @@ import { GroupEditComponent } from './groups/group-edit/group-edit.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import { FavoritesComponent } from './profile/favorites/favorites.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DishesService } from './dishes/dishes.service';
 import { DishCreateComponent } from './dishes/dish-create/dish-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -45,13 +44,17 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
     MatExpansionModule,
+    MatChipsModule,
+    MatDividerModule,
+    MatListModule,
+    MatIconModule,
     MatProgressSpinnerModule,
     HttpClientModule
   ],

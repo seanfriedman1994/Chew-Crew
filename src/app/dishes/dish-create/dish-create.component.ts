@@ -1,10 +1,10 @@
 import { Component, OnInit} from '@angular/core';
-import { NgForm } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { DishesService } from '../dishes.service';
 import { ActivatedRoute } from '@angular/router';
 import { ParamMap } from '@angular/router';
 import { Dish } from 'src/shared/dish.model';
-
+import { mimeType } from './mime-type.validator';
 
 
 @Component({
@@ -15,17 +15,33 @@ import { Dish } from 'src/shared/dish.model';
 export class DishCreateComponent implements OnInit{
   enteredName = "";
   enteredDescription = "";
-  enteredImagePath = "";
   enteredTags = "";
   dish: Dish;
   private mode = 'create';
   private dishId: string;
   isLoading = false;
+  form: FormGroup;
+  imagePreview: string;
   
 constructor(public dishesService: DishesService, public route: ActivatedRoute) {}
 
   ngOnInit() 
   {
+    this.form = new FormGroup({
+      'name': new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      'description': new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      'tags': new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      'image': new FormControl(null, {
+        //validators: [Validators.required],
+        asyncValidators: [mimeType]
+      })
+    });
     this.route.paramMap.subscribe((paramMap: ParamMap) => 
     {
       if(paramMap.has('dishId')) 
@@ -33,7 +49,7 @@ constructor(public dishesService: DishesService, public route: ActivatedRoute) {
         this.mode = 'edit';
         this.dishId = paramMap.get('dishId');
         this.isLoading = true;
-        this.dishesService.getDish(this.dishId).subscribe(dishData => {
+        this.dishesService.getDish(this.dishId).subscribe(dishData => { 
           this.isLoading = false;
           this.dish = 
           {
@@ -43,6 +59,13 @@ constructor(public dishesService: DishesService, public route: ActivatedRoute) {
             tags: dishData.tags,
             imagePath: dishData.imagePath
           };
+          this.form.setValue({
+            'name': this.dish.name,
+            'description': this.dish.description,
+            'tags': this.dish.tags,
+            'image': this.dish.imagePath
+          });
+          this.imagePreview = this.dish.imagePath;
         });
       }else
       {
@@ -52,9 +75,21 @@ constructor(public dishesService: DishesService, public route: ActivatedRoute) {
     });
   }
 
-  onSaveDish(form: NgForm)
+  onImagePicked(event: Event) 
   {
-    if(form.invalid)
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({image: file});
+    this.form.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = <string>reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  onSaveDish()
+  {
+    if(this.form.invalid)
     {
       return;
     }
@@ -62,20 +97,21 @@ constructor(public dishesService: DishesService, public route: ActivatedRoute) {
     if(this.mode === 'create')
     {
       this.dishesService.addDish(
-        form.value.name, 
-        form.value.description, 
-        form.value.imagePath, 
-        form.value.tags);
+        this.form.value.name, 
+        this.form.value.description, 
+        this.form.value.tags,
+        this.form.value.image);
     }else
     {
       this.dishesService.updateDish(
         this.dishId, 
-        form.value.name, 
-        form.value.description, 
-        form.value.imagePath, 
-        form.value.tags)
+        this.form.value.name, 
+        this.form.value.description,
+        this.form.value.tags,
+        this.form.value.image
+        );
     }
 
-    form.resetForm();
+    this.form.reset();
   }
 }

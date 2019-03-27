@@ -1,47 +1,38 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form (submit)="onSaveDish(dishForm)" #dishForm="ngForm" *ngIf="!isLoading">
+  <form [formGroup]="form" (submit)="onSaveDish()" *ngIf="!isLoading">
     <mat-form-field>
       <input 
       matInput
       type="text"
-      name="name"
-      [ngModel]="dish?.name"
-      required
-      placeholder="Dish Name"
-      #name="ngModel">
-      <mat-error *ngIf="name.invalid">Please enter a dish name!</mat-error>
+      formControlName="name"
+      placeholder="Dish Name">
+      <mat-error *ngIf="form.get('name').invalid">Please enter a dish name!</mat-error>
     </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Upload Image</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+      <img [src]="imagePreview" [alt]="form.value.name">
+    </div>
     <mat-form-field>
       <textarea 
       matInput
       rows="6"
-      name="description"
-      [ngModel]="dish?.description"
-      required
+      formControlName="description"
       placeholder="Description"
-      #description="ngModel"></textarea>
-      <mat-error *ngIf="description.invalid">Please enter a dish description!</mat-error>
+      ></textarea>
+      <mat-error *ngIf="form.get('description').invalid">Please enter a dish description!</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input 
       matInput
       type="text"
-      name="tags"
-      [ngModel]="dish?.tags"
+      formControlName="tags"
       placeholder="Tags (seperate with commas)"
-      #tags="ngModel">
-      <mat-error *ngIf="tags.invalid">Please enter some tags!</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input 
-      matInput
-      type="text"
-      name="imagePath"
-      [ngModel]="dish?.imagePath"
-      placeholder="Dish Image"
-      #imagePath="ngModel">
-      <mat-error *ngIf="imagePath.invalid">Please enter an image Path!</mat-error>
+      >
+      <mat-error *ngIf="form.get('tags').invalid">Please enter at least one tag!</mat-error>
     </mat-form-field>
     <button
       mat-raised-button
