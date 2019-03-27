@@ -1,6 +1,6 @@
 const express = require("express");
 
-const Dish = require('../models/events');
+const Event = require('../models/events');
 
 const router = express.Router();
 
@@ -11,7 +11,7 @@ router.post("", (req, res, next) => {
         location: req.body.date,
         description: req.body.description
     });
-    dish.save().then(createdEvent => {
+    event.save().then(createdEvent => {
         res.status(201).json({
              message: "Event added successfully",
              eventId: createdEvent._id
@@ -26,7 +26,7 @@ router.put("/:id", (req, res, next) => {
       location: req.body.date,
       description: req.body.description
     });
-    Dish.updateOne({_id: req.params.id}, event).then(result => {
+    Event.updateOne({_id: req.params.id}, event).then(result => {
         console.log(result);
         res.status(200).json({message: "Update successful!"});
     });
