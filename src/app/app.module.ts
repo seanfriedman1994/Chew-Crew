@@ -1,15 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatProgressSpinnerModule, MatChipsModule, MatDividerModule, MatListModule, MatIconModule, MatPaginatorModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
 import { DishesComponent } from './dishes/dishes.component';
 import { GroupsComponent } from './groups/groups.component';
 import { RequestDishComponent } from './request-dish/request-dish.component';
-import { SignUpComponent } from './login/sign-up/sign-up.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DishListComponent } from './dishes/dish-list/dish-list.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
@@ -19,6 +17,7 @@ import { DishCreateComponent } from './dishes/dish-create/dish-create.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { GroupListComponent } from './groups/group-list/group-list.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 @NgModule({
@@ -30,7 +29,6 @@ import { GroupListComponent } from './groups/group-list/group-list.component';
     DishesComponent,
     GroupsComponent,
     RequestDishComponent,
-    SignUpComponent,
     ProfileComponent,
     DishListComponent,
     ProfileEditComponent,
@@ -39,6 +37,7 @@ import { GroupListComponent } from './groups/group-list/group-list.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
