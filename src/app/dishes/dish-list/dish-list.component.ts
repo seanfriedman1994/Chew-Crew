@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Dish } from '../../../shared/dish.model';
 import { DishesService } from '../dishes.service';
+import { PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-dish-list',
@@ -9,36 +10,41 @@ import { DishesService } from '../dishes.service';
   styleUrls: ['./dish-list.component.css']
 })
 export class DishListComponent implements OnInit, OnDestroy {
-//  dishes: Dish[] = [
-//     //  new Dish(
-//     // 'A Test Dish', 
-//     // 'Description test', 
-//     //  'https://c.pxhere.com/photos/33/ed/food_burger_sandwich_bacon_dinner-44324.jpg!d', 
-//     // 'tag'
-//     // new Dish(
-//     //   'A Test Dish', 
-//     //   'Description test', 
-//     //   'https://c.pxhere.com/photos/33/ed/food_burger_sandwich_bacon_dinner-44324.jpg!d')
-  
-//   ];
+
   dishes: Dish[] = [];
   isLoading = false;
+  totalDishes = 0;
+  dishesPerPage = 2;
+  pageSizeOptions = [1,2,5,10];
+  currentPage = 1;
   private dishesSub: Subscription;
 
   constructor(public dishesService: DishesService) { }
 
   ngOnInit() {
     this.isLoading = true;
-    this.dishesService.getDishes();
+    this.dishesService.getDishes(this.dishesPerPage, this.currentPage);
     this.dishesSub = this.dishesService.getDishUpdateListener()
-    .subscribe((dishes: Dish[]) => {
+    .subscribe((dishData: {dishes: Dish[], dishCount: number}) => {
         this.isLoading = false;
-        this.dishes = dishes;
+        this.totalDishes = dishData.dishCount;
+        this.dishes = dishData.dishes;
         });
   }
 
+  onChangedPage(pageData: PageEvent)
+  {
+    this.isLoading = true;
+    this.currentPage = pageData.pageIndex + 1;
+    this.dishesPerPage = pageData.pageSize;
+    this.dishesService.getDishes(this.dishesPerPage, this.currentPage);
+  }
+
   onDelete(dishId: string) {
-    this.dishesService.deleteDish(dishId);
+    this.isLoading = true;
+    this.dishesService.deleteDish(dishId).subscribe(() => {
+      this.dishesService.getDishes(this.dishesPerPage, this.currentPage);
+    });
   }
 
   ngOnDestroy() {

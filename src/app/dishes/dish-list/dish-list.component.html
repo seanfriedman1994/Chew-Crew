@@ -1,4 +1,6 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
+<!-- <mat-icon class="restaurant-icon" aria-hidden="true" aria-label="restaurant icon">restaurant</mat-icon> -->
+
 <mat-accordion multi="true" *ngIf="dishes.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let dish of dishes">
     <mat-expansion-panel-header>
@@ -22,4 +24,7 @@
       </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+<mat-paginator [length]="totalDishes" [pageSize]="dishesPerPage" [pageSizeOptions]="pageSizeOptions" 
+(page)="onChangedPage($event)"  *ngIf="dishes.length > 0">
+</mat-paginator>
 <p class="info-text mat-body-1" *ngIf="dishes.length <= 0 && !isLoading">No dishes added yet!</p>

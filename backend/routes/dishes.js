@@ -78,10 +78,25 @@ multer({ storage: storage }).single("image"),
 
 
 router.get("", (req, res, next) => {
-    Dish.find().then(documents => {
+    //only retrieve dishes on current page
+    const pageSize = +req.query.pageSize;
+    const currentPage = +req.query.page;
+    const dishQuery = Dish.find();
+    let fetchedDishes;
+    if(pageSize && currentPage)
+    {
+        dishQuery
+            .skip(pageSize * (currentPage - 1))
+            .limit(pageSize);
+    }
+    dishQuery.then(documents => {
+        fetchedDishes = documents;
+        return Dish.count();
+    }).then(count => {
         res.status(200).json({
             message: "Dishes fetched successfully!",
-            dishes: documents
+            dishes: fetchedDishes,
+            maxDishes: count
         });
     });
 });

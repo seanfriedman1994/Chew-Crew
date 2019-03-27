@@ -8,18 +8,20 @@ import { Router } from '@angular/router';
 @Injectable({providedIn: 'root'})
 export class DishesService {
     private dishes: Dish[] = [];
-    private dishesUpdated = new Subject<Dish[]>();
+    private dishesUpdated = new Subject<{dishes: Dish[], dishCount: number}>();
 
     constructor(private http: HttpClient, private router: Router){}
 
-    getDishes() 
+    getDishes(dishesPerPage: number, currentPage: number) 
     {
+        const queryParams = `?pageSize=${dishesPerPage}&page=${currentPage}`;
         this.http
-        .get<{message: string; dishes: any}>(
-            "http://localhost:3000/api/dishes"
+        .get<{message: string; dishes: any, maxDishes: number}>(
+            "http://localhost:3000/api/dishes" + queryParams
         )
         .pipe(map((dishData) => {
-            return dishData.dishes.map(dish => {
+            return { 
+                dishes: dishData.dishes.map(dish => {
                 return {
                     name: dish.name,
                     description: dish.description,
@@ -27,11 +29,15 @@ export class DishesService {
                     id: dish._id,
                     imagePath: dish.imagePath
                 };
-            });
+            }), 
+            maxDishes: dishData.maxDishes
+        };
         }))
-        .subscribe(transformedDishes => {
-            this.dishes = transformedDishes;
-            this.dishesUpdated.next([...this.dishes]);
+        .subscribe(transformedDishData => {
+            this.dishes = transformedDishData.dishes;
+            this.dishesUpdated.next({
+                dishes: [...this.dishes], dishCount: transformedDishData.maxDishes
+            });
         });
     }
 
@@ -56,15 +62,6 @@ export class DishesService {
 
         this.http.post<{message: string, dish: Dish}>("http://localhost:3000/api/dishes", dishData)
         .subscribe((responseData) => {
-            const dish: Dish = {
-                id: responseData.dish.id, 
-                name: name, 
-                description: description,
-                tags: tags,
-                imagePath: responseData.dish.imagePath
-            };
-            this.dishes.push(dish);
-            this.dishesUpdated.next([...this.dishes]);
             this.router.navigate(["/"]);
         });
     }
@@ -93,29 +90,12 @@ export class DishesService {
         }
         this.http.put("http://localhost:3000/api/dishes/" + id, dishData)
         .subscribe(response => {
-            const updatedDishes = [...this.dishes];
-            const oldDishIndex = updatedDishes.findIndex(d => d.id === id);
-            const dish: Dish = {
-                id: id,
-                name: name,
-                description,
-                tags: tags,
-                imagePath: ""
-            };
-            updatedDishes[oldDishIndex] = dish;
-            this.dishes = updatedDishes;
-            this.dishesUpdated.next([...this.dishes]);
             this.router.navigate(["/"]);
         });
 
     }
 
     deleteDish(dishId: string) {
-        this.http.delete("http://localhost:3000/api/dishes/" + dishId)
-        .subscribe(() => {
-            const updatedDishes = this.dishes.filter(dish => dish.id !== dishId);
-            this.dishes = updatedDishes;
-            this.dishesUpdated.next([...this.dishes]);
-        });
+        return this.http.delete("http://localhost:3000/api/dishes/" + dishId);
     }
 }
