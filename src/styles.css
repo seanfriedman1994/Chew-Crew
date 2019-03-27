@@ -126,10 +126,6 @@ body{
     #title{
       text-align: center;
     }
-    .title-image{
-      position: static;
-      transform: rotate(0deg);
-    }
   }
   
   /* Features Section */
@@ -190,6 +186,7 @@ body{
   .social-icon{
     margin: 20px 10px;
   }
+  
   
 /* 
 html, body { height: 100%; }
