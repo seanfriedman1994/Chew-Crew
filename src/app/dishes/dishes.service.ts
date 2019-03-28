@@ -27,7 +27,8 @@ export class DishesService {
                     description: dish.description,
                     tags: dish.tags,
                     id: dish._id,
-                    imagePath: dish.imagePath
+                    imagePath: dish.imagePath,
+                    creator: dish.creator
                 };
             }), 
             maxDishes: dishData.maxDishes
@@ -48,8 +49,14 @@ export class DishesService {
 
     getDish(id: string) 
     {
-        return this.http.get<{_id: string, name: string, description: string, tags: string, imagePath: string}
-        >("http://localhost:3000/api/dishes/" + id);
+        return this.http.get<{
+            _id: string; 
+            name: string; 
+            description: string; 
+            tags: string; 
+            imagePath: string;
+            creator: string;
+        }>("http://localhost:3000/api/dishes/" + id);
     }
 
     addDish(name: string, description: string, tags: string, image: File) 
@@ -85,7 +92,8 @@ export class DishesService {
                 name: name,
                 description,
                 tags: tags,
-                imagePath: image
+                imagePath: image,
+                creator: null
             };
         }
         this.http.put("http://localhost:3000/api/dishes/" + id, dishData)

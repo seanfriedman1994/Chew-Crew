@@ -19,6 +19,7 @@ export class DishListComponent implements OnInit, OnDestroy {
   pageSizeOptions = [1,3,5,10];
   currentPage = 1;
   userIsAuthenticated = false;
+  userId: string;
   private dishesSub: Subscription;
   private authStatusSub: Subscription;
 
@@ -27,6 +28,7 @@ export class DishListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.isLoading = true;
     this.dishesService.getDishes(this.dishesPerPage, this.currentPage);
+    this.userId = this.authService.getUserId();
     this.dishesSub = this.dishesService.getDishUpdateListener()
     .subscribe((dishData: {dishes: Dish[], dishCount: number}) => {
         this.isLoading = false;
@@ -37,6 +39,7 @@ export class DishListComponent implements OnInit, OnDestroy {
       this.authStatusSub = this.authService.getAuthStatusListener()
         .subscribe(isAuthenticated => {
           this.userIsAuthenticated = isAuthenticated;
+          this.userId = this.authService.getUserId();
         });
   }
 

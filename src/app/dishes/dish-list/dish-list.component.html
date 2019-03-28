@@ -18,7 +18,7 @@
         <mat-chip color="accent" selected>{{ dish.tags }} </mat-chip>
     </mat-chip-list>
     
-      <mat-action-row *ngIf="userIsAuthenticated">
+      <mat-action-row *ngIf="userIsAuthenticated && userId == dish.creator">
         <a mat-button color="primary" [routerLink]="['/edit', dish.id]">EDIT</a>
         <button mat-button color="warn" (click)="onDelete(dish.id)">DELETE</button>
       </mat-action-row>

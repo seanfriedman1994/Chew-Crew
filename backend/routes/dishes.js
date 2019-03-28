@@ -42,7 +42,8 @@ router.post(
         name: req.body.name,
         description: req.body.description,
         tags: req.body.tags,
-        imagePath: url + "/images/" + req.file.filename
+        imagePath: url + "/images/" + req.file.filename,
+        creator: req.userData.userId
       });
       dish.save().then(createdDish => {
         res.status(201).json({
@@ -71,11 +72,18 @@ multer({ storage: storage }).single("image"),
         name: req.body.name,
         description: req.body.description,
         tags: req.body.tags,
-        imagePath: imagePath
+        imagePath: imagePath,
+        creator: req.userData.userId
     });
-    Dish.updateOne({_id: req.params.id}, dish).then(result => {
-        console.log(result);
-        res.status(200).json({message: "Update successful!"});
+    Dish.updateOne({_id: req.params.id, creator: req.userData.userId }, dish).then(result => {
+        if(result.nModified > 0)
+        {
+          res.status(200).json({message: "Update successful!"});
+        }
+        else
+        {
+          res.status(401).json({ message: "Not Authorized!"});
+        }
     });
 });
 
@@ -117,9 +125,15 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-    Dish.deleteOne({_id: req.params.id}).then(result => {
-        console.log(result);
-        res.status(200).json({message: "Dish deleted!"});
+    Dish.deleteOne({_id: req.params.id, creator: req.userData.userId}).then(result => {
+      if(result.n > 0)
+      {
+        res.status(200).json({message: "Dish Deleted!"});
+      }
+      else
+      {
+        res.status(401).json({ message: "Not Authorized!"});
+      }
     });
 });
 

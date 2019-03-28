@@ -57,7 +57,8 @@ constructor(public dishesService: DishesService, public route: ActivatedRoute) {
             name: dishData.name, 
             description: dishData.description,
             tags: dishData.tags,
-            imagePath: dishData.imagePath
+            imagePath: dishData.imagePath,
+            creator: dishData.creator
           };
           this.form.setValue({
             'name': this.dish.name,

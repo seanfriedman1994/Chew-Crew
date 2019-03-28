@@ -4,12 +4,14 @@ export class Dish {
     public description: string;
     public tags: string;
     public imagePath: string;
+    public creator: string;
 
-    constructor(name: string, description: string, tags: string, imagePath: string)
+    constructor(name: string, description: string, tags: string, imagePath: string, creator: string)
     {
         this.name = name;
         this.description = description;
         this.tags = tags;
         this.imagePath = imagePath;
+        this.creator = creator;
     }
 }
