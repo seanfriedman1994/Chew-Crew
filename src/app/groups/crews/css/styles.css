@@ -1,0 +1,24 @@
+body{
+  font-family: "Montserrat";
+}
+
+h2{
+  text-align: center;
+}
+
+.container-fluid{
+  padding: 5% 15% 1%;
+}
+
+.potlucks{
+  padding-bottom: 5%;
+  padding-top: 2%;
+}
+
+.pot-link{
+  font-size: 1.1rem;
+  font-family: "Montserrat";
+  font-weight: light;
+  color: gray;
+  text-align: center;
+}
