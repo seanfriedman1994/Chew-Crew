@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { GroupListComponent } from './groups/group-list/group-list.component';
 import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { LoginComponent } from './auth/login/login.component';
     AppComponent,
     HeaderComponent,
     LoginComponent,
+    SignupComponent,
     DishesComponent,
     GroupsComponent,
     RequestDishComponent,

@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
+/* 
 body{
     font-family: "Montserrat";
   }
@@ -16,7 +16,7 @@ body{
   
   
   /* Headings */
-  .big-heading{
+  /* .big-heading{
     font-family: "Montserrat";
     font-weight: bold;
     font-size: 3rem;
@@ -33,7 +33,7 @@ body{
   }
   
   /* Sections */
-  .colored-section{
+  /* .colored-section{
     background-color: #ff4c68;
     color: #fff;
   }
@@ -88,7 +88,7 @@ body{
   
   /* Navagation Bar */
   
-  .navbar{
+  /* .navbar{
     padding: 0 0 4.5rem;
   }
   
@@ -106,39 +106,39 @@ body{
     font-size: 1.2rem;
     font-family: "Montserrat";
     font-weight: light;
-  }
+  } ] */
   
   /* Download Button */
-  .download-button{
+  /* .download-button{
     margin: 5% 3% 5% 0;
-  }
+  } */
   
   /* Title Image */
-  .title-image{
+  /* .title-image{
     transform: rotate(25deg);
     width: 60%;
     position: absolute;
     right: 30%;
   }
-  
+   */
   /* Media Queries help you handle different situations independently */
-  @media (max-width: 1028px) {
+  /* @media (max-width: 1028px) {
     #title{
       text-align: center;
     }
-  }
+  } */
   
   /* Features Section */
-  
+/*   
   #features{
-    padding: 7% 15%;
+    padding: 7% 15%; */
   
     /* z-indexing */
     /* We changed the background to white so it is not transparent when it sits on top of something*/
-    background-color: #fff;
+    /* background-color: #fff; */
     /* Changing the position to relative allows our features to have a position and also keep it in the html flow */
-    position: relative;
-    z-index: 1;
+    /* position: relative; */
+    /* z-index: 1;
   }
   
   .feature-title{
@@ -152,11 +152,11 @@ body{
   
   .icon{
     margin-bottom: 1rem;
-  }
+  } */
   
   
   /* Pricing Section */
-  #pricing{
+  /* #pricing{
     padding: 100px;
     text-align: center;
   }
@@ -168,17 +168,17 @@ body{
   .price-text{
     font-size: 3rem;
     line-height: 1.5;
-  }
+  } */
   
   
   /* cta section */
-  #app{
+  /* #app{
     text-align: center;
     padding: 7% 15%;
-  }
+  } */
   
   /* footer */
-  #footer{
+  /* #footer{
     padding: 7% 15%;
     text-align: center;
   }
@@ -186,8 +186,8 @@ body{
   .social-icon{
     margin: 20px 10px;
   }
+    */
   
-  
-/* 
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } 
