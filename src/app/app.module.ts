@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatProgressSpinnerModule, MatChipsModule, MatDividerModule, MatListModule, MatIconModule, MatPaginatorModule} from '@angular/material';
+import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatProgressSpinnerModule, MatChipsModule, MatDividerModule, MatListModule, MatIconModule, MatPaginatorModule, MatDialogModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,6 +20,8 @@ import { GroupListComponent } from './groups/group-list/group-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     DishListComponent,
     ProfileEditComponent,
     FavoritesComponent,
-    DishCreateComponent
+    DishCreateComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +58,14 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MatIconModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
     HttpClientModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule { }

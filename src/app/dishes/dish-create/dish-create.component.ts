@@ -1,10 +1,12 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { DishesService } from '../dishes.service';
 import { ActivatedRoute } from '@angular/router';
 import { ParamMap } from '@angular/router';
 import { Dish } from 'src/shared/dish.model';
 import { mimeType } from './mime-type.validator';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 
 @Component({
@@ -12,7 +14,7 @@ import { mimeType } from './mime-type.validator';
   templateUrl: './dish-create.component.html',
   styleUrls: ['./dish-create.component.css']
 })
-export class DishCreateComponent implements OnInit{
+export class DishCreateComponent implements OnInit, OnDestroy{
   enteredName = "";
   enteredDescription = "";
   enteredTags = "";
@@ -22,11 +24,16 @@ export class DishCreateComponent implements OnInit{
   isLoading = false;
   form: FormGroup;
   imagePreview: string;
+  private authStatusSub: Subscription;
   
-constructor(public dishesService: DishesService, public route: ActivatedRoute) {}
+  constructor(public dishesService: DishesService, public route: ActivatedRoute, private authService: AuthService) {}
 
   ngOnInit() 
   {
+    this.authStatusSub = this.authService.getAuthStatusListener()
+    .subscribe(getAuthStatus => {
+      this.isLoading = false;
+    });
     this.form = new FormGroup({
       'name': new FormControl(null, {
         validators: [Validators.required]
@@ -112,7 +119,11 @@ constructor(public dishesService: DishesService, public route: ActivatedRoute) {
         this.form.value.image
         );
     }
-
     this.form.reset();
+  }
+
+  ngOnDestroy() 
+  {
+    this.authStatusSub.unsubscribe();
   }
 }

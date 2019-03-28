@@ -55,6 +55,8 @@ export class DishListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.dishesService.deleteDish(dishId).subscribe(() => {
       this.dishesService.getDishes(this.dishesPerPage, this.currentPage);
+    }, () => {
+      this.isLoading = false;
     });
   }
 

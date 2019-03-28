@@ -44,10 +44,11 @@ export class AuthService
             name: name
         };
         this.http.post("http://localhost:3000/api/user/signup", authData)
-            .subscribe(response => {
-                console.log(response);
-            });
-        this.router.navigate(['/login']);
+        .subscribe(() => {
+            this.router.navigate(['/login']);
+        }, error => {
+            this.authStatusListener.next(false);
+        });
     }
 
     login(email: string, password: string)
@@ -57,7 +58,8 @@ export class AuthService
             password: password,
             name: name
         };
-        this.http.post<{token: string, expiresIn: number, userId: string}>("http://localhost:3000/api/user/login", authData)
+        this.http.post<{token: string, expiresIn: number, userId: string}>
+        ("http://localhost:3000/api/user/login", authData)
         .subscribe(response => {
             const token = response.token;
             this.token = token;
@@ -74,6 +76,8 @@ export class AuthService
                 //navigate to home page after login
                 this.router.navigate(['/']);
             }
+        }, error => {
+            this.authStatusListener.next(false);
         });
     }
 

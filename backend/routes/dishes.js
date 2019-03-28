@@ -53,6 +53,11 @@ router.post(
             id: createdDish._id
           }
         });
+      })
+      .catch(error => {
+        res.status(500).json({
+          message: "Post creation failed!"
+        });
       });
     }
   );
@@ -75,16 +80,22 @@ multer({ storage: storage }).single("image"),
         imagePath: imagePath,
         creator: req.userData.userId
     });
-    Dish.updateOne({_id: req.params.id, creator: req.userData.userId }, dish).then(result => {
-        if(result.nModified > 0)
-        {
-          res.status(200).json({message: "Update successful!"});
-        }
-        else
-        {
-          res.status(401).json({ message: "Not Authorized!"});
-        }
-    });
+    Dish.updateOne({_id: req.params.id, creator: req.userData.userId }, dish)
+      .then(result => {
+          if(result.nModified > 0)
+          {
+            res.status(200).json({message: "Update successful!"});
+          }
+          else
+          {
+            res.status(401).json({ message: "Not Authorized!"});
+          }
+      })
+      .catch(error => {
+        res.status(500).json({
+          message: "Couldn't update dish!"
+        });
+      });
 });
 
 
@@ -109,6 +120,11 @@ router.get("", (req, res, next) => {
             dishes: fetchedDishes,
             maxDishes: count
         });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Fetching dishes failed!"
+      });
     });
 });
 
@@ -119,13 +135,18 @@ router.get("/:id", (req, res, next) => {
             res.status(200).json(dish);
         }else
         {
-            res.status(404).json({message: 'Dish not found!'});
+            res.status(404).json({message: "Dish not found!"});
         }
+    }).catch(error => {
+      res.status(500).json({
+        message: "Fetching dish failed!"
+      });
     });
 });
 
 router.delete("/:id", checkAuth, (req, res, next) => {
-    Dish.deleteOne({_id: req.params.id, creator: req.userData.userId}).then(result => {
+    Dish.deleteOne({_id: req.params.id, creator: req.userData.userId})
+    .then(result => {
       if(result.n > 0)
       {
         res.status(200).json({message: "Dish Deleted!"});
@@ -134,6 +155,11 @@ router.delete("/:id", checkAuth, (req, res, next) => {
       {
         res.status(401).json({ message: "Not Authorized!"});
       }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Deleting dish failed!"
+      });
     });
 });
 
