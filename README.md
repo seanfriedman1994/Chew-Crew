@@ -1,4 +1,4 @@
-<h1>Repository only for web files<h1>
+<h2>Repository only for web files<h2>
   mobile here: https://github.com/derekmccr/ChewCrewMobile
 
 ## HOW TO USE
