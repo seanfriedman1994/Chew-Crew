@@ -1,3 +1,6 @@
+<h1>Repository only for web files<h1>
+  mobile here: https://github.com/derekmccr/ChewCrewMobile
+
 ## HOW TO USE
 -in a terminal within the project type the following (without the ""):
     "ng serve"
