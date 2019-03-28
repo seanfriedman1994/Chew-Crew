@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Dish } from '../../../shared/dish.model';
 import { DishesService } from '../dishes.service';
 import { PageEvent } from '@angular/material';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-dish-list',
@@ -17,9 +18,11 @@ export class DishListComponent implements OnInit, OnDestroy {
   dishesPerPage = 2;
   pageSizeOptions = [1,2,5,10];
   currentPage = 1;
+  userIsAuthenticated = false;
   private dishesSub: Subscription;
+  private authStatusSub: Subscription;
 
-  constructor(public dishesService: DishesService) { }
+  constructor(public dishesService: DishesService, private authService: AuthService) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -29,6 +32,11 @@ export class DishListComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.totalDishes = dishData.dishCount;
         this.dishes = dishData.dishes;
+        });
+      this.userIsAuthenticated = this.authService.getIsAuth();
+      this.authStatusSub = this.authService.getAuthStatusListener()
+        .subscribe(isAuthenticated => {
+          this.userIsAuthenticated = isAuthenticated;
         });
   }
 
@@ -47,8 +55,10 @@ export class DishListComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy() 
+  {
     this.dishesSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 
 }
