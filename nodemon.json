@@ -1,0 +1,6 @@
+{
+    "env": {
+        "MONGO_ATLAS_PW": "adminadmin",
+        "JWT_KEY": "secret_string_used_for_making_token_should_be_very_long"
+    }
+}

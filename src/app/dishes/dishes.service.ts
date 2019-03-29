@@ -4,6 +4,9 @@ import { Subject } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from "../../environments/environment";
+
+const BACKEND_URL = environment.apiUrl + "/dishes/";
 
 @Injectable({providedIn: 'root'})
 export class DishesService {
@@ -17,7 +20,7 @@ export class DishesService {
         const queryParams = `?pageSize=${dishesPerPage}&page=${currentPage}`;
         this.http
         .get<{message: string; dishes: any, maxDishes: number}>(
-            "http://localhost:3000/api/dishes" + queryParams
+            BACKEND_URL + queryParams
         )
         .pipe(map((dishData) => {
             return { 
@@ -56,8 +59,12 @@ export class DishesService {
             tags: string; 
             imagePath: string;
             creator: string;
-        }>("http://localhost:3000/api/dishes/" + id);
+        }>(BACKEND_URL + id);
     }
+
+    // get(id: string, apiUrl: string, propertyList: any) {
+    //     return this.http.get<propertyList as any>(apiUrl + id);
+    // }
 
     addDish(name: string, description: string, tags: string, image: File) 
     {
@@ -67,7 +74,7 @@ export class DishesService {
         dishData.append("tags", tags);
         dishData.append("image", image, name);
 
-        this.http.post<{message: string, dish: Dish}>("http://localhost:3000/api/dishes", dishData)
+        this.http.post<{message: string, dish: Dish}>(BACKEND_URL, dishData)
         .subscribe((responseData) => {
             this.router.navigate(["/"]);
         });
@@ -96,7 +103,7 @@ export class DishesService {
                 creator: null
             };
         }
-        this.http.put("http://localhost:3000/api/dishes/" + id, dishData)
+        this.http.put(BACKEND_URL + id, dishData)
         .subscribe(response => {
             this.router.navigate(["/"]);
         });
@@ -104,6 +111,6 @@ export class DishesService {
     }
 
     deleteDish(dishId: string) {
-        return this.http.delete("http://localhost:3000/api/dishes/" + dishId);
+        return this.http.delete(BACKEND_URL + dishId);
     }
 }
