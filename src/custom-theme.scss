@@ -25,4 +25,3 @@ $PotluckProject-theme: mat-light-theme($PotluckProject-primary, $PotluckProject-
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($PotluckProject-theme);
-
