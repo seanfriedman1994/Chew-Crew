@@ -46,9 +46,9 @@
 
 <mat-toolbar class="colored-section">
     <span>
-        <a mat-button class="navbar-brand" routerLink="/" routerLinkActive="mat-accent">
+        <a mat-button class="mat-display-1" routerLink="/" routerLinkActive="mat-accent">
             <img height="55px" width="55px" src="../../assets/images/chewcrewlogo.png" alt="">
-            chew crew
+            Chew Crew
         </a>
     </span>
     <span class="spacer"></span>
@@ -56,11 +56,14 @@
         <li *ngIf="userIsAuthenticated">
             <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Dish</a>
         </li>
-        <li>
-            <a mat-button routerLink="/home" routerLinkActive="mat-accent">
-                <mat-icon class="home-icon" aria-hidden="true" aria-label="Example home icon">home</mat-icon>
-            </a>
+        <li *ngIf="userIsAuthenticated">
+                <a mat-button routerLink="/auth/crews" routerLinkActive="mat-accent">Crews</a>
         </li>
+        <!-- <li>
+            <a mat-button routerLink="/" routerLinkActive="mat-accent">
+                <mat-icon class="home-icon" aria-hidden="true" aria-label="Example home icon"></mat-icon>
+            </a>
+        </li> -->
         <li *ngIf="!userIsAuthenticated">
             <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
         </li>

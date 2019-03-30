@@ -16,7 +16,7 @@ router.post(
 
 router.put("/:id", 
   checkAuth,
-  extractFile, 
+  extractFile,
   DishController.updateDish
 );
 

@@ -19,6 +19,7 @@ import { DishesModule } from './dishes/dishes.module';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ProfileComponent,
     ProfileEditComponent,
     FavoritesComponent,
-    ErrorComponent
+    ErrorComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
