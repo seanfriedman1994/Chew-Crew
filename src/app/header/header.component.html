@@ -59,6 +59,9 @@
         <li *ngIf="userIsAuthenticated">
                 <a mat-button routerLink="/auth/crews" routerLinkActive="mat-accent">Crews</a>
         </li>
+        <li *ngIf="userIsAuthenticated">
+                <a mat-button routerLink="/profile" routerLinkActive="mat-accent">Profile</a>
+        </li>
         <!-- <li>
             <a mat-button routerLink="/" routerLinkActive="mat-accent">
                 <mat-icon class="home-icon" aria-hidden="true" aria-label="Example home icon"></mat-icon>

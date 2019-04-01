@@ -5,8 +5,6 @@ import { HeaderComponent } from './header/header.component';
 import { GroupsComponent } from './groups/groups.component';
 import { RequestDishComponent } from './request-dish/request-dish.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
-import { FavoritesComponent } from './profile/favorites/favorites.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,8 +27,6 @@ import { HomeComponent } from './home/home.component';
     GroupsComponent,
     RequestDishComponent,
     ProfileComponent,
-    ProfileEditComponent,
-    FavoritesComponent,
     ErrorComponent,
     HomeComponent
   ],

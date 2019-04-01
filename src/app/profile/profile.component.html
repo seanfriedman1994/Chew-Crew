@@ -1,5 +1,15 @@
-<div class="row">
-  <h2>Profile</h2>
-</div>
-<app-profile-edit></app-profile-edit>
-<app-favorites></app-favorites>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="profile-page">
+
+    <div class="user-info">
+      <div class="container">
+        <div class="row">
+  
+          <div class="col-xs-12 col-md-10 offset-md-1" *ngIf="!isLoading">
+            <h4>{{ profile.name }}</h4>
+            <p>{{ profile.email }}</p>
+            <p>{{ profile.bio }}</p>
+          </div>
+        </div>
+      </div>
+  </div>

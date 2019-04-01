@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { DishesService } from '../dishes.service';
 import { ActivatedRoute } from '@angular/router';
 import { ParamMap } from '@angular/router';
-import { Dish } from 'src/shared/dish.model';
+import { Dish } from '../../models/dish.model';
 import { mimeType } from './mime-type.validator';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';

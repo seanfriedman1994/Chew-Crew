@@ -4,9 +4,11 @@ import { DishListComponent } from './dishes/dish-list/dish-list.component';
 import { DishCreateComponent } from './dishes/dish-create/dish-create.component';
 import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
  
 const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'profile', component: ProfileComponent},
     { path: 'dishes', component: DishListComponent },
     { path: 'create', component: DishCreateComponent, canActivate: [AuthGuard] },
     { path: 'edit/:dishId', component: DishCreateComponent, canActivate: [AuthGuard]},

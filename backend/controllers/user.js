@@ -8,7 +8,6 @@ exports.createUser = (req, res, next) => {
       const user = new User({
         email: req.body.email,
         password: hash,
-        name: req.body.name
       });
       user
         .save()
@@ -28,7 +27,7 @@ exports.createUser = (req, res, next) => {
 
 exports.userLogin = (req, res, next) => {
     let fetchedUser;
-    User.findOne({ email: req.body.email})
+    User.findOne({ email: req.body.email })
         .then(user => {
             if(!user)
             {
@@ -48,8 +47,7 @@ exports.userLogin = (req, res, next) => {
             }
             const token = jwt.sign({
                 email: fetchedUser.email, 
-                userId: fetchedUser._id, 
-                name: fetchedUser.name}, 
+                userId: fetchedUser._id}, 
                 process.env.JWT_KEY, 
                 {expiresIn: "1h"}
             );

@@ -20,7 +20,7 @@ exports.createDish = (req, res, next) => {
     })
     .catch(error => {
       res.status(500).json({
-        message: "Post creation failed!"
+        message: "Dish creation failed!"
       });
     });
 };

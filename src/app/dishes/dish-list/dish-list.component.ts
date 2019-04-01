@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Dish } from '../../../shared/dish.model';
+import { Dish } from '../../models/dish.model';
 import { DishesService } from '../dishes.service';
 import { PageEvent } from '@angular/material';
 import { AuthService } from 'src/app/auth/auth.service';

@@ -1,4 +1,4 @@
-import { Dish } from '../../shared/dish.model';
+import { Dish } from '../models/dish.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
@@ -52,6 +52,7 @@ export class DishesService {
 
     getDish(id: string) 
     {
+
         return this.http.get<{
             _id: string; 
             name: string; 
@@ -61,10 +62,6 @@ export class DishesService {
             creator: string;
         }>(BACKEND_URL + id);
     }
-
-    // get(id: string, apiUrl: string, propertyList: any) {
-    //     return this.http.get<propertyList as any>(apiUrl + id);
-    // }
 
     addDish(name: string, description: string, tags: string, image: File) 
     {
@@ -76,7 +73,7 @@ export class DishesService {
 
         this.http.post<{message: string, dish: Dish}>(BACKEND_URL, dishData)
         .subscribe((responseData) => {
-            this.router.navigate(["/"]);
+            this.router.navigate(["/dishes"]);
         });
     }
 
