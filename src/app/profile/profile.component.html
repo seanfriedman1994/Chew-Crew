@@ -1,15 +1,28 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-<div class="profile-page">
+<!-- <div class="profile-page">
 
     <div class="user-info">
       <div class="container">
         <div class="row">
   
           <div class="col-xs-12 col-md-10 offset-md-1" *ngIf="!isLoading">
-            <h4>{{ profile.name }}</h4>
-            <p>{{ profile.email }}</p>
-            <p>{{ profile.bio }}</p>
+            <h4>Name: {{ profile.name }}</h4>
+            <p>Email: {{ profile.email }}</p>
+            <p>Bio: {{ profile.bio }}</p>
           </div>
         </div>
       </div>
-  </div>
+  </div> -->
+
+  <mat-card class="profile" *ngIf="!isLoading">
+    <mat-card-title>Name: {{profile.name}}</mat-card-title>
+    <mat-card-subtitle>Email: {{profile.email}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>
+          Bio: {{profile.bio}}
+      </p>
+    </mat-card-content>
+    <mat-action-row>
+      <a mat-button color="primary">EDIT</a>
+    </mat-action-row>
+  </mat-card>

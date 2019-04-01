@@ -57,6 +57,9 @@
             <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Dish</a>
         </li>
         <li *ngIf="userIsAuthenticated">
+                <a mat-button routerLink="/dishes" routerLinkActive="mat-accent">Dishes</a>
+            </li>
+        <li *ngIf="userIsAuthenticated">
                 <a mat-button routerLink="/auth/crews" routerLinkActive="mat-accent">Crews</a>
         </li>
         <li *ngIf="userIsAuthenticated">
