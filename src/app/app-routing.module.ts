@@ -6,11 +6,16 @@ import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent} from './profile/profile-edit/profile-edit.component';
+import { CrewListComponent } from './crews/crew-list/crew-list.component';
+import { CrewCreateComponent } from './crews/crew-create/crew-create.component';
  
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'profile/edit/:id', component: ProfileEditComponent},
     { path: 'profile', component: ProfileComponent},
+    { path: 'crews', component: CrewListComponent },
+    { path: 'crews/create', component: CrewCreateComponent, canActivate: [AuthGuard]},
+    { path: 'crews/edit/:crewId', component: CrewCreateComponent, canActivate: [AuthGuard]},
     { path: 'dishes', component: DishListComponent },
     { path: 'dishes/create', component: DishCreateComponent, canActivate: [AuthGuard] },
     { path: 'dishes/edit/:dishId', component: DishCreateComponent, canActivate: [AuthGuard]},

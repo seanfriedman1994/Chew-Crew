@@ -17,7 +17,7 @@ export interface Crew
 {
     id: string;
     name: string;
-    bio: string;
-    count: string;
+    description: string;
     image: string;
+    creator: string;
 }

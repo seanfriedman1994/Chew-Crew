@@ -1,0 +1,45 @@
+:host {
+    display: block;
+    margin-top: 1rem;
+}
+
+.info-text {
+    text-align: center;
+}
+
+mat-spinner
+{
+    margin: auto;
+}
+
+.dish-image 
+{
+    
+    max-height: 50px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.dish-description
+{
+    margin-bottom: 100px;
+}
+
+mat-paginator
+{
+    margin-top: 1 rem;
+}
+
+.restaurant-icon
+{
+    text-align: center;
+}
+
+.green
+{
+    color: green;
+}
+
+.blue
+{
+    color: blue;
+}

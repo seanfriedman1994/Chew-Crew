@@ -2,22 +2,40 @@
     <span>
         <a mat-button class="mat-display-1" routerLink="/" routerLinkActive="mat-accent">
             <img height="55px" width="55px" src="../../assets/images/chewcrewlogo.png" alt="">
+            <!-- <i class="material-icons">
+                home
+            </i> -->
             Chew Crew
         </a>
     </span>
     <span class="spacer"></span>
     <ul>
-        <li *ngIf="userIsAuthenticated">
+        <!-- <li *ngIf="userIsAuthenticated">
             <a mat-button routerLink="/dishes/create" routerLinkActive="mat-accent">New Dish</a>
-        </li>
+        </li> -->
         <li *ngIf="userIsAuthenticated">
-                <a mat-button routerLink="/dishes" routerLinkActive="mat-accent">Dishes</a>
+            <a mat-button routerLink="/dishes" routerLinkActive="mat-accent">
+                <i class="material-icons">
+                        fastfood
+                </i>
+                Dishes
+            </a>
             </li>
         <li *ngIf="userIsAuthenticated">
-                <a mat-button routerLink="/auth/crews" routerLinkActive="mat-accent">Crews</a>
+            <a mat-button routerLink="/crews" routerLinkActive="mat-accent">
+                <i class="material-icons">
+                    group
+                </i>
+                Crews
+            </a>
         </li>
         <li *ngIf="userIsAuthenticated">
-                <a mat-button routerLink="/profile" routerLinkActive="mat-accent">Profile</a>
+                <a mat-button routerLink="/profile" routerLinkActive="mat-accent">
+                    <i class="material-icons">
+                        face
+                    </i>
+                    Profile
+                </a>
         </li>
         <!-- <li>
             <a mat-button routerLink="/" routerLinkActive="mat-accent">
@@ -25,13 +43,27 @@
             </a>
         </li> -->
         <li *ngIf="!userIsAuthenticated">
-            <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
+            <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">
+                <i class="material-icons">
+                    how_to_reg
+                </i>
+                    Login
+            </a>
         </li>
         <li *ngIf="!userIsAuthenticated">
-            <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Sign Up</a>
+            <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">
+                <i class="material-icons">
+                    assignment_ind
+                </i>   
+                Sign Up
+            </a>
         </li>
         <li *ngIf="userIsAuthenticated">
-            <button mat-button (click)="onLogout()">Logout</button>
+            <button mat-button (click)="onLogout()">
+                <i class="material-icons">
+                    exit_to_app
+                </i>
+            Logout</button>
         </li>
     </ul>
 </mat-toolbar>

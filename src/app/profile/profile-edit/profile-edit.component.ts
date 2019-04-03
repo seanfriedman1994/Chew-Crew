@@ -4,7 +4,7 @@ import { ProfileService } from '../profile.service';
 import { ActivatedRoute } from '@angular/router';
 import { ParamMap } from '@angular/router';
 import { User } from '../../models/interface-models';
-import { mimeType } from '../../dishes/dish-create/mime-type.validator';
+import { mimeType } from '../../auth/mime-type.validator';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
