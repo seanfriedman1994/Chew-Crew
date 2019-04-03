@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CrewsComponent } from './crews/crews.component';
 import { CrewCreateComponent } from './crews/crew-create/crew-create.component';
 import { CrewListComponent } from './crews/crew-list/crew-list.component';
+import { CrewPageComponent } from './crews/crew-page/crew-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CrewListComponent } from './crews/crew-list/crew-list.component';
     ProfileEditComponent,
     CrewsComponent,
     CrewCreateComponent,
-    CrewListComponent
+    CrewListComponent,
+    CrewPageComponent
   ],
   imports: [
     BrowserModule,

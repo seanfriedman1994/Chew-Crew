@@ -21,3 +21,14 @@ export interface Crew
     image: string;
     creator: string;
 }
+
+export interface EventActivity
+{
+    id: string;
+    name: string;
+    date: string;
+    description: string;
+    creator: string;
+}
+
+

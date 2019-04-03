@@ -1,0 +1,97 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+  <mat-card class="profile" *ngIf="!isLoading">
+    <mat-card-header>  
+    <img mat-card-avatar class="header.image" [src]="crew.image" [alt]="crew.name">
+    <mat-card-title>{{crew.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <!-- <span class="pull right">
+        <img mat-card-sm-image 
+        [src]="profile.image" 
+        [alt]="profile.name"
+         class="img-responsive" 
+        style="max-height: 150px;">
+    </span> -->
+    <mat-card-content class="profile-bio">
+      <p>
+          Bio: {{crew.bio}}
+      </p>
+    </mat-card-content>
+    <mat-list dense>
+        <h3 mat-subheader>Members</h3>
+        <mat-list-item *ngIf="crewMembers.length <= 0 && !isLoading">
+            No Members!
+        </mat-list-item>
+        <mat-list-item *ngFor="let crewMember of crewMembers">
+          <img matListAvatar [src]="crewMember.image" [alt]="crewMember.name">
+          <h3 matLine>{{ crewMember.name }}</h3>
+        </mat-list-item>
+      </mat-list>
+
+      <mat-accordion multi="true" *ngIf="events.length > 0 && !isLoading">
+          <mat-expansion-panel *ngFor="let event of eventss">
+            <mat-expansion-panel-header>
+              {{ event.name }}
+            </mat-expansion-panel-header>
+            <mat-expansion-panel-header>
+                {{ event.date }}
+            </mat-expansion-panel-header>
+            <span class="pull-right">
+                <img [src]="event.image" 
+                [alt]="event.name" 
+                class="img-responsive" 
+                style="max-height: 150px;">
+            </span>
+            <p class="event-description">{{ event.description }}</p>
+            <mat-divider></mat-divider>
+            
+              <mat-action-row>
+                  <a mat-button color="primary" [routerLink]="['/crews/events/', event.id]" *ngIf="userIsAuthenticated">
+                    <i class="material-icons">
+                      forward
+                    </i>
+                    ENTER
+                  </a>
+                <a mat-button class="blue" [routerLink]="['/crews/events/edit', event.id]" 
+                  *ngIf="userIsAuthenticated && (userId == event.creator || userId == crew.creator)">
+                  <i class="material-icons">
+                      edit
+                  </i>
+                  EDIT</a>
+                <button mat-button color="warn" (click)="onDelete(event.id)" 
+                  *ngIf="userIsAuthenticated && (userId == event.creator || userId == crew.creator)">
+                  <i class="material-icons">
+                      delete
+                    </i>
+                  DELETE</button>
+              </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <a mat-raised-button color="accent" routerLink="/crews/events/create" >
+          <i class="material-icons">
+              event
+          </i>
+          New Event
+        </a>
+
+      <mat-action-row>
+          <button mat-button class="green" (click)="onJoin(crew.id)" *ngIf="userIsAuthenticated">
+            <i class="material-icons">
+              add_circle
+            </i>
+              JOIN
+          </button>
+        <a mat-button class="blue" [routerLink]="['/crews/edit', crew.id]" *ngIf="userIsAuthenticated && userId == crew.creator">
+          <i class="material-icons">
+              edit
+          </i>
+          EDIT</a>
+        <button mat-button color="warn" (click)="onDelete(crew.id)" *ngIf="userIsAuthenticated && userId == crew.creator">
+          <i class="material-icons">
+              delete
+            </i>
+          DELETE
+        </button>
+      </mat-action-row>
+  </mat-card>

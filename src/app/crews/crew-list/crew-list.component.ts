@@ -4,6 +4,7 @@ import { Crew } from '../../models/interface-models';
 import { CrewsService } from '../crews.service';
 import { PageEvent } from '@angular/material';
 import { AuthService } from 'src/app/auth/auth.service';
+import { User } from '../../models/interface-models';
 
 @Component({
   selector: 'app-crew-list',
@@ -13,6 +14,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class CrewListComponent implements OnInit, OnDestroy {
 
   crews: Crew[] = [];
+  crewMembers: User[] = [];
   isLoading = false;
   totalCrews = 0;
   crewsPerPage = 3;
@@ -34,7 +36,7 @@ export class CrewListComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.totalCrews = crewData.crewCount;
         this.crews = crewData.crews;
-        });
+    });
       this.userIsAuthenticated = this.authService.getIsAuth();
       this.authStatusSub = this.authService.getAuthStatusListener()
         .subscribe(isAuthenticated => {

@@ -9,6 +9,7 @@ import { AuthService } from '../auth/auth.service';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ProfileService } from './profile.service';
 import { ParamMap } from '@angular/router';
+import { Crew } from '../models/interface-models';
 
 
 
@@ -24,7 +25,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   profile: User;
   isUser: boolean;
-
+  crewMembers: Crew[] = [];
+  userCrews: Crew[] = [];
   private userId: string;
   private email: string = "";
   private profileSub: Subscription;
