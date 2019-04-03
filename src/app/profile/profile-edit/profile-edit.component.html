@@ -1,0 +1,34 @@
+<mat-card>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <form [formGroup]="form" (submit)="onSaveProfile()" *ngIf="!isLoading">
+          <mat-form-field>
+            <input 
+            matInput
+            type="text"
+            formControlName="name"
+            placeholder="Name">
+            <mat-error *ngIf="form.get('name').invalid">Please enter a name!</mat-error>
+          </mat-form-field>
+          <div>
+            <button mat-stroked-button type="button" (click)="filePicker.click()">Upload Image</button>
+            <input type="file" #filePicker (change)="onImagePicked($event)">
+          </div>
+          <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+            <img [src]="imagePreview" [alt]="form.value.name">
+          </div>
+          <mat-form-field>
+            <textarea 
+            matInput
+            rows="6"
+            formControlName="bio"
+            placeholder="Bio"
+            ></textarea>
+            <mat-error *ngIf="form.get('bio').invalid">Please enter a bio!</mat-error>
+          </mat-form-field>
+          <button
+            mat-raised-button
+            color="accent"
+            type="submit">Update Profile</button>
+        </form>
+      </mat-card>
+      

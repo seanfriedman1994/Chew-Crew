@@ -8,6 +8,8 @@ import { User } from '../models/interface-models';
 import { AuthService } from '../auth/auth.service';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ProfileService } from './profile.service';
+import { ParamMap } from '@angular/router';
+
 
 
 @Component({
@@ -37,13 +39,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
   {
     this.isLoading = true;
 
-    // this.route.queryParams
-      // .subscribe(params => {
-      //   console.log(params);
 
-      //   this.userId = params.userId;
-      //   console.log(this.userId);
-      // })
+    // this.route.queryParams
+    //   .subscribe(params => {
+    //     console.log(params);
+
+    //     this.userId = params.userId;
+    //     console.log(this.userId);
+    //   })
+
+
     this.email = localStorage.getItem("email");
     console.log(this.email);
    // this.userId = localStorage.getItem("email");
@@ -53,6 +58,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.isLoading = false;
       this.profile = 
       {
+        id: profileData._id,
         email: profileData.email,
         name: profileData.name, 
         bio: profileData.bio,

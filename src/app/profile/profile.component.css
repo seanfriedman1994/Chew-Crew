@@ -1,0 +1,31 @@
+.header-image {
+    background-size: cover;
+}
+
+
+:host {
+    display: block;
+    margin-top: 1rem;
+}
+
+.info-text {
+    text-align: center;
+}
+
+mat-spinner
+{
+    margin: auto;
+}
+
+.profile-image 
+{
+    
+    max-height: 50px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.profile-bio
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

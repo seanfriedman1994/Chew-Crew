@@ -2,11 +2,19 @@ const Dish = require("../models/dish");
 
 exports.createDish = (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
+    if(!req.file)
+    {
+      image = "";
+    }
+    else
+    {
+      image = url + "/images/" + req.file.filename;
+    }
     const dish = new Dish({
       name: req.body.name,
       description: req.body.description,
       tags: req.body.tags,
-      imagePath: url + "/images/" + req.file.filename,
+      imagePath: image,
       creator: req.userData.userId
     });
     dish.save().then(createdDish => {

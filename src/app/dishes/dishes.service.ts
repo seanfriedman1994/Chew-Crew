@@ -102,7 +102,7 @@ export class DishesService {
         }
         this.http.put(BACKEND_URL + id, dishData)
         .subscribe(response => {
-            this.router.navigate(["/"]);
+            this.router.navigate(["/dishes"]);
         });
 
     }

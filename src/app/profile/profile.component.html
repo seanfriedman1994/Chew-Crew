@@ -1,28 +1,25 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-<!-- <div class="profile-page">
-
-    <div class="user-info">
-      <div class="container">
-        <div class="row">
-  
-          <div class="col-xs-12 col-md-10 offset-md-1" *ngIf="!isLoading">
-            <h4>Name: {{ profile.name }}</h4>
-            <p>Email: {{ profile.email }}</p>
-            <p>Bio: {{ profile.bio }}</p>
-          </div>
-        </div>
-      </div>
-  </div> -->
 
   <mat-card class="profile" *ngIf="!isLoading">
-    <mat-card-title>Name: {{profile.name}}</mat-card-title>
-    <mat-card-subtitle>Email: {{profile.email}}</mat-card-subtitle>
-    <mat-card-content>
+    <mat-card-header>  
+    <img mat-card-avatar class="header.image" [src]="profile.image" [alt]="profile.name">
+    <mat-card-title>{{profile.name}}</mat-card-title>
+    <mat-card-subtitle>{{profile.email}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <!-- <span class="pull right">
+        <img mat-card-sm-image 
+        [src]="profile.image" 
+        [alt]="profile.name"
+         class="img-responsive" 
+        style="max-height: 150px;">
+    </span> -->
+    <mat-card-content class="profile-bio">
       <p>
           Bio: {{profile.bio}}
       </p>
     </mat-card-content>
     <mat-action-row>
-      <a mat-button color="primary">EDIT</a>
+      <a mat-button color="primary" [routerLink]="['/profile/edit', profile.id]">EDIT PROFILE</a>
     </mat-action-row>
   </mat-card>

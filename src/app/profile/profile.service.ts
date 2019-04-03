@@ -18,6 +18,7 @@ export class ProfileService {
     constructor (private http: HttpClient, private router: Router, private authService: AuthService) {}
 
     private user: User;
+    private id: string;
     //private userId: string;
     private userDishes: Dish[] = [];
     //groups of users (crews) should be User array?
@@ -30,16 +31,21 @@ export class ProfileService {
     createProfile(email: string)
     {
         console.log(email);
-        console.log("hereddd");
-        const profileData: User = {
-            email: email,
-            name: "",
-            bio: "",
-            image: ""
-        };
+        const profileData = new FormData();
+        profileData.append("email", email);
+        profileData.append("name", "");
+        profileData.append("bio", "");
+        profileData.append("image", "");
+
+        // const profileData: User = {
+        //     email: email,
+        //     name: "",
+        //     bio: "",
+        //     image: ""
+        // };
         console.log(profileData);
-        return this.http.post<User>(BACKEND_URL, profileData)
-        .subscribe(() => {
+        return this.http.post<{message: string, user: User}>(BACKEND_URL, profileData)
+        .subscribe((responseData) => {
            this.router.navigate(['/auth/login']);
         }, error => {
            console.log(error);
@@ -53,11 +59,41 @@ export class ProfileService {
         console.log("here");
 
         return this.http.get<{
+            _id: string;
             email: string; 
             name: string; 
             bio: string; 
             image: string;
         }>(BACKEND_URL + email);
+    }
+
+    updateProfile(id: string, email: string, name: string, bio: string, image: File | string){
+        let profileData: User | FormData;
+        if(typeof(image) === 'object')
+        {
+            profileData = new FormData();
+            profileData.append("id", id);
+            profileData.append("email", email);
+            profileData.append("name", name);
+            profileData.append("bio", bio);
+            profileData.append("image", image, name);
+
+        }
+        else
+        {
+            profileData = {
+                id: id,
+                email: email,
+                name: name,
+                bio: bio,
+                image: image
+            };
+        }
+        this.http.put(BACKEND_URL + id, profileData)
+        .subscribe(response => {
+            this.router.navigate(["/profile"]);
+        });
+
     }
 
     getProfileUpdateListener()

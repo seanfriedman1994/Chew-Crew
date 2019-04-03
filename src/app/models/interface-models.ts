@@ -6,8 +6,18 @@ export interface AuthData
 
 export interface User
 {
+    id: string;
     email: string;
     name: string;
     bio: string;
+    image: string;
+}
+
+export interface Crew
+{
+    id: string;
+    name: string;
+    bio: string;
+    count: string;
     image: string;
 }
