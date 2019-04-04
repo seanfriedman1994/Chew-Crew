@@ -97,12 +97,14 @@ export class CrewsService {
         }
         this.http.put(BACKEND_URL + id, crewData)
         .subscribe(response => {
-            this.router.navigate(["/crews"]);
+            this.router.navigate(["/crews/" + id]);
         });
 
     }
 
     deleteCrew(crewId: string) {
-        return this.http.delete(BACKEND_URL + crewId);
+        return this.http.delete(BACKEND_URL + crewId).subscribe(response => {
+            this.router.navigate(["/crews"]);
+        });
     }
 }

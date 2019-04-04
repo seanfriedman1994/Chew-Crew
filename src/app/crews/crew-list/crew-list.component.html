@@ -13,19 +13,6 @@
         style="max-height: 150px;">
     </span>
     <p class="crew-description">{{ crew.description }}</p>
-    <mat-list dense>
-      <h3 mat-subheader>Members</h3>
-      <mat-list-item *ngIf="crewMembers.length <= 0 && !isLoading">
-          No Members!
-      </mat-list-item>
-      <mat-list-item *ngFor="let crewMember of crewMembers">
-        <img matListAvatar [src]="crewMember.image" [alt]="crewMember.name">
-        <h3 matLine>{{ crewMember.name }}</h3>
-      </mat-list-item>
-
-
-    </mat-list>
-    <mat-divider></mat-divider>
     
       <mat-action-row>
           <button mat-button class="green" (click)="onJoin(crew.id)" *ngIf="userIsAuthenticated">
@@ -40,16 +27,6 @@
             </i>
             ENTER
           </a>
-        <a mat-button class="blue" [routerLink]="['/crews/edit', crew.id]" *ngIf="userIsAuthenticated && userId == crew.creator">
-          <i class="material-icons">
-              edit
-          </i>
-          EDIT</a>
-        <button mat-button color="warn" (click)="onDelete(crew.id)" *ngIf="userIsAuthenticated && userId == crew.creator">
-          <i class="material-icons">
-              delete
-            </i>
-          DELETE</button>
       </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>

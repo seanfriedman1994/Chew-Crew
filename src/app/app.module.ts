@@ -16,11 +16,15 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HomeComponent } from './home/home.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CrewsComponent } from './crews/crews.component';
 import { CrewCreateComponent } from './crews/crew-create/crew-create.component';
 import { CrewListComponent } from './crews/crew-list/crew-list.component';
 import { CrewPageComponent } from './crews/crew-page/crew-page.component';
+import { EventsComponent } from './events/events.component';
+import { EventCreateComponent } from './events/event-create/event-create.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,9 @@ import { CrewPageComponent } from './crews/crew-page/crew-page.component';
     CrewsComponent,
     CrewCreateComponent,
     CrewListComponent,
-    CrewPageComponent
+    CrewPageComponent,
+    EventsComponent,
+    EventCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +49,8 @@ import { CrewPageComponent } from './crews/crew-page/crew-page.component';
     AngularMaterialModule,
     ReactiveFormsModule,
     DishesModule,
+    FormsModule,
+    MatCheckboxModule, 
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot()

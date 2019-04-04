@@ -27,8 +27,10 @@ export interface EventActivity
     id: string;
     name: string;
     date: string;
+    location: string;
     description: string;
     creator: string;
+    crewId: string;
 }
 
 

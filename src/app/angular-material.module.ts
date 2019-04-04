@@ -13,6 +13,9 @@ import
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
 } from "@angular/material";
 
 @NgModule({
@@ -30,6 +33,9 @@ import
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
  ]
 })
 

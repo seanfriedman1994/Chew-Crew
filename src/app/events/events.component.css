@@ -35,13 +35,25 @@ mat-spinner
     margin-bottom: 50px;
 }
 
-h3
+.section
 {
-    font-size: 20px;
-    margin-bottom:  10px;
+    display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
 }
 
-.green
+h2
 {
-    color: green;
+    margin: 10px;
+}
+
+.colored-section{
+    background-color: #ff4c68;
+    color: #fff;
+  }
+
+.sub-margin
+{
+    margin: 0 10px;
 }

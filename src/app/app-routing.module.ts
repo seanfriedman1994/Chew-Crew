@@ -9,15 +9,25 @@ import { ProfileEditComponent} from './profile/profile-edit/profile-edit.compone
 import { CrewListComponent } from './crews/crew-list/crew-list.component';
 import { CrewCreateComponent } from './crews/crew-create/crew-create.component';
 import { CrewPageComponent } from './crews/crew-page/crew-page.component';
+import { EventsComponent } from './events/events.component';
+import { EventCreateComponent } from './events/event-create/event-create.component';
  
 const routes: Routes = [
+    //home page
     { path: '', component: HomeComponent },
+    //profile page
     { path: 'profile/edit/:id', component: ProfileEditComponent},
     { path: 'profile', component: ProfileComponent},
+    //crews page
     { path: 'crews', component: CrewListComponent },
     { path: 'crews/create', component: CrewCreateComponent, canActivate: [AuthGuard]},
     { path: 'crews/edit/:crewId', component: CrewCreateComponent, canActivate: [AuthGuard]},
     { path: 'crews/:crewId', component: CrewPageComponent, canActivate: [AuthGuard]},
+    //events
+    { path: 'events/create', component: EventCreateComponent, canActivate: [AuthGuard] },
+    { path: 'events/:eventId', component: EventsComponent },
+    { path: 'events/edit/:eventId', component: EventCreateComponent, canActivate: [AuthGuard] },
+    //dishes
     { path: 'dishes', component: DishListComponent },
     { path: 'dishes/create', component: DishCreateComponent, canActivate: [AuthGuard] },
     { path: 'dishes/edit/:dishId', component: DishCreateComponent, canActivate: [AuthGuard]},

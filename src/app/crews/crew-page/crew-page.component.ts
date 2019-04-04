@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { User } from '../../models/interface-models';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { EventActivity } from '../../models/interface-models';
+import { EventsService } from '../../events/events.service';
 
 
 @Component({
@@ -21,11 +22,15 @@ export class CrewPageComponent implements OnInit, OnDestroy{
   userIsAuthenticated = false;
   userId: string;
   crew: Crew;
-  private crewsSub: Subscription;
+  totalEvents = 0;
+  eventsPerPage = 3;
+  pageSizeOptions = [1,3,5,10];
+  currentPage = 1;
+  private eventsSub: Subscription;
   private authStatusSub: Subscription;
   private crewId: string;
 
-  constructor(public crewsService: CrewsService, private authService: AuthService, private route: ActivatedRoute) { }
+  constructor(public crewsService: CrewsService, public eventsService: EventsService, private authService: AuthService, public route: ActivatedRoute) { }
 
   ngOnInit() 
   {
@@ -36,6 +41,7 @@ export class CrewPageComponent implements OnInit, OnDestroy{
       {
         this.crewId = paramMap.get('crewId');
         this.isLoading = true;
+        localStorage.setItem("crewId", this.crewId);
         this.crewsService.getCrew(this.crewId).subscribe(crewData => { 
           this.isLoading = false;
           this.crew = 
@@ -47,11 +53,20 @@ export class CrewPageComponent implements OnInit, OnDestroy{
             creator: crewData.creator
           };
         });
+
       }else
       {
         this.crewId = null;
       }
     });
+
+    this.eventsService.getEvents(this.eventsPerPage, this.currentPage, this.crewId);
+        this.eventsSub = this.eventsService.getEventUpdateListener()
+          .subscribe((eventData: {events: EventActivity[], eventCount: number}) => {
+            this.isLoading = false;
+            this.totalEvents = eventData.eventCount;
+            this.events = eventData.events;
+          });
 
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -68,9 +83,10 @@ export class CrewPageComponent implements OnInit, OnDestroy{
     this.isLoading = true;
     this.crewsService.deleteCrew(crewId);
   }
-
+  
   ngOnDestroy()
   {
+    this.eventsSub.unsubscribe();
     this.authStatusSub.unsubscribe();
   }
 }

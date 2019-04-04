@@ -3,10 +3,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const dishesRoutes = require("./routes/dishes");
-const userRoutes = require("./routes/user");
-const profileRoutes = require("./routes/profile");
-const crewsRoutes = require("./routes/crews");
 
 const app = express();
 
@@ -19,8 +15,9 @@ mongoose.connect("mongodb+srv://Sean:" + process.env.MONGO_ATLAS_PW + "@cluster0
     });
 //password is adminadmin
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 app.use("/images", express.static(path.join("backend/images")));
 
 app.use((req, res, next) => {
@@ -32,10 +29,18 @@ app.use((req, res, next) => {
     next();
 }); //solves CORS issue
 
+const dishesRoutes = require("./routes/dishes");
+const userRoutes = require("./routes/user");
+const profileRoutes = require("./routes/profile");
+const crewsRoutes = require("./routes/crews");
+const eventsRoutes = require("./routes/events");
+
 app.use("/api/dishes", dishesRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/crews", crewsRoutes);
+app.use("/api/events", eventsRoutes);
+
 
 
 module.exports = app;

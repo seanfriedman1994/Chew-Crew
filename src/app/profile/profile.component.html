@@ -65,6 +65,12 @@
         </mat-expansion-panel>
       </mat-accordion>
       <p *ngIf="userCrews.length <= 0 && !isLoading">No crews joined yet!</p>
+      <a mat-button class="green" [routerLink]="['/crews']" *ngIf="userIsAuthenticated">
+        <i class="material-icons">
+          add_circle
+        </i>
+          JOIN CREW
+      </a>
     <mat-action-row>
       <a mat-button color="primary" [routerLink]="['/profile/edit', profile.id]">
         <i class="material-icons">

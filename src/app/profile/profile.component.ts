@@ -31,17 +31,28 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private email: string = "";
   private profileSub: Subscription;
   form: FormGroup;
+  userIsAuthenticated = false;
+  private authStatusSub: Subscription;
+
 
 
 
   constructor(private route: ActivatedRoute, 
-    private profileService: ProfileService) { }
+    private profileService: ProfileService, private authService: AuthService) { }
 
   ngOnInit() 
   {
     this.isLoading = true;
 
-
+    this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    console.log(this.userIsAuthenticated);
+    this.authStatusSub = this.authService.getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        console.log(isAuthenticated);
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
+      });
     // this.route.queryParams
     //   .subscribe(params => {
     //     console.log(params);
@@ -74,6 +85,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy()
   {
     this.profileSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 
     // this.route.data.subscribe(
