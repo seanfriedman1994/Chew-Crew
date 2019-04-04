@@ -83,6 +83,12 @@ export class CrewPageComponent implements OnInit, OnDestroy{
     this.isLoading = true;
     this.crewsService.deleteCrew(crewId);
   }
+
+  onJoin(crewId: string)
+  {
+    this.isLoading = true;
+    this.crewsService.joinCrew(crewId);
+  }
   
   ngOnDestroy()
   {

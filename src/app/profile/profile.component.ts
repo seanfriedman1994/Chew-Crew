@@ -34,9 +34,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   private authStatusSub: Subscription;
 
-
-
-
   constructor(private route: ActivatedRoute, 
     private profileService: ProfileService, private authService: AuthService) { }
 
@@ -53,18 +50,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
       });
-    // this.route.queryParams
-    //   .subscribe(params => {
-    //     console.log(params);
-
-    //     this.userId = params.userId;
-    //     console.log(this.userId);
-    //   })
 
 
     this.email = localStorage.getItem("email");
     console.log(this.email);
-   // this.userId = localStorage.getItem("email");
 
     this.profileSub = this.profileService.fetchProfile(this.email).subscribe(profileData => {
       console.log(profileData);
@@ -77,7 +66,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         bio: profileData.bio,
         image: profileData.image,
       };
-     // this.imagePreview = this.dish.imagePath;
     });
 
   }
@@ -87,18 +75,4 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.profileSub.unsubscribe();
     this.authStatusSub.unsubscribe();
   }
-
-    // this.route.data.subscribe(
-    //   (data: {profile: Profile}) => {
-    //     this.profile = data.profile;
-    //   }
-    // );
-
-  // Load the current user's data
-  // this.AuthService.currentUser.subscribe(
-  //   (userData: User) => {
-  //     this.currentUser = userData;
-  //     this.isUser = (this.currentUser.name === this.profile.username);
-  //   }
-  // );
 }

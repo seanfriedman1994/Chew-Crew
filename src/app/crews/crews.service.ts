@@ -102,6 +102,18 @@ export class CrewsService {
 
     }
 
+    joinCrew(crewId: string)
+    {
+        const userCrewData = new FormData();
+        userCrewData.append("crewId", crewId);
+
+        this.http.post<{message: string}>(BACKEND_URL + crewId, userCrewData)
+        .subscribe((responseData) => {
+            console.log(responseData);
+            this.router.navigate(["/crews/" + crewId]);
+        });
+    }
+
     deleteCrew(crewId: string) {
         return this.http.delete(BACKEND_URL + crewId).subscribe(response => {
             this.router.navigate(["/crews"]);

@@ -57,3 +57,8 @@ h2
 {
     margin: 0 10px;
 }
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-color: purple;
+    /* background-color: #ff4c68; */
+}

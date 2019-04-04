@@ -56,8 +56,6 @@ export class ProfileService {
 
     fetchProfile(email: string) 
     {
-        console.log("here");
-
         return this.http.get<{
             _id: string;
             email: string; 
@@ -65,6 +63,19 @@ export class ProfileService {
             bio: string; 
             image: string;
         }>(BACKEND_URL + email);
+    }
+
+    fetchUserCrews(userId: string)
+    {
+        console.log(userId);
+
+        return this.http.get<{
+            _id: string; 
+            name: string; 
+            description: string;
+            image: string;
+            creator: string;
+        }>(BACKEND_URL + userId);
     }
 
     updateProfile(id: string, email: string, name: string, bio: string, image: File | string){
@@ -77,7 +88,6 @@ export class ProfileService {
             profileData.append("name", name);
             profileData.append("bio", bio);
             profileData.append("image", image, name);
-
         }
         else
         {

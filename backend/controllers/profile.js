@@ -87,4 +87,35 @@ exports.updateProfile = (req, res, next) => {
           message: "Couldn't update profile!"
         });
       });
+
+
+    // exports.getUserCrews = (req, res, next) => {
+    //     //only retrieve User Crews on current page
+    //     const pageSize = +req.query.pageSize;
+    //     const currentPage = +req.query.page;
+    //     const userId = req.query.userId;
+    //     const eventQuery = Crew.find({ userId: crewId });
+    //     let fetchedEvents;
+    //     if(pageSize && currentPage)
+    //     {
+    //         eventQuery
+    //             .skip(pageSize * (currentPage - 1))
+    //             .limit(pageSize);
+    //     }
+    //     eventQuery.then(documents => {
+    //         fetchedEvents = documents;
+    //         return Event.count();
+    //     }).then(count => {
+    //         res.status(200).json({
+    //             message: "Events fetched successfully!",
+    //             events: fetchedEvents,
+    //             maxEvents: count
+    //         });
+    //     })
+    //     .catch(error => {
+    //       res.status(500).json({
+    //         message: "Fetching events failed!"
+    //       });
+    //     });
+    // };
 };

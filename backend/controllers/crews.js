@@ -1,4 +1,5 @@
 const Crew = require("../models/crew");
+const UserCrew = require("../models/user-crew");
 
 exports.createCrew = (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
@@ -108,6 +109,37 @@ exports.getOneCrew = (req, res, next) => {
       });
     });
 };
+
+exports.joinCrew = (req, res, next) => {
+    console.log(req.body.crewId);
+    console.log(req.userData.userId);
+
+    const userCrew = new UserCrew({
+      crewId: req.body.crewId,
+      userId: req.userData.userId
+    });
+
+    UserCrew.find({crewId: userCrew.crewId, userId: userCrew.userId})
+      .then(foundUser => {
+        if(foundUser)
+        {
+          res.status(500).json({
+            message: "User-Crew relationship already exists!"
+          })
+        }
+      })
+
+    userCrew.save().then(createdUserCrew => {
+      res.status(201).json({
+        message: "Crew successfully joined"
+      });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Join crew failed!"
+      });
+    });
+}
 
 exports.deleteCrew = (req, res, next) => {
     Crew.deleteOne({_id: req.params.id, creator: req.userData.userId})

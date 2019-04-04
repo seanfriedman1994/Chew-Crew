@@ -20,6 +20,7 @@ router.put("/:id",
   CrewController.updateCrew
 );
 
+router.post("/:crewId", checkAuth, extractFile, CrewController.joinCrew);
 
 router.get("", CrewController.getAllCrews);
 
