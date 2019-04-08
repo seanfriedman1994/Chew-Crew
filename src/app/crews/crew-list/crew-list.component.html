@@ -1,36 +1,67 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <!-- <mat-icon class="restaurant-icon" aria-hidden="true" aria-label="restaurant icon">restaurant</mat-icon> -->
-
 <mat-accordion multi="true" *ngIf="crews.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let crew of crews">
     <mat-expansion-panel-header>
       {{ crew.name }}
     </mat-expansion-panel-header>
     <span class="pull-right">
-        <img [src]="crew.image" 
-        [alt]="crew.name" 
-        class="img-responsive" 
+        <img [src]="crew.image"
+        [alt]="crew.name"
+        class="img-responsive"
         style="max-height: 150px;">
     </span>
     <p class="crew-description">{{ crew.description }}</p>
-    
+    <mat-list dense>
+      <h3 mat-subheader>Members</h3>
+      <mat-list-item *ngIf="crewMembers.length <= 0 && !isLoading">
+          No Members!
+      </mat-list-item>
+      <mat-list-item *ngFor="let crewMember of crewMembers">
+        <img matListAvatar [src]="crewMember.image" [alt]="crewMember.name">
+        <h3 matLine>{{ crewMember.name }}</h3>
+      </mat-list-item>
+
+
+    </mat-list>
+    <mat-divider></mat-divider>
+
       <mat-action-row>
+<<<<<<< HEAD
+=======
+          <button mat-button class="green" (click)="onJoin(crew.id)" *ngIf="userIsAuthenticated">
+            <i class="material-icons">
+              add_circle
+            </i>
+              JOIN
+          </button>
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
           <a mat-button color="primary" [routerLink]="['/crews', crew.id]" *ngIf="userIsAuthenticated">
             <i class="material-icons">
               forward
             </i>
             ENTER
           </a>
+        <a mat-button class="blue" [routerLink]="['/crews/edit', crew.id]" *ngIf="userIsAuthenticated && userId == crew.creator">
+          <i class="material-icons">
+              edit
+          </i>
+          EDIT</a>
+        <button mat-button color="warn" (click)="onDelete(crew.id)" *ngIf="userIsAuthenticated && userId == crew.creator">
+          <i class="material-icons">
+              delete
+            </i>
+          DELETE</button>
       </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<a mat-raised-button color="accent" routerLink="/crews/create" >
+<a mat-raised-button color="accent" routerLink="/crews/create" id="crewButton">
   <i class="material-icons">
       group_add
   </i>
   Create Crew
 </a>
-<mat-paginator [length]="totalCrews" [pageSize]="crewsPerPage" [pageSizeOptions]="pageSizeOptions" 
+<mat-paginator [length]="totalCrews" [pageSize]="crewsPerPage" [pageSizeOptions]="pageSizeOptions"
 (page)="onChangedPage($event)"  *ngIf="crews.length > 0">
 </mat-paginator>
 <p class="info-text mat-body-1" *ngIf="crews.length <= 0 && !isLoading">No crews added yet!</p>

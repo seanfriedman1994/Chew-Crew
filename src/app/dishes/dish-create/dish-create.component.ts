@@ -7,14 +7,47 @@ import { Dish } from '../../models/dish.model';
 import { mimeType } from '../../auth/mime-type.validator';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material';
 
+export interface Tag {
+  name: string;
+}
 
 @Component({
   selector: 'app-dish-create',
   templateUrl: './dish-create.component.html',
   styleUrls: ['./dish-create.component.css']
 })
+
 export class DishCreateComponent implements OnInit, OnDestroy{
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  tags: Tag[] = [];
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our fruit
+    if ((value || '').trim()) {
+      this.tags.push({name: value.trim()});
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+  remove(tag: Tag): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
   enteredName = "";
   enteredDescription = "";
   enteredTags = "";
@@ -25,11 +58,15 @@ export class DishCreateComponent implements OnInit, OnDestroy{
   form: FormGroup;
   imagePreview: string;
   private authStatusSub: Subscription;
+<<<<<<< HEAD
   eventId: string;
   
+=======
+
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
   constructor(public dishesService: DishesService, public route: ActivatedRoute, private authService: AuthService) {}
 
-  ngOnInit() 
+  ngOnInit()
   {
     
     this.authStatusSub = this.authService.getAuthStatusListener()
@@ -43,32 +80,33 @@ export class DishCreateComponent implements OnInit, OnDestroy{
       'description': new FormControl(null, {
         validators: [Validators.required]
       }),
-      'tags': new FormControl(null, {
-        validators: [Validators.required]
-      }),
       'image': new FormControl(null, {
         //validators: [Validators.required],
         asyncValidators: [mimeType]
       })
     });
-    this.route.paramMap.subscribe((paramMap: ParamMap) => 
+    this.route.paramMap.subscribe((paramMap: ParamMap) =>
     {
-      if(paramMap.has('dishId')) 
+      if(paramMap.has('dishId'))
       {
         this.mode = 'edit';
         this.dishId = paramMap.get('dishId');
         this.isLoading = true;
-        this.dishesService.getDish(this.dishId).subscribe(dishData => { 
+        this.dishesService.getDish(this.dishId).subscribe(dishData => {
           this.isLoading = false;
-          this.dish = 
+          this.dish =
           {
-            id: dishData._id, 
-            name: dishData.name, 
+            id: dishData._id,
+            name: dishData.name,
             description: dishData.description,
             tags: dishData.tags,
             imagePath: dishData.imagePath,
+<<<<<<< HEAD
             creator: dishData.creator,
             eventId: dishData.eventId
+=======
+            creator: dishData.creator
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
           };
           this.form.setValue({
             'name': this.dish.name,
@@ -86,7 +124,7 @@ export class DishCreateComponent implements OnInit, OnDestroy{
     });
   }
 
-  onImagePicked(event: Event) 
+  onImagePicked(event: Event)
   {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({image: file});
@@ -110,16 +148,20 @@ export class DishCreateComponent implements OnInit, OnDestroy{
     if(this.mode === 'create')
     {
       this.dishesService.addDish(
-        this.form.value.name, 
-        this.form.value.description, 
+        this.form.value.name,
+        this.form.value.description,
         this.form.value.tags,
+<<<<<<< HEAD
         this.form.value.image,
         this.eventId);
+=======
+        this.form.value.image);
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
     }else
     {
       this.dishesService.updateDish(
-        this.dishId, 
-        this.form.value.name, 
+        this.dishId,
+        this.form.value.name,
         this.form.value.description,
         this.form.value.tags,
         this.form.value.image,
@@ -129,8 +171,9 @@ export class DishCreateComponent implements OnInit, OnDestroy{
     this.form.reset();
   }
 
-  ngOnDestroy() 
+  ngOnDestroy()
   {
     this.authStatusSub.unsubscribe();
   }
+
 }

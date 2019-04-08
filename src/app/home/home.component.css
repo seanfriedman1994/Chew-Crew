@@ -2,8 +2,9 @@ h1, h2, h3, h4, h5, h6{
     font-family: "Montserrat";
     font-weight: bold;
   }
-  
+
   p{
+<<<<<<< HEAD
     color: #8f8f8f;
   }
   
@@ -12,33 +13,29 @@ h1, h2, h3, h4, h5, h6{
     margin-left: auto;
     margin-right: auto;
    
+=======
+    color: white;
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
   }
 
-  .logo
-  {
-    max-width:100px;
-    height: auto;
+  #reasons{
+    color: gray;
+  }
+  #foot{
+    color: gray;
   }
 
-  .home-image
-  {
-    border-radius: 8px;
-    max-width: 100%;
-    height: auto;
-    width: 100%;
+  #profButton{
+    color: white;
+    background: #ff4c68;
+    font-family: "Montserrat";
+  }
+  #profButton:hover{
+    color: #333333;
   }
 
-  .android-icon
-  {
-    max-width: 50%;
-    height: auto;
-    border-radius: 8px;
-  }
 
-  .view {
-    height: 100vh;
-   }
-
+<<<<<<< HEAD
    .rgba-gradient .full-bg-img {
     background: linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
   }
@@ -56,42 +53,58 @@ h1, h2, h3, h4, h5, h6{
       height: 1020px;
     }
   }
+=======
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
   /* Headings */
-  .big-heading{
+  .big-heading1{
     font-family: "Montserrat";
     font-weight: bold;
     font-size: 3rem;
     line-height: 1.5;
+    color: #ff4c68;
   }
 
-  .chew-heading{
+  .big-heading2{
     font-family: "Montserrat";
     font-weight: bold;
-    font-size: 4rem;
+    font-size: 3rem;
+    line-height: 1.5;
+    color: white;
   }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
   .section-heading{
     font-size: 3rem;
     line-height: 1.5;
   }
-  
+
   .container-fluid{
-    padding: 3% 10% 7%;
+    padding: 3% 3% 8%;
   }
-  
+
   /* Sections */
   .colored-section{
+<<<<<<< HEAD
     background-color: #ff4c68;
     color: #fff;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
     border-radius: 8px;
+=======
+    background-color: white;
+    color: black;
+    width: 100%;
+    margin: 0;
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
   }
-  
+
   .login{
     border-radius: 5px;
     padding: 3px;
   }
-  
+
   .form-signin {
     width: 100%;
     max-width: 330px;
@@ -99,7 +112,7 @@ h1, h2, h3, h4, h5, h6{
     margin: auto;
     font-weight: 400;
   }
-  
+
   .form-signin .form-control {
     position: relative;
     box-sizing: border-box;
@@ -107,62 +120,65 @@ h1, h2, h3, h4, h5, h6{
     padding: 10px;
     font-size: 16px;
   }
-  
+
   .form-signin .form-control:focus {
     z-index: 2;
   }
-  
+
   .top{
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
-  
+
   }
-  
+
   .middle{
     border-radius: 0;
     margin-bottom: -1px;
   }
-  
+
   .bottom{
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  
+
   .white-section{
     background-color: #fff;
+<<<<<<< HEAD
     width: 100%;
+=======
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
   }
-  
-  
+
+
   /* Navagation Bar */
-  
+
   .navbar{
     padding: 0 0 4.5rem;
   }
-  
+
   .navbar-brand{
     font-family: Ubuntu;
     font-size: 2.5rem;
     font-weight:bold;
   }
-  
+
   .nav-item{
     padding: 0 18px;
   }
-  
+
   .nav-link{
     font-size: 1.2rem;
     font-family: "Montserrat";
     font-weight: light;
   }
-  
+
   /* Download Button */
   .download-button{
     margin: 5% 3% 5% 0;
   }
-  
+
   /* Title Image */
   .title-image{
     transform: rotate(25deg);
@@ -170,92 +186,103 @@ h1, h2, h3, h4, h5, h6{
     position: absolute;
     right: 30%;
   }
-  
+
   /* Media Queries help you handle different situations independently */
   @media (max-width: 1028px) {
     #title{
       text-align: center;
     }
   }
-  
+
+  #hypLink{
+    color: blue;
+  }
+
+  #title{
+    text-align: center;
+    padding: 0% 4%;
+    position: relative;
+  }
   /* Features Section */
-  
+
   #features{
-    padding: 7% 15%;
-  
-    /* z-indexing */
-    /* We changed the background to white so it is not transparent when it sits on top of something*/
-    background-color: #fff;
+    padding: 7% 11%;
+    background-color: #ff4c68;
     /* Changing the position to relative allows our features to have a position and also keep it in the html flow */
     position: relative;
     z-index: 1;
   }
-  
+
   .feature-title{
     font-size: 1.5rem;
   }
-  
+
   .feature-box{
     text-align: center;
     padding: 5%;
   }
-  
+
   .icon{
     margin-bottom: 1rem;
   }
-  
-  
+
+
   /* Pricing Section */
   #pricing{
+<<<<<<< HEAD
     margin-bottom: 100px;
+=======
+    padding: 100px;
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
     text-align: center;
   }
-  
+
   .pricing-column{
     padding: 3% 2%;
   }
-  
+
   .price-text{
     font-size: 3rem;
     line-height: 1.5;
   }
-  
-  
+
+
   /* cta section */
   #app{
     text-align: center;
     padding: 7% 15%;
+    background-color: #ff4c68;
   }
-  
+
   /* footer */
   /* #footer{
     padding: 7% 15%;
     text-align: center;
   }
-  
+
   .social-icon{
     margin: 20px 10px;
   } */
 
   #lab_social_icon_footer {
-    padding: 40px 0;
     background-color: #ffff;
+    position: relative;
   }
-  
-  #lab_social_icon_footer a {
+
+  #social-fb, #social-tw, #social-em {
     color: #333;
   }
-  
+
   #lab_social_icon_footer .social:hover {
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
     -o-transform: scale(1.1);
   }
-  
+
   #lab_social_icon_footer .social {
     -webkit-transform: scale(0.8);
     /* Browser Variations: */
-    
+
     -moz-transform: scale(0.8);
     -o-transform: scale(0.8);
     -webkit-transition-duration: 0.5s;
@@ -265,19 +292,19 @@ h1, h2, h3, h4, h5, h6{
   /*
       Multicoloured Hover Variations
   */
-  
+
   #lab_social_icon_footer #social-fb:hover {
     color: #3B5998;
   }
-  
+
   #lab_social_icon_footer #social-tw:hover {
     color: #4099FF;
   }
-  
+
   #lab_social_icon_footer #social-gp:hover {
     color: #d34836;
   }
-  
+
   #lab_social_icon_footer #social-em:hover {
     color: #f39c12;
   }
@@ -287,7 +314,7 @@ h1, h2, h3, h4, h5, h6{
     width: 215px;
     margin-top:5px;
     }
-    
+
     .big-btn i{
     font-size: 65px;
     margin-right: 0px !important;
@@ -301,43 +328,43 @@ h1, h2, h3, h4, h5, h6{
     .big-btn .btn-text{
     margin-top:6px;
     }
-    
+
     .big-btn small{font-size: 75%;}
-    
+
     .android-btn{
-    
+
     width: 240px;
     padding: 13px 17px 13px 0px;
     background-color: #000;
     border-color: #000;
-    
+
     }
     .android-btn:hover{
     background-color: #272727;
     }
-    
+
     .android-btn i{
     font-size: 55px;
     }
-    
+
     .android-btn .btn-text{
     margin-top: 0px;
     }
-    
+
     .android-btn strong{
     font-size: 25px;
     text-shadow: none;
     color: #fff;
     line-height: 24px;
     }
-    
+
     .windows-btn{
     background-color:#008A00;
     width: 235px;
     padding: 13px 5px 13px 10px;
     border-color: #055805;
     }
-    
+
     .windows-btn:hover{
     background-color: #008A00;
     }
@@ -346,5 +373,3 @@ h1, h2, h3, h4, h5, h6{
     font-size: 26px;
     line-height: 25px;
     }
-    
-  

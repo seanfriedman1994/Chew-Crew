@@ -53,6 +53,15 @@ export class CrewListComponent implements OnInit, OnDestroy {
     this.crewsService.getCrews(this.crewsPerPage, this.currentPage);
   }
 
+  onDelete(crewId: string) {
+    this.isLoading = true;
+    this.crewsService.deleteCrew(crewId).subscribe(() => {
+      this.crewsService.getCrews(this.crewsPerPage, this.currentPage);
+    }, () => {
+      this.isLoading = false;
+    });
+  }
+
   ngOnDestroy() 
   {
     this.crewsSub.unsubscribe();

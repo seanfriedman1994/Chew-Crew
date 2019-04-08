@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Crew, User} from '../models/interface-models';
+=======
+import { Crew } from '../models/interface-models';
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
@@ -11,12 +15,16 @@ const BACKEND_URL = environment.apiUrl + "/crews/";
 @Injectable({providedIn: 'root'})
 export class CrewsService {
     private crews: Crew[] = [];
+<<<<<<< HEAD
     private userCrews: Crew[] = [];
     private crewMembers: User[] = [];
     private userCrewsUpdated = new Subject<{userCrews: Crew[], userCrewCount: number}>();
     private crewsUpdated = new Subject<{crews: Crew[], crewCount: number}>();
     private crewMembersUpdated = new Subject<{crewMembers: User[], crewMemberCount: number}>();
 
+=======
+    private crewsUpdated = new Subject<{crews: Crew[], crewCount: number}>();
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 
     constructor(private http: HttpClient, private router: Router){}
 
@@ -54,6 +62,7 @@ export class CrewsService {
         return this.crewsUpdated.asObservable();
     }
 
+<<<<<<< HEAD
     getUserCrewUpdateListener()
     {
         return this.userCrewsUpdated.asObservable();
@@ -64,6 +73,8 @@ export class CrewsService {
         return this.crewMembersUpdated.asObservable();
     }
 
+=======
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
     getCrew(id: string) 
     {
 
@@ -112,6 +123,7 @@ export class CrewsService {
         }
         this.http.put(BACKEND_URL + id, crewData)
         .subscribe(response => {
+<<<<<<< HEAD
             this.router.navigate(["/crews/" + id]);
         });
 
@@ -184,9 +196,12 @@ export class CrewsService {
             console.log(responseData);
 
             this.router.navigate(["/crews/" + crewId]);
+=======
+            this.router.navigate(["/crews"]);
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
         });
-    }
 
+<<<<<<< HEAD
     leaveCrew(crewId: string, profileId: string)
     {
         return this.http.delete(BACKEND_URL + crewId + "/" + profileId).subscribe(response => {
@@ -200,5 +215,11 @@ export class CrewsService {
         return this.http.delete(BACKEND_URL + crewId).subscribe(response => {
             this.router.navigate(["/crews"]);
         });
+=======
+    }
+
+    deleteCrew(crewId: string) {
+        return this.http.delete(BACKEND_URL + crewId);
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
     }
 }

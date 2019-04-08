@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <section class="view rgba-gradient">
 
 <section class="colored-section " id="title"> 
@@ -28,12 +29,29 @@
         
         <div class="col-lg-6">
             <img class="home-image" src="https://images.pexels.com/photos/277253/pexels-photo-277253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Image">
+=======
+  <section class="colored-section" id="title">
+
+      <!-- This allows anything that is contained inside your container to be fully
+        responsive relative to the size of the screen
+        container jumps through the different widths but the fluid container
+        simply adapts to the width of the screen and always takes up 100 percent
+        of the screen width -->
+      <div class="container-fluid" id="slogan">
+
+        <div class="row">
+          <div class="col-lg-6">
+            <h1 class="big-heading1">Take control of your Potluck by organizing what the Crew Chews</h1>
+          </div>
+          <div class="col-lg-6 form-signin">
+              <button type="button" id="profButton" class="btn btn-dark btn-lg btn-block" routerLink="/auth/signup">Sign Me Up!</button>
+              <button type="button" id="profButton" class="btn btn-dark btn-lg btn-block" routerLink="/auth/login">Login!</button>
+          </div>
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
         </div>
       </div>
 
-    </div>
-
-</section> 
+  </section>
 
 
   <!-- Features -->
@@ -56,7 +74,6 @@
         <p>Tag your favorite dishes to save for later</p>
       </div>
     </div>
-
   </section>
 
 
@@ -68,7 +85,7 @@
 
     <div>
         <h2 class="section-heading">A Plan for Every Chew Crew</h2>
-        <p>We have two packages</p>
+        <p id="reasons">Two packages available</p>
         <div class="row plans">
           <div class="pricing-column col-lg-4 col-sm-12 offset-lg-2">
             <div class="card">
@@ -77,9 +94,16 @@
               </div>
               <div class="card-body">
                 <h2 class="price-text">Free</h2>
+<<<<<<< HEAD
                 <p>Make potluck groups of up to 15 people</p>
                 <p></p>
                 <button type="button" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+=======
+                <p id="reasons">Make potluck groups of up to 15 people</p>
+                <p id="reasons">Tasteful Ads</p>
+                <p id="reasons">Save events</p>
+                <button type="button" id="profButton" class="btn btn-dark btn-lg btn-block" routerLink="/auth/signup">Sign Up</button>
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
               </div>
             </div>
           </div>
@@ -90,14 +114,15 @@
               </div>
               <div class="card-body">
                 <h2 class="price-text">$5 / mo</h2>
-                <p>Add more than 15 people to a potluck</p>
-                <button type="button" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+                <p id="reasons">Add more than 15 people to a potluck</p>
+                <p id="reasons">No adds</p>
+                <p id="reasons">Save dishes</p>
+                <button type="button" id="profButton" class="btn btn-dark btn-lg btn-block" routerLink="/auth/signup">Sign Up</button>
               </div>
             </div>
           </div>
         </div>
     </div>
-  
   </section>
 
 
@@ -105,35 +130,50 @@
 
   <section class="colored-section" id="app">
 
-    <h3 class="big-heading">Download our app for Android and connect with your Crew on the go</h3>
+    <h3 class="big-heading2">Download our app for Android and Connect with your Crew on the go</h3>
     <!-- <button type="button" class="btn btn-light btn-lg download-button"><i class="fab fa-google-play"></i> Download</button> -->
-    <a class="btn btn-lg btn-success big-btn android-btn" href="#">
-        <img width="80px" class="pull-left" src="http://www.userlogos.org/files/logos/jumpordie/google_play_04.png"><div class="btn-text"><small>Available on</small><br><strong>Google Play</strong></div></a>
+    <a class="btn btn-lg btn-success big-btn android-btn" href="">
+        <img width="80px" class="pull-left" src="http://www.userlogos.org/files/logos/jumpordie/google_play_04.png">
+        <div class="btn-text"><small>Download now on</small><br><strong>Google Play</strong></div></a>
   </section>
 
-
+  <!-- Footer -->
+<footer class="page-footer font-small cyan darken-3">
+    <!-- Footer Elements -->
+    <div class="container" id="iconSec">
+      <!-- Grid row-->
+      <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-12 py-5">
+          <div class="mb-5 flex-center">
+            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright text-center py-3" id="lab_social_icon_footer">
+      <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+      <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+      <a href="mailto:#"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+      © 2019 Copyright:
+      <a href="" id="hypLink"> chewcrew.com</a>
+      </div>
+  </footer>
   <!-- Footer -->
 
-  <!-- <footer class="white-section" id="footer">
-    <i class="social-icon fab fa-facebook-f"></i>
-    <i class="social-icon fab fa-twitter"></i>
-    <i class="social-icon fab fa-instagram"></i>
-    <i class="social-icon fas fa-envelope"></i>
-    <p>© Copyright 2019 ChewCrew</p>
-
-  </footer> -->
-
-  <section id="lab_social_icon_footer">
-      <!-- Include Font Awesome Stylesheet in Header -->
+  <!-- <footer class="footer" id="lab_social_icon_footer">
+      <!-- Include Font Awesome Stylesheet in Header
       <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-      <div class="container">
-              <div class="text-center center-block">
-                      <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+      <div class="container" id="bageBot">
+                    <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
                     <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
                     <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
                     <a href="mailto:#"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
-                    <p>© Copyright 2019 ChewCrew</p>
-          </div>
+                    <p id="foot">© Copyright 2019 ChewCrew</p>
       </div>
+<<<<<<< HEAD
       </section>
     </section>
+=======
+  </footer> -->
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08

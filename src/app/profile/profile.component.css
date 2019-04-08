@@ -2,6 +2,7 @@
     background-size: cover;
 }
 
+<<<<<<< HEAD
 .profile-container
 {
     background-color:  #ffff;
@@ -28,6 +29,8 @@
     font-family: "Montserrat";
     font-size: 2rem;
 }
+=======
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 
 :host {
     display: block;
@@ -43,6 +46,7 @@ mat-spinner
     margin: auto;
 }
 
+<<<<<<< HEAD
 .profile
 {
     font-family: "Montserrat";
@@ -109,17 +113,35 @@ mat-spinner
     margin-top: 30px;
     font-size: 2rem;
     font-weight: 400;
+=======
+.profile-image 
+{
+    
+    max-height: 50px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.profile-bio
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 }
 
 .my-crews
 {
+<<<<<<< HEAD
     text-align: center;
     font-family: "Montserrat";
+=======
+    margin-bottom: 50px;
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 }
 
 h3
 {
     font-size: 20px;
+<<<<<<< HEAD
 }
 
 .green
@@ -238,3 +260,7 @@ h3
     }
     
   
+=======
+    margin-bottom:  10px;
+}
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08

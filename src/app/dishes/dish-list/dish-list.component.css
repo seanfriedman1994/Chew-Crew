@@ -1,3 +1,16 @@
+mat-chip.mat-standard-chip{
+  background-color: #ff4c68;
+  color: #fff;
+}
+#addButton{
+  background-color: #ff4c68;
+  color: #fff;
+  position: absolute;
+}
+
+#addButton:hover{
+  color:#333333;
+}
 :host {
     display: block;
     margin-top: 1rem;
@@ -17,9 +30,9 @@ mat-spinner
     color: blue;
 }
 
-.dish-image 
+.dish-image
 {
-    
+
     max-height: 50px;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }

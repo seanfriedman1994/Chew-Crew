@@ -3,17 +3,25 @@ import { Subscription } from 'rxjs';
 import { from } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+<<<<<<< HEAD
 import { AuthData, EventActivity } from '../models/interface-models';
+=======
+import { AuthData } from '../models/interface-models';
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 import { User } from '../models/interface-models';
 import { AuthService } from '../auth/auth.service';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ProfileService } from './profile.service';
 import { ParamMap } from '@angular/router';
+<<<<<<< HEAD
 import { Crew} from '../models/interface-models';
 import { CrewsService } from '../crews/crews.service';
 import { PageEvent } from '@angular/material';
 import { EventsService } from '../events/events.service';
 
+=======
+import { Crew } from '../models/interface-models';
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 
 
 
@@ -29,13 +37,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   profile: User;
   isUser: boolean;
+<<<<<<< HEAD
   crews: Crew[] = [];
   userCrews: Crew[] = [];
   userEvents: EventActivity[] = [];
+=======
+  crewMembers: Crew[] = [];
+  userCrews: Crew[] = [];
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
   private userId: string;
   private email: string = "";
   private profileSub: Subscription;
   form: FormGroup;
+<<<<<<< HEAD
   userIsAuthenticated = false;
   private authStatusSub: Subscription;
   private userCrewsSub: Subscription;
@@ -54,24 +68,31 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private authService: AuthService, 
     public crewsService: CrewsService,
     public eventsService: EventsService) { }
+=======
+
+
+
+  constructor(private route: ActivatedRoute, 
+    private profileService: ProfileService) { }
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 
   ngOnInit() 
   {
     this.isLoading = true;
 
-    this.userId = this.authService.getUserId();
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    console.log(this.userIsAuthenticated);
-    this.authStatusSub = this.authService.getAuthStatusListener()
-      .subscribe(isAuthenticated => {
-        console.log(isAuthenticated);
-        this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
-      });
+
+    // this.route.queryParams
+    //   .subscribe(params => {
+    //     console.log(params);
+
+    //     this.userId = params.userId;
+    //     console.log(this.userId);
+    //   })
 
 
     this.email = localStorage.getItem("email");
     console.log(this.email);
+   // this.userId = localStorage.getItem("email");
 
     this.profileSub = this.profileService.fetchProfile(this.email).subscribe(profileData => {
       console.log(profileData);
@@ -84,6 +105,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         bio: profileData.bio,
         image: profileData.image,
       };
+<<<<<<< HEAD
       console.log(this.profile.id);
       localStorage.setItem("profileId", this.profile.id);
 
@@ -140,5 +162,29 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.authStatusSub.unsubscribe();
     this.userCrewsSub.unsubscribe();
     this.userEventsSub.unsubscribe();
+=======
+     // this.imagePreview = this.dish.imagePath;
+    });
+
   }
+
+  ngOnDestroy()
+  {
+    this.profileSub.unsubscribe();
+>>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
+  }
+
+    // this.route.data.subscribe(
+    //   (data: {profile: Profile}) => {
+    //     this.profile = data.profile;
+    //   }
+    // );
+
+  // Load the current user's data
+  // this.AuthService.currentUser.subscribe(
+  //   (userData: User) => {
+  //     this.currentUser = userData;
+  //     this.isUser = (this.currentUser.name === this.profile.username);
+  //   }
+  // );
 }
