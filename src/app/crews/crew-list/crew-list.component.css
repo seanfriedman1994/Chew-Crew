@@ -1,3 +1,12 @@
+#crewButton{
+  background-color: #ff4c68;
+  color: #fff;
+  position: absolute;
+}
+#crewButton:hover{
+  color: #333333;
+}
+
 :host {
     display: block;
     margin-top: 1rem;
@@ -12,9 +21,9 @@ mat-spinner
     margin: auto;
 }
 
-.crew-image 
+.crew-image
 {
-    
+
     max-height: 50px;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }

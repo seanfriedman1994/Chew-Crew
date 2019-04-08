@@ -1,3 +1,22 @@
+/* color of button options*/
+a.mat-display-1.mat-button.mat-accent, .mat-icon-button.mat-accent, .mat-stroked-button.mat-accent{
+    color: white;
+}
+
+/* color when button selected*/
+a.mat-button.mat-accent{
+  color: #333333;
+}
+
+/* color of logout button*/
+#outButton{
+  color: white;
+}
+
+#outButton:hover{
+  color: #333333;
+}
+
 ul {
     list-style: none;
     padding: 0;
@@ -6,7 +25,7 @@ ul {
 
 a {
     text-decoration: none;
-    color: whitesmoke;
+    color: #white;
 }
 
 ul {
@@ -27,27 +46,28 @@ ul {
 body{
     font-family: "Montserrat";
   }
-  
+
   .colored-section{
     background-color: #ff4c68;
     color: #fff;
+    box-shadow: white 0 1px;
   }
-  
+
   .container-fluid{
     padding: 1% 8% 1%;
   }
-  
+
   /* Navagation Bar */
   .navbar-brand{
     font-family: Ubuntu;
     font-size: 2.5rem;
     font-weight:bold;
   }
-  
+
   .nav-item{
     padding: 0 10px;
   }
-  
+
   .nav-link{
     font-size: 1.2rem;
     font-family: "Montserrat";

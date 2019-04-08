@@ -1,11 +1,7 @@
 <mat-toolbar class="colored-section">
     <span>
         <a mat-button class="mat-display-1" routerLink="/" routerLinkActive="mat-accent">
-<<<<<<< HEAD
-            <img class="animated bounce infinite" height="55px" width="55px" src="../../assets/images/chewcrewlogo.png" alt="">
-=======
             <img height="55px" width="55px" src="../../assets/images/chewcrewlogo.png" alt="">
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
             <!-- <i class="material-icons">
                 home
             </i> -->
@@ -24,19 +20,7 @@
                 </i>
                 Dishes
             </a>
-<<<<<<< HEAD
-        </li>
-        <li *ngIf="userIsAuthenticated">
-            <a mat-button routerLink="/events" routerLinkActive="mat-accent">
-                <i class="material-icons">
-                    event
-                </i>
-                Events
-            </a>
-        </li>
-=======
             </li>
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
         <li *ngIf="userIsAuthenticated">
             <a mat-button routerLink="/crews" routerLinkActive="mat-accent">
                 <i class="material-icons">
@@ -70,12 +54,12 @@
             <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">
                 <i class="material-icons">
                     assignment_ind
-                </i>   
+                </i>
                 Sign Up
             </a>
         </li>
         <li *ngIf="userIsAuthenticated">
-            <button mat-button (click)="onLogout()">
+            <button mat-button (click)="onLogout()" id="outButton">
                 <i class="material-icons">
                     exit_to_app
                 </i>

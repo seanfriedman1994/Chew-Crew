@@ -2,7 +2,7 @@
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="form" (submit)="onSaveDish()" *ngIf="!isLoading">
     <mat-form-field>
-      <input 
+      <input
       matInput
       type="text"
       formControlName="name"
@@ -17,7 +17,7 @@
       <img [src]="imagePreview" [alt]="form.value.name">
     </div>
     <mat-form-field>
-      <textarea 
+      <textarea
       matInput
       rows="6"
       formControlName="description"
@@ -25,16 +25,21 @@
       ></textarea>
       <mat-error *ngIf="form.get('description').invalid">Please enter a dish description!</mat-error>
     </mat-form-field>
-    <mat-form-field>
-      <input 
-      matInput
-      type="text"
-      formControlName="tags"
-      placeholder="Tags (seperate with commas)"
-      >
-      <mat-error *ngIf="form.get('tags').invalid">Please enter at least one tag!</mat-error>
+    <mat-form-field class="example-chip-list">
+      <mat-chip-list #chipList aria-label="Tag selection" formControlName="tags">
+        <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                [removable]="removable" (removed)="remove(tag)">
+          {{tag.name}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Tags... (Seperate with commas)"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
     </mat-form-field>
-    <button
+    <button id="saveButton"
       mat-raised-button
       color="accent"
       type="submit">

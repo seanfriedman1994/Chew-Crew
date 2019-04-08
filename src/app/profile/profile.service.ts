@@ -6,55 +6,17 @@ import { Router } from '@angular/router';
 import { environment } from "../../environments/environment";
 
 import { AuthService } from '../auth/auth.service';
-<<<<<<< HEAD
-import { User, EventActivity, Crew} from '../models/interface-models';
-=======
 import { User} from '../models/interface-models';
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 import { identifierModuleUrl } from '@angular/compiler';
 import { Dish } from '../models/dish.model';
 import { EmailValidator } from '@angular/forms';
 
 const BACKEND_URL = environment.apiUrl + "/profile/";
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 @Injectable({providedIn: 'root'})
 export class ProfileService {
     constructor (private http: HttpClient, private router: Router, private authService: AuthService) {}
 
-<<<<<<< HEAD
-    private _profile: User;
-    private _userCrews: Crew[];
-    private _userEvents: EventActivity[];
-    
-    public get profile() {
-        return this._profile;
-    }
-
-    public set profile(profile: User) {
-        this._profile = profile;
-    }
-
-    public get userCrews() {
-        return this._userCrews;
-    }
-
-    public set userCrews(userCrews: Crew[]) {
-        this._userCrews = userCrews;
-    }
-
-    public get userEvents() {
-        return this._userEvents;
-    }
-
-    public set userEvents(userEvents: EventActivity[]) {
-        this._userEvents = userEvents;
-    }
-=======
     private user: User;
     private id: string;
     //private userId: string;
@@ -65,7 +27,6 @@ export class ProfileService {
     private userUpdated = new Subject<User>();
 
 
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 
     createProfile(email: string)
     {
@@ -95,6 +56,8 @@ export class ProfileService {
 
     fetchProfile(email: string) 
     {
+        console.log("here");
+
         return this.http.get<{
             _id: string;
             email: string; 
@@ -102,19 +65,6 @@ export class ProfileService {
             bio: string; 
             image: string;
         }>(BACKEND_URL + email);
-    }
-
-    fetchUserCrews(userId: string)
-    {
-        console.log(userId);
-
-        return this.http.get<{
-            _id: string; 
-            name: string; 
-            description: string;
-            image: string;
-            creator: string;
-        }>(BACKEND_URL + userId);
     }
 
     updateProfile(id: string, email: string, name: string, bio: string, image: File | string){
@@ -127,6 +77,7 @@ export class ProfileService {
             profileData.append("name", name);
             profileData.append("bio", bio);
             profileData.append("image", image, name);
+
         }
         else
         {

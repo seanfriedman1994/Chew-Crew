@@ -1,15 +1,23 @@
+#saveButton.mat-raised-button.mat-accent{
+  background-color: #ff4c68;
+  color: #fff;
+}
+#saveButton.mat-raised-button.mat-accent:hover{
+  color: #333333;
+}
+
 mat-form-field
 {
     width: 100%;
 }
 
-textarea 
+textarea
 {
     width: 100%;
 
 }
 
-mat-spinner 
+mat-spinner
 {
 
     margin: auto;
@@ -20,13 +28,13 @@ input[type="file"]
     visibility: hidden;
 }
 
-.image-preview 
+.image-preview
 {
     height: 5rem;
     margin: 1rem 0;
 }
 
-.image-preview img 
+.image-preview img
 {
     height: 100%;
 }

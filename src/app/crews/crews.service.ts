@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Crew, User} from '../models/interface-models';
-=======
 import { Crew } from '../models/interface-models';
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
@@ -15,16 +11,7 @@ const BACKEND_URL = environment.apiUrl + "/crews/";
 @Injectable({providedIn: 'root'})
 export class CrewsService {
     private crews: Crew[] = [];
-<<<<<<< HEAD
-    private userCrews: Crew[] = [];
-    private crewMembers: User[] = [];
-    private userCrewsUpdated = new Subject<{userCrews: Crew[], userCrewCount: number}>();
     private crewsUpdated = new Subject<{crews: Crew[], crewCount: number}>();
-    private crewMembersUpdated = new Subject<{crewMembers: User[], crewMemberCount: number}>();
-
-=======
-    private crewsUpdated = new Subject<{crews: Crew[], crewCount: number}>();
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 
     constructor(private http: HttpClient, private router: Router){}
 
@@ -62,19 +49,6 @@ export class CrewsService {
         return this.crewsUpdated.asObservable();
     }
 
-<<<<<<< HEAD
-    getUserCrewUpdateListener()
-    {
-        return this.userCrewsUpdated.asObservable();
-    }
-
-    getCrewMembersUpdateListener()
-    {
-        return this.crewMembersUpdated.asObservable();
-    }
-
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     getCrew(id: string) 
     {
 
@@ -123,108 +97,12 @@ export class CrewsService {
         }
         this.http.put(BACKEND_URL + id, crewData)
         .subscribe(response => {
-            this.router.navigate(["/crews/" + id]);
-        });
-
-    }
-
-<<<<<<< HEAD
-    getUserCrews(profileId: string, userCrewsPerPage: number, currentPage: number){
-        const queryParams = `?pageSize=${userCrewsPerPage}&page=${currentPage}&profileId=${profileId}`;
-        this.http
-        .get<{message: string; crews: any, maxCrews: number}>(
-            BACKEND_URL + queryParams
-        )
-        .pipe(map((crewData) => {
-            return { 
-                crews: crewData.crews.map(crew => {
-                return {
-                    id: crew._id,
-                    name: crew.name,
-                    description: crew.description,
-                    image: crew.image,
-                    creator: crew.creator
-                };
-            }), 
-            maxCrews: crewData.maxCrews
-        };
-        }))
-        .subscribe(transformedCrewData => {
-            this.userCrews = transformedCrewData.crews;
-            this.userCrewsUpdated.next({
-                userCrews: [...this.userCrews], userCrewCount: transformedCrewData.maxCrews
-            });
-        });
-    }
-
-    getCrewMembers(crewId: string){
-        const queryParams = `?crewId=${crewId}`;
-        this.http
-        .get<{message: string; crewMembers: any; maxCrewMembers: number}>(
-            BACKEND_URL + queryParams
-        )
-        .pipe(map((crewMemberData) => {
-            return { 
-                crewMembers: crewMemberData.crewMembers.map(crewMember => {
-                return {
-                    id: crewMember._id,
-                    email: crewMember.email,
-                    name: crewMember.name,
-                    bio: crewMember.bio,
-                    image: crewMember.image,
-                };
-            }),
-            maxCrewMembers: crewMemberData.maxCrewMembers
-        };
-        }))
-        .subscribe(transformedUserCrewData => {
-            this.crewMembers = transformedUserCrewData.crewMembers;
-            this.crewMembersUpdated.next({
-                crewMembers: [...this.crewMembers], crewMemberCount: transformedUserCrewData.maxCrewMembers
-            });
-        });
-    }
-
-    joinCrew(crewId: string, profileId: string)
-    {
-        const userCrewData = new FormData();
-        userCrewData.append("crewId", crewId);
-        userCrewData.append("profileId", profileId);
-
-        this.http.post<{message: string}>(BACKEND_URL + profileId, userCrewData)
-        .subscribe((responseData) => {
-            console.log(responseData);
-
-=======
-    joinCrew(crewId: string)
-    {
-        const userCrewData = new FormData();
-        userCrewData.append("crewId", crewId);
-
-        this.http.post<{message: string}>(BACKEND_URL + crewId, userCrewData)
-        .subscribe((responseData) => {
-            console.log(responseData);
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
-            this.router.navigate(["/crews/" + crewId]);
-        });
-    }
-
-<<<<<<< HEAD
-    leaveCrew(crewId: string, profileId: string)
-    {
-        return this.http.delete(BACKEND_URL + crewId + "/" + profileId).subscribe(response => {
-            console.log(response);
-            this.router.navigate(["/crews/" + crewId]);
-        });
-    }
-
-    deleteCrew(crewId: string) 
-    {
-=======
-    deleteCrew(crewId: string) {
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
-        return this.http.delete(BACKEND_URL + crewId).subscribe(response => {
             this.router.navigate(["/crews"]);
         });
+
+    }
+
+    deleteCrew(crewId: string) {
+        return this.http.delete(BACKEND_URL + crewId);
     }
 }
