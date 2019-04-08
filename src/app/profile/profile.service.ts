@@ -6,27 +6,19 @@ import { Router } from '@angular/router';
 import { environment } from "../../environments/environment";
 
 import { AuthService } from '../auth/auth.service';
-<<<<<<< HEAD
 import { User, EventActivity, Crew} from '../models/interface-models';
-=======
-import { User} from '../models/interface-models';
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 import { identifierModuleUrl } from '@angular/compiler';
 import { Dish } from '../models/dish.model';
 import { EmailValidator } from '@angular/forms';
 
 const BACKEND_URL = environment.apiUrl + "/profile/";
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 @Injectable({providedIn: 'root'})
 export class ProfileService {
     constructor (private http: HttpClient, private router: Router, private authService: AuthService) {}
 
-<<<<<<< HEAD
     private _profile: User;
     private _userCrews: Crew[];
     private _userEvents: EventActivity[];
@@ -54,18 +46,6 @@ export class ProfileService {
     public set userEvents(userEvents: EventActivity[]) {
         this._userEvents = userEvents;
     }
-=======
-    private user: User;
-    private id: string;
-    //private userId: string;
-    private userDishes: Dish[] = [];
-    //groups of users (crews) should be User array?
-    private userCrews: User[] = [];
-    //private events: userEvent[] = [];
-    private userUpdated = new Subject<User>();
-
-
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 
     createProfile(email: string)
     {

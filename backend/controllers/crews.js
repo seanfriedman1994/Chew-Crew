@@ -72,10 +72,11 @@ exports.getAllCrews = (req, res, next) => {
     const pageSize = +req.query.pageSize;
     const currentPage = +req.query.page;
 
-    console.log(req.query.crewId);
     //get crew members
     if(req.query.crewId)
     {
+      
+    console.log(req.query.crewId);
       console.log("get crewMembers");
       const crewId = req.query.crewId;
       const userCrewQuery = UserCrew.find({ crew: crewId }).populate('profile');

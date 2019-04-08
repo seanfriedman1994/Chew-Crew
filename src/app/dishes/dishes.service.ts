@@ -11,11 +11,8 @@ const BACKEND_URL = environment.apiUrl + "/dishes/";
 @Injectable({providedIn: 'root'})
 export class DishesService {
     private dishes: Dish[] = [];
-<<<<<<< HEAD
     private eventDishes: Dish[] = [];
     private eventDishesUpdated = new Subject<{eventDishes: Dish[], eventDishCount: number}>();
-=======
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
     private dishesUpdated = new Subject<{dishes: Dish[], dishCount: number}>();
 
     constructor(private http: HttpClient, private router: Router){}
@@ -36,12 +33,8 @@ export class DishesService {
                     tags: dish.tags,
                     id: dish._id,
                     imagePath: dish.imagePath,
-<<<<<<< HEAD
                     creator: dish.creator,
                     eventId: dish.eventId
-=======
-                    creator: dish.creator
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
                 };
             }), 
             maxDishes: dishData.maxDishes
@@ -55,7 +48,6 @@ export class DishesService {
         });
     }
 
-<<<<<<< HEAD
     getEventDishes(dishesPerPage: number, currentPage: number, eventId: string) 
     {
         const queryParams = `?pageSize=${dishesPerPage}&page=${currentPage}&eventId=${eventId}`;
@@ -87,21 +79,16 @@ export class DishesService {
         });
     }
 
-=======
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
     getDishUpdateListener()
     {
         return this.dishesUpdated.asObservable();
     }
 
-<<<<<<< HEAD
     getEventDishUpdateListener()
     {
         return this.eventDishesUpdated.asObservable();
     }
 
-=======
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
     getDish(id: string) 
     {
 
@@ -112,30 +99,20 @@ export class DishesService {
             tags: string; 
             imagePath: string;
             creator: string;
-<<<<<<< HEAD
             eventId: string;
         }>(BACKEND_URL + id);
     }
 
     addDish(name: string, description: string, tags: string, image: File, eventId: string) 
-=======
-        }>(BACKEND_URL + id);
-    }
-
-    addDish(name: string, description: string, tags: string, image: File) 
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
     {
         const dishData = new FormData();
         dishData.append("name", name);
         dishData.append("description", description);
         dishData.append("tags", tags);
         dishData.append("image", image, name);
-<<<<<<< HEAD
         dishData.append("eventId", eventId);
 
 
-=======
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 
         this.http.post<{message: string, dish: Dish}>(BACKEND_URL, dishData)
         .subscribe((responseData) => {
@@ -163,12 +140,8 @@ export class DishesService {
                 description,
                 tags: tags,
                 imagePath: image,
-<<<<<<< HEAD
                 creator: null,
                 eventId: eventId
-=======
-                creator: null
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
             };
         }
         this.http.put(BACKEND_URL + id, dishData)

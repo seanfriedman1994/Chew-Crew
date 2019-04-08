@@ -6,11 +6,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { User } from '../../models/interface-models';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { EventActivity } from '../../models/interface-models';
-<<<<<<< HEAD
 import { EventsService } from '../../events/events.service';
 import { ProfileService } from 'src/app/profile/profile.service';
-=======
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 
 
 @Component({
@@ -23,7 +20,6 @@ export class CrewPageComponent implements OnInit, OnDestroy{
   crewMembers: User[] = [];
   events: EventActivity[] = [];
   isLoading = false;
-<<<<<<< HEAD
   isMember = false;
   userIsAuthenticated = false;
   userId: string;
@@ -35,29 +31,25 @@ export class CrewPageComponent implements OnInit, OnDestroy{
   currentPage = 1;
   totalCrewMembers = 0;
   private eventsSub: Subscription;
-=======
-  userIsAuthenticated = false;
-  userId: string;
-  crew: Crew;
-  private crewsSub: Subscription;
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
   private authStatusSub: Subscription;
+  private crewMembersSub: Subscription;
   private crewId: string;
 
-  constructor(public crewsService: CrewsService, private authService: AuthService, private route: ActivatedRoute) { }
+  constructor(public crewsService: CrewsService, 
+    public eventsService: EventsService, 
+    public profileService: ProfileService,
+    private authService: AuthService, 
+    public route: ActivatedRoute) { }
 
   ngOnInit() 
   {
-<<<<<<< HEAD
-=======
-
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
     this.route.paramMap.subscribe((paramMap: ParamMap) => 
     {
       if(paramMap.has('crewId')) 
       {
         this.crewId = paramMap.get('crewId');
         this.isLoading = true;
+        localStorage.setItem("crewId", this.crewId);
         this.crewsService.getCrew(this.crewId).subscribe(crewData => { 
           this.isLoading = false;
           this.crew = 
@@ -69,7 +61,6 @@ export class CrewPageComponent implements OnInit, OnDestroy{
             creator: crewData.creator
           };
         });
-<<<<<<< HEAD
 
         this.crewsService.getCrewMembers(this.crewId);
         this.crewMembersSub = this.crewsService.getCrewMembersUpdateListener()
@@ -89,20 +80,15 @@ export class CrewPageComponent implements OnInit, OnDestroy{
           }
         });
         
-=======
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
       }else
       {
         this.crewId = null;
       }
     });
 
-<<<<<<< HEAD
     this.profileId = localStorage.getItem("profileId");
     console.log("profileId" + this.profileId);
 
-=======
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
     console.log(this.userIsAuthenticated);
@@ -111,7 +97,6 @@ export class CrewPageComponent implements OnInit, OnDestroy{
           this.userIsAuthenticated = isAuthenticated;
           this.userId = this.authService.getUserId();
         });
-<<<<<<< HEAD
     
 
     this.eventsService.getEvents(this.eventsPerPage, this.currentPage, this.crewId);
@@ -121,8 +106,6 @@ export class CrewPageComponent implements OnInit, OnDestroy{
             this.totalEvents = eventData.eventCount;
             this.events = eventData.events;
           });
-=======
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
   }
 
   onDelete(crewId: string) 
@@ -131,7 +114,6 @@ export class CrewPageComponent implements OnInit, OnDestroy{
     this.crewsService.deleteCrew(crewId);
   }
 
-<<<<<<< HEAD
   onLeave(crewId: string)
   {
     this.isLoading = true;
@@ -144,10 +126,9 @@ export class CrewPageComponent implements OnInit, OnDestroy{
     this.crewsService.joinCrew(crewId, this.profileId);
   }
   
-=======
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
   ngOnDestroy()
   {
+    this.eventsSub.unsubscribe();
     this.authStatusSub.unsubscribe();
   }
 }

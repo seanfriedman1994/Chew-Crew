@@ -2,6 +2,16 @@
     background-size: cover;
 }
 
+#addButton{
+    background-color: #ff4c68;
+    color: #fff;
+    position: absolute;
+  }
+  
+  #addButton:hover{
+    color:#333333;
+  }
+
 
 :host {
     display: block;

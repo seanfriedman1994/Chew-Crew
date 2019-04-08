@@ -34,18 +34,7 @@
   </mat-expansion-panel>
 </mat-accordion>
 <mat-divider></mat-divider>
-<<<<<<< HEAD
 <mat-paginator [length]="totalDishes" [pageSize]="dishesPerPage" [pageSizeOptions]="pageSizeOptions" 
-=======
-<a mat-raised-button color="accent" routerLink="/dishes/create" id="addButton">
-  <!-- <mat-icon class="restaurant-icon" aria-hidden="true" aria-label="restaurant icon">restaurant</mat-icon> -->
-  <i class="material-icons">
-      local_dining
-      </i>
-  Add Dish
-</a>
-<mat-paginator [length]="totalDishes" [pageSize]="dishesPerPage" [pageSizeOptions]="pageSizeOptions"
->>>>>>> d2b6a0295e5e939b34e4f36963342e51c9bade08
 (page)="onChangedPage($event)"  *ngIf="dishes.length > 0">
 </mat-paginator>
 <p class="info-text mat-body-1" *ngIf="dishes.length <= 0 && !isLoading">No dishes added yet!</p>

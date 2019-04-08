@@ -35,6 +35,7 @@ exports.createProfile = (req, res, next) => {
         bio: req.body.bio,
         image: image
     });
+    console.log(" create profile");
     console.log(profile);
     profile.save()
     .then(createdProfile => {
