@@ -11,7 +11,10 @@ import { CrewCreateComponent } from './crews/crew-create/crew-create.component';
 import { CrewPageComponent } from './crews/crew-page/crew-page.component';
 import { EventsComponent } from './events/events.component';
 import { EventCreateComponent } from './events/event-create/event-create.component';
+<<<<<<< HEAD
 import { EventListComponent } from './events/event-list/event-list.component';
+=======
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
  
 const routes: Routes = [
     //home page
@@ -28,7 +31,10 @@ const routes: Routes = [
     { path: 'events/create', component: EventCreateComponent, canActivate: [AuthGuard] },
     { path: 'events/:eventId', component: EventsComponent },
     { path: 'events/edit/:eventId', component: EventCreateComponent, canActivate: [AuthGuard] },
+<<<<<<< HEAD
     { path: 'events', component: EventListComponent, canActivate: [AuthGuard]},
+=======
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     //dishes
     { path: 'dishes', component: DishListComponent },
     { path: 'dishes/create', component: DishCreateComponent, canActivate: [AuthGuard] },

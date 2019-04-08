@@ -18,18 +18,31 @@
           {{crew.description}}
       </p>
     </mat-card-content>
+<<<<<<< HEAD
     <h3 mat-subheader>Members</h3>
     <p *ngIf="crewMembers.length <= 0 && !isLoading">
       No Members!
     </p>
     <mat-list dense *ngIf="crewMembers.length > 0 && !isLoading">
+=======
+    <mat-list dense>
+        <h3 mat-subheader>Members</h3>
+        <mat-list-item *ngIf="crewMembers.length <= 0 && !isLoading">
+            No Members!
+        </mat-list-item>
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
         <mat-list-item *ngFor="let crewMember of crewMembers">
           <img matListAvatar [src]="crewMember.image" [alt]="crewMember.name">
           <h3 matLine>{{ crewMember.name }}</h3>
         </mat-list-item>
+<<<<<<< HEAD
     </mat-list>
 
     <h3 mat-subheader>Events</h3>
+=======
+      </mat-list>
+
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
       <mat-accordion multi="true" *ngIf="events.length > 0 && !isLoading">
           <mat-expansion-panel *ngFor="let event of events">
             <mat-expansion-panel-header>
@@ -59,18 +72,25 @@
           New Event
         </a>
       <mat-action-row>
+<<<<<<< HEAD
           <button mat-button class="green" (click)="onJoin(crew.id)" *ngIf="userIsAuthenticated && !isMember">
+=======
+          <button mat-button class="green" (click)="onJoin(crew.id)" *ngIf="userIsAuthenticated">
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
             <i class="material-icons">
               add_circle
             </i>
               JOIN CREW
           </button>
+<<<<<<< HEAD
           <button mat-button color="warn" (click)="onLeave(crew.id)" *ngIf="userIsAuthenticated && isMember">
             <i class="material-icons">
               cancel
             </i>
               LEAVE CREW
           </button>
+=======
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
         <a mat-button class="blue" [routerLink]="['/crews/edit', crew.id]" *ngIf="userIsAuthenticated && userId == crew.creator">
           <i class="material-icons">
               edit

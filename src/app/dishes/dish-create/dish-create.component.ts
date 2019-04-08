@@ -25,7 +25,10 @@ export class DishCreateComponent implements OnInit, OnDestroy{
   form: FormGroup;
   imagePreview: string;
   private authStatusSub: Subscription;
+<<<<<<< HEAD
   eventId: string;
+=======
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
   
   constructor(public dishesService: DishesService, public route: ActivatedRoute, private authService: AuthService) {}
 
@@ -66,8 +69,12 @@ export class DishCreateComponent implements OnInit, OnDestroy{
             description: dishData.description,
             tags: dishData.tags,
             imagePath: dishData.imagePath,
+<<<<<<< HEAD
             creator: dishData.creator,
             eventId: dishData.eventId
+=======
+            creator: dishData.creator
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
           };
           this.form.setValue({
             'name': this.dish.name,
@@ -110,8 +117,12 @@ export class DishCreateComponent implements OnInit, OnDestroy{
         this.form.value.name, 
         this.form.value.description, 
         this.form.value.tags,
+<<<<<<< HEAD
         this.form.value.image,
         this.eventId);
+=======
+        this.form.value.image);
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     }else
     {
       this.dishesService.updateDish(

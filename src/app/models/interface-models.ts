@@ -32,3 +32,8 @@ export interface EventActivity
     creator: string;
     crewId: string;
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac

@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
               "src/styles-app-loading.scss",
               "src/custom-theme.scss",
               "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
@@ -34,6 +35,13 @@
               "node_modules/chart.js/dist/Chart.js",
               "node_modules/hammerjs/hammer.min.js"
             ],
+=======
+              "src/custom-theme.scss",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": [],
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
             "es5BrowserSupport": true
           },
           "configurations": {

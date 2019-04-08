@@ -3,7 +3,10 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 @Component({
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']

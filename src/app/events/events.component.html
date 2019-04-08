@@ -14,6 +14,7 @@
           {{event.description}}
       </p>
     </mat-card-content>
+<<<<<<< HEAD
 
     <h3 mat-subheader>Attending</h3>
     <p *ngIf="eventMembers.length <= 0 && !isLoading">
@@ -80,6 +81,11 @@
     <p class="info-text mat-body-1" *ngIf="dishes.length <= 0 && !isLoading">No dishes added yet!</p>
 
 
+=======
+    <section class="example-section">
+        <mat-checkbox color="primary" [(ngModel)]="checked">Going?</mat-checkbox>
+    </section>
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     <mat-action-row >
       <a mat-button color="primary" [routerLink]="['/events/edit', event.id]" *ngIf="userIsAuthenticated && userId == event.creator">
         <i class="material-icons">

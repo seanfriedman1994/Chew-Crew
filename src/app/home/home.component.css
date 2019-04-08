@@ -7,6 +7,7 @@ h1, h2, h3, h4, h5, h6{
     color: #8f8f8f;
   }
   
+<<<<<<< HEAD
   .center {
     display: block;
     margin-left: auto;
@@ -56,6 +57,9 @@ h1, h2, h3, h4, h5, h6{
       height: 1020px;
     }
   }
+=======
+  
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
   /* Headings */
   .big-heading{
     font-family: "Montserrat";
@@ -63,12 +67,15 @@ h1, h2, h3, h4, h5, h6{
     font-size: 3rem;
     line-height: 1.5;
   }
+<<<<<<< HEAD
 
   .chew-heading{
     font-family: "Montserrat";
     font-weight: bold;
     font-size: 4rem;
   }
+=======
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
   
   .section-heading{
     font-size: 3rem;
@@ -83,8 +90,11 @@ h1, h2, h3, h4, h5, h6{
   .colored-section{
     background-color: #ff4c68;
     color: #fff;
+<<<<<<< HEAD
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
     border-radius: 8px;
+=======
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
   }
   
   .login{
@@ -132,7 +142,10 @@ h1, h2, h3, h4, h5, h6{
   
   .white-section{
     background-color: #fff;
+<<<<<<< HEAD
     width: 100%;
+=======
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
   }
   
   
@@ -207,7 +220,11 @@ h1, h2, h3, h4, h5, h6{
   
   /* Pricing Section */
   #pricing{
+<<<<<<< HEAD
     margin-bottom: 100px;
+=======
+    padding: 100px;
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     text-align: center;
   }
   

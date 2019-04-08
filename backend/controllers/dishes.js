@@ -15,8 +15,12 @@ exports.createDish = (req, res, next) => {
       description: req.body.description,
       tags: req.body.tags,
       imagePath: image,
+<<<<<<< HEAD
       creator: req.userData.userId,
       eventId: req.body.eventId
+=======
+      creator: req.userData.userId
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     });
     dish.save().then(createdDish => {
       res.status(201).json({
@@ -47,8 +51,12 @@ exports.updateDish = (req, res, next) => {
         description: req.body.description,
         tags: req.body.tags,
         imagePath: imagePath,
+<<<<<<< HEAD
         creator: req.userData.userId,
         eventId: req.body.eventId
+=======
+        creator: req.userData.userId
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     });
     Dish.updateOne({_id: req.params.id, creator: req.userData.userId }, dish)
       .then(result => {
@@ -72,6 +80,7 @@ exports.getAllDishes = (req, res, next) => {
     //only retrieve dishes on current page
     const pageSize = +req.query.pageSize;
     const currentPage = +req.query.page;
+<<<<<<< HEAD
 
     if(req.query.eventId)
     {
@@ -131,6 +140,31 @@ exports.getAllDishes = (req, res, next) => {
     }
 
     
+=======
+    const dishQuery = Dish.find();
+    let fetchedDishes;
+    if(pageSize && currentPage)
+    {
+        dishQuery
+            .skip(pageSize * (currentPage - 1))
+            .limit(pageSize);
+    }
+    dishQuery.then(documents => {
+        fetchedDishes = documents;
+        return Dish.count();
+    }).then(count => {
+        res.status(200).json({
+            message: "Dishes fetched successfully!",
+            dishes: fetchedDishes,
+            maxDishes: count
+        });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Fetching dishes failed!"
+      });
+    });
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 };
 
 exports.getOneDish = (req, res, next) => {

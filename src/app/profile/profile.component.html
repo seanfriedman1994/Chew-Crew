@@ -1,5 +1,6 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
+<<<<<<< HEAD
 <div class="profile-container" >
 <mat-card class="profile" *ngIf="!isLoading" >
 
@@ -34,6 +35,15 @@
     <mat-card-title>{{profile.name}}</mat-card-title>
     <mat-card-subtitle>{{profile.email}}</mat-card-subtitle>
     </mat-card-header> -->
+=======
+  <mat-card class="profile" *ngIf="!isLoading">
+    <mat-card-header>  
+    <img mat-card-avatar class="header.image" [src]="profile.image" [alt]="profile.name">
+    <mat-card-title>{{profile.name}}</mat-card-title>
+    <mat-card-subtitle>{{profile.email}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     <!-- <span class="pull right">
         <img mat-card-sm-image 
         [src]="profile.image" 
@@ -41,6 +51,7 @@
          class="img-responsive" 
         style="max-height: 150px;">
     </span> -->
+<<<<<<< HEAD
     
 
     <div class="colored-section">
@@ -106,6 +117,65 @@
     <div class="colored-section">
         <h1 class="my-crews med-heading">Favorite Dishes</h1>
     </div>
+=======
+    <mat-card-content class="profile-bio">
+      <p>
+          Bio: {{profile.bio}}
+      </p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <h3 mat-subheader >My Crews</h3>
+    <mat-accordion class="my-crews" multi="true" *ngIf="userCrews.length > 0 && !isLoading">
+        <mat-expansion-panel *ngFor="let userCrew of userCrews">
+          <mat-expansion-panel-header>
+            {{ crew.name }}
+          </mat-expansion-panel-header>
+          <span class="pull-right">
+              <img [src]="crew.image" 
+              [alt]="crew.name" 
+              class="img-responsive" 
+              style="max-height: 150px;">
+          </span>
+          <p class="crew-description">{{ crew.description }}</p>
+          <mat-list dense>
+            <h3 mat-subheader>Members</h3>
+            <mat-list-item *ngIf="crewMembers.length <= 0 && !isLoading">
+                No Members!
+            </mat-list-item>
+            <mat-list-item *ngFor="let crewMember of crewMembers">
+              <img matListAvatar [src]="crewMember.image" [alt]="crewMember.name">
+              <h3 matLine>{{ crewMember.name }}</h3>
+            </mat-list-item>
+          </mat-list>
+          <mat-divider></mat-divider>
+            <mat-action-row>
+                <a mat-button color="primary" [routerLink]="['/crews', crew.id]" *ngIf="userIsAuthenticated && userId == crew.creator">
+                  <i class="material-icons">
+                    forward
+                  </i>
+                  ENTER
+                </a>
+              <a mat-button class="blue" [routerLink]="['/crews/edit', crew.id]" *ngIf="userIsAuthenticated && userId == crew.creator">
+                <i class="material-icons">
+                    edit
+                </i>
+                EDIT</a>
+              <button mat-button color="warn" (click)="onDelete(crew.id)" *ngIf="userIsAuthenticated && userId == crew.creator">
+                <i class="material-icons">
+                    delete
+                  </i>
+                DELETE</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <p *ngIf="userCrews.length <= 0 && !isLoading">No crews joined yet!</p>
+      <a mat-button class="green" [routerLink]="['/crews']" *ngIf="userIsAuthenticated">
+        <i class="material-icons">
+          add_circle
+        </i>
+          JOIN CREW
+      </a>
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     <mat-action-row>
       <a mat-button color="primary" [routerLink]="['/profile/edit', profile.id]">
         <i class="material-icons">
@@ -114,6 +184,10 @@
         EDIT PROFILE
       </a>
     </mat-action-row>
+<<<<<<< HEAD
   </mat-card>
 </div>
   
+=======
+  </mat-card>
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac

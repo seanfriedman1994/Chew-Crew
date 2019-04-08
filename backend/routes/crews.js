@@ -28,7 +28,10 @@ router.get("/:id", CrewController.getOneCrew);
 
 router.delete("/:id", checkAuth, CrewController.deleteCrew);
 
+<<<<<<< HEAD
 router.delete("/:crewId/:profileId", checkAuth, CrewController.deleteUserCrew);
 
 
+=======
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 module.exports = router;
