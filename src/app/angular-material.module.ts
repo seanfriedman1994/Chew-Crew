@@ -16,10 +16,7 @@ import
     MatNativeDateModule,
     MatDatepickerModule,
     MatCheckboxModule,
-<<<<<<< HEAD
     MatSidenavModule
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 } from "@angular/material";
 
 @NgModule({
@@ -40,10 +37,7 @@ import
     MatNativeDateModule,
     MatDatepickerModule,
     MatCheckboxModule,
-<<<<<<< HEAD
     MatSidenavModule
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
  ]
 })
 

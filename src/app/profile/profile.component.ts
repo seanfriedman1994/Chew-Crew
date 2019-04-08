@@ -3,25 +3,17 @@ import { Subscription } from 'rxjs';
 import { from } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-<<<<<<< HEAD
 import { AuthData, EventActivity } from '../models/interface-models';
-=======
-import { AuthData } from '../models/interface-models';
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 import { User } from '../models/interface-models';
 import { AuthService } from '../auth/auth.service';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ProfileService } from './profile.service';
 import { ParamMap } from '@angular/router';
-<<<<<<< HEAD
 import { Crew} from '../models/interface-models';
 import { CrewsService } from '../crews/crews.service';
 import { PageEvent } from '@angular/material';
 import { EventsService } from '../events/events.service';
 
-=======
-import { Crew } from '../models/interface-models';
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 
 
 
@@ -37,21 +29,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   profile: User;
   isUser: boolean;
-<<<<<<< HEAD
   crews: Crew[] = [];
   userCrews: Crew[] = [];
   userEvents: EventActivity[] = [];
-=======
-  crewMembers: Crew[] = [];
-  userCrews: Crew[] = [];
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
   private userId: string;
   private email: string = "";
   private profileSub: Subscription;
   form: FormGroup;
   userIsAuthenticated = false;
   private authStatusSub: Subscription;
-<<<<<<< HEAD
   private userCrewsSub: Subscription;
   private userEventsSub: Subscription;
   totalUserCrews = 0;
@@ -68,11 +54,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private authService: AuthService, 
     public crewsService: CrewsService,
     public eventsService: EventsService) { }
-=======
-
-  constructor(private route: ActivatedRoute, 
-    private profileService: ProfileService, private authService: AuthService) { }
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 
   ngOnInit() 
   {
@@ -103,7 +84,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         bio: profileData.bio,
         image: profileData.image,
       };
-<<<<<<< HEAD
       console.log(this.profile.id);
       localStorage.setItem("profileId", this.profile.id);
 
@@ -154,20 +134,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
 
-=======
-    });
-
-  }
-
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
   ngOnDestroy()
   {
     this.profileSub.unsubscribe();
     this.authStatusSub.unsubscribe();
-<<<<<<< HEAD
     this.userCrewsSub.unsubscribe();
     this.userEventsSub.unsubscribe();
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
   }
 }

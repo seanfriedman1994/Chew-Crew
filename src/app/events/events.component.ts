@@ -7,13 +7,10 @@ import { EventsService } from '../events/events.service';
 import { AuthService } from '../auth/auth.service';
 import { EventActivity } from '../models/interface-models';
 import { CrewsService } from '../crews/crews.service';
-<<<<<<< HEAD
 import { ProfileService } from '../profile/profile.service';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { Dish } from '../models/dish.model';
 import { DishesService } from '../dishes/dishes.service';
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 
 
 
@@ -28,7 +25,6 @@ import { DishesService } from '../dishes/dishes.service';
 export class EventsComponent implements OnInit, OnDestroy {
 
   crewMembers: User[] = [];
-<<<<<<< HEAD
   dishes: Dish[] = [];
   isAttending = false;
   event: EventActivity;
@@ -56,20 +52,6 @@ export class EventsComponent implements OnInit, OnDestroy {
     public crewsService: CrewsService, 
     public dishesService: DishesService,
     private authService: AuthService) { }
-=======
-  event: EventActivity;
-  isLoading = false;
-  userIsAuthenticated = false;
-  userId: string;
-  eventId: string;
-  crew: Crew;
-  crewId: string;
-  private eventsSub: Subscription;
-  private authStatusSub: Subscription;
-
-
-  constructor(public route: ActivatedRoute, public eventsService: EventsService, public crewsService: CrewsService, private authService: AuthService) { }
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 
     ngOnInit() 
     {
@@ -95,24 +77,23 @@ export class EventsComponent implements OnInit, OnDestroy {
               crewId: eventData.crewId
             };
             console.log(this.event);
-<<<<<<< HEAD
 
+            localStorage.setItem("eventId", this.event.id);
+            console.log(this.event.id);
             this.dishesService.getEventDishes(this.dishesPerPage, this.currentPage, this.event.id);
             this.dishesSub = this.dishesService.getEventDishUpdateListener()
             .subscribe((dishData: {eventDishes: Dish[], eventDishCount: number}) => {
                 this.isLoading = false;
                 this.totalDishes = dishData.eventDishCount;
                 this.dishes = dishData.eventDishes;
+                console.log(this.dishes);
                 });
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
           });
         }else
         {
           this.eventId = null;
         }
       });
-<<<<<<< HEAD
 
       this.profileId = localStorage.getItem("profileId");
   
@@ -127,9 +108,6 @@ export class EventsComponent implements OnInit, OnDestroy {
       }
 
 
-=======
-  
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
       this.userId = this.authService.getUserId();
       this.userIsAuthenticated = this.authService.getIsAuth();
       console.log(this.userIsAuthenticated);
@@ -138,7 +116,6 @@ export class EventsComponent implements OnInit, OnDestroy {
             this.userIsAuthenticated = isAuthenticated;
             this.userId = this.authService.getUserId();
           });
-<<<<<<< HEAD
 
       
 
@@ -169,8 +146,6 @@ export class EventsComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       }
       
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     }
   
     onDelete(eventId: string, crewId: string) 
@@ -178,14 +153,23 @@ export class EventsComponent implements OnInit, OnDestroy {
       this.isLoading = true;
       this.eventsService.deleteEvent(eventId, crewId);
     }
+
+    onDeleteDish(dishId: string, eventId: string)
+    {
+      this.isLoading = true;
+      this.dishesService.deleteDish(dishId).subscribe(() => {
+      this.dishesService.getEventDishes(this.dishesPerPage, this.currentPage, eventId);
+      }, () => {
+        this.isLoading = false;
+      });
+
+    }
   
     ngOnDestroy()
     {
       this.authStatusSub.unsubscribe();
-<<<<<<< HEAD
       this.eventMembersSub.unsubscribe();
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
+      this.dishesSub.unsubscribe();
     }
   }
   

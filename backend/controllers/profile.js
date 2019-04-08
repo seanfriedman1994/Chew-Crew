@@ -2,10 +2,6 @@ const Profile = require("../models/profile");
 
 exports.fetchProfile = (req, res, next) => {
     let fetchedProfile;
-<<<<<<< HEAD
-=======
-    console.log(req.params.email);
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     Profile.findOne({email: req.params.email})
         .then(profile => {
             if(!profile)
@@ -14,10 +10,6 @@ exports.fetchProfile = (req, res, next) => {
                 return;
             }
             fetchedProfile = profile;
-<<<<<<< HEAD
-=======
-            console.log(profile);
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
             res.status(200).json(profile);
         })
         .catch(err => {

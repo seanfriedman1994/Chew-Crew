@@ -18,20 +18,14 @@ router.put("/:id",
   EventController.updateEvent
 );
 
-<<<<<<< HEAD
 router.post("/:profileId", checkAuth, extractFile, EventController.joinEvent);
 
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 router.get("", EventController.getEvents);
 
 router.get("/:id", EventController.getOneEvent);
 
 router.delete("/:id", checkAuth, EventController.deleteEvent);
 
-<<<<<<< HEAD
 router.delete("/:eventId/:profileId", checkAuth, EventController.deleteUserEvent);
 
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 module.exports = router;

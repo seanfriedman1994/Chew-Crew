@@ -4,7 +4,6 @@ const profileSchema = mongoose.Schema({
     email: {type: String, required: true},
     name: {type: String, required: false},
     bio: {type: String, required: false},
-<<<<<<< HEAD
     image: {type: String, required: false},
     crews: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -14,9 +13,6 @@ const profileSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Event"
     }]
-=======
-    image: {type: String, required: false}
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 });
 
 module.exports = mongoose.model('Profile', profileSchema);

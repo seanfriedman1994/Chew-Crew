@@ -24,12 +24,9 @@ import { CrewPageComponent } from './crews/crew-page/crew-page.component';
 import { EventsComponent } from './events/events.component';
 import { EventCreateComponent } from './events/event-create/event-create.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-<<<<<<< HEAD
 import { EventListComponent } from './events/event-list/event-list.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 
 
 @NgModule({
@@ -45,12 +42,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     CrewListComponent,
     CrewPageComponent,
     EventsComponent,
-<<<<<<< HEAD
     EventCreateComponent,
     EventListComponent
-=======
-    EventCreateComponent
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
   ],
   imports: [
     BrowserModule,
@@ -62,10 +55,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     DishesModule,
     FormsModule,
     MatCheckboxModule, 
-<<<<<<< HEAD
     MDBBootstrapModule.forRoot(),
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot()

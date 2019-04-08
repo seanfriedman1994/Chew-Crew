@@ -1,10 +1,7 @@
 const Crew = require("../models/crew");
 const UserCrew = require("../models/user-crew");
-<<<<<<< HEAD
 const Profile = require("../models/profile");
 
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 
 exports.createCrew = (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
@@ -71,7 +68,6 @@ exports.updateCrew = (req, res, next) => {
 };
 
 exports.getAllCrews = (req, res, next) => {
-<<<<<<< HEAD
     //only retrieve on current page
     const pageSize = +req.query.pageSize;
     const currentPage = +req.query.page;
@@ -170,34 +166,6 @@ exports.getAllCrews = (req, res, next) => {
         });
     }
     
-=======
-    //only retrieve dishes on current page
-    const pageSize = +req.query.pageSize;
-    const currentPage = +req.query.page;
-    const crewQuery = Crew.find();
-    let fetchedCrews;
-    if(pageSize && currentPage)
-    {
-        crewQuery
-            .skip(pageSize * (currentPage - 1))
-            .limit(pageSize);
-    }
-    crewQuery.then(documents => {
-        fetchedCrews = documents;
-        return Crew.count();
-    }).then(count => {
-        res.status(200).json({
-            message: "Crews fetched successfully!",
-            crews: fetchedCrews,
-            maxCrews: count
-        });
-    })
-    .catch(error => {
-      res.status(500).json({
-        message: "Fetching crews failed!"
-      });
-    });
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 };
 
 exports.getOneCrew = (req, res, next) => {
@@ -216,7 +184,6 @@ exports.getOneCrew = (req, res, next) => {
     });
 };
 
-<<<<<<< HEAD
 exports.getUserCrews = (req, res, next) => {
     const crewQuery = UserCrew.find(req.body.crewId);
 
@@ -257,39 +224,11 @@ exports.joinCrew = (req, res, next) => {
           ...createdUserCrew,
           id: createdUserCrew._id
         }
-=======
-exports.joinCrew = (req, res, next) => {
-    console.log(req.body.crewId);
-    console.log(req.userData.userId);
-
-    const userCrew = new UserCrew({
-      crewId: req.body.crewId,
-      userId: req.userData.userId
-    });
-
-    UserCrew.find({crewId: userCrew.crewId, userId: userCrew.userId})
-      .then(foundUser => {
-        if(foundUser)
-        {
-          res.status(500).json({
-            message: "User-Crew relationship already exists!"
-          })
-        }
-      })
-
-    userCrew.save().then(createdUserCrew => {
-      res.status(201).json({
-        message: "Crew successfully joined"
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
       });
     })
     .catch(error => {
       res.status(500).json({
-<<<<<<< HEAD
         message: "User Crew creation failed!"
-=======
-        message: "Join crew failed!"
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
       });
     });
 }
@@ -311,7 +250,6 @@ exports.deleteCrew = (req, res, next) => {
         message: "Deleting crew failed!"
       });
     });
-<<<<<<< HEAD
 };
 
 exports.deleteUserCrew = (req, res, next) => {
@@ -338,6 +276,4 @@ exports.deleteUserCrew = (req, res, next) => {
         message: "Leaving crew failed!"
       });
     });
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 };

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { EventActivity, User } from '../models/interface-models';
-=======
-import { EventActivity } from '../models/interface-models';
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
@@ -15,13 +11,10 @@ const BACKEND_URL = environment.apiUrl + "/events/";
 @Injectable({providedIn: 'root'})
 export class EventsService {
     private events: EventActivity[] = [];
-<<<<<<< HEAD
     private userEvents: EventActivity[] = [];
     private eventMembers: User[] = [];
     private eventMembersUpdated = new Subject<{eventMembers: User[], eventMembersCount: number}>();
     private userEventsUpdated  = new Subject<{userEvents: EventActivity[], userEventCount: number}>();
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     private eventsUpdated = new Subject<{events: EventActivity[], eventCount: number}>();
 
     constructor(private http: HttpClient, private router: Router){}
@@ -75,7 +68,6 @@ export class EventsService {
         });
     }
 
-<<<<<<< HEAD
     getEventsList(eventsPerPage: number, currentPage: number)
     {
         const queryParams = `?pageSize=${eventsPerPage}&page=${currentPage}`;
@@ -138,14 +130,11 @@ export class EventsService {
         });
     }
 
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     getEventUpdateListener()
     {
         return this.eventsUpdated.asObservable();
     }
 
-<<<<<<< HEAD
     getEventMembersUpdateListener()
     {
         return this.eventMembersUpdated.asObservable();
@@ -156,8 +145,6 @@ export class EventsService {
         return this.userEventsUpdated.asObservable();
     }
 
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     getEvent(id: string) 
     {
 
@@ -172,7 +159,6 @@ export class EventsService {
         }>(BACKEND_URL + id);
     }
 
-<<<<<<< HEAD
     joinEvent(eventId: string, profileId: string)
     {
         const userEventData = new FormData();
@@ -224,8 +210,6 @@ export class EventsService {
         });
     }
 
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     updateEvent(id: string, name: string, date: string, location: string, description: string){
         let eventData: EventActivity | FormData;
         eventData = new FormData();
@@ -245,10 +229,7 @@ export class EventsService {
 
     deleteEvent(eventId: string, crewId: string) {
         return this.http.delete(BACKEND_URL + eventId).subscribe(response => {
-<<<<<<< HEAD
             console.log(response);
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
             this.router.navigate(["/crews/" + crewId]);
         });
     }

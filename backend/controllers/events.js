@@ -1,8 +1,5 @@
 const Event = require("../models/event");
-<<<<<<< HEAD
 const UserEvent = require("../models/user-event");
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 
 exports.createEvent = (req, res, next) => {
     const event = new Event({
@@ -62,7 +59,6 @@ exports.getEvents = (req, res, next) => {
     //only retrieve events on current page
     const pageSize = +req.query.pageSize;
     const currentPage = +req.query.page;
-<<<<<<< HEAD
 
     if(req.query.eventId)
     {
@@ -184,32 +180,6 @@ exports.getEvents = (req, res, next) => {
       });
     }
     
-=======
-    const crewId = req.query.crewId;
-    const eventQuery = Event.find({ crewId: crewId });
-    let fetchedEvents;
-    if(pageSize && currentPage)
-    {
-        eventQuery
-            .skip(pageSize * (currentPage - 1))
-            .limit(pageSize);
-    }
-    eventQuery.then(documents => {
-        fetchedEvents = documents;
-        return Event.count();
-    }).then(count => {
-        res.status(200).json({
-            message: "Events fetched successfully!",
-            events: fetchedEvents,
-            maxEvents: count
-        });
-    })
-    .catch(error => {
-      res.status(500).json({
-        message: "Fetching events failed!"
-      });
-    });
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 };
 
 exports.getOneEvent = (req, res, next) => {
@@ -228,7 +198,6 @@ exports.getOneEvent = (req, res, next) => {
     });
 };
 
-<<<<<<< HEAD
 exports.joinEvent = (req, res, next) => {
   console.log(req.body.eventId);
   console.log(req.body.profileId);
@@ -259,8 +228,6 @@ exports.joinEvent = (req, res, next) => {
   });
 }
 
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 exports.deleteEvent = (req, res, next) => {
   console.log(req.params.id);
     Event.deleteOne({_id: req.params.id, creator: req.userData.userId})
@@ -279,7 +246,6 @@ exports.deleteEvent = (req, res, next) => {
         message: "Deleting event failed!"
       });
     });
-<<<<<<< HEAD
 };
 
 exports.deleteUserEvent = (req, res, next) => {
@@ -306,6 +272,4 @@ exports.deleteUserEvent = (req, res, next) => {
         message: "Leaving event failed!"
       });
     });
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 };

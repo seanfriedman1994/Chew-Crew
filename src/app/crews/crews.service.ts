@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Crew, User} from '../models/interface-models';
-=======
-import { Crew } from '../models/interface-models';
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient} from '@angular/common/http';
@@ -15,16 +11,12 @@ const BACKEND_URL = environment.apiUrl + "/crews/";
 @Injectable({providedIn: 'root'})
 export class CrewsService {
     private crews: Crew[] = [];
-<<<<<<< HEAD
     private userCrews: Crew[] = [];
     private crewMembers: User[] = [];
     private userCrewsUpdated = new Subject<{userCrews: Crew[], userCrewCount: number}>();
     private crewsUpdated = new Subject<{crews: Crew[], crewCount: number}>();
     private crewMembersUpdated = new Subject<{crewMembers: User[], crewMemberCount: number}>();
 
-=======
-    private crewsUpdated = new Subject<{crews: Crew[], crewCount: number}>();
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
 
     constructor(private http: HttpClient, private router: Router){}
 
@@ -62,7 +54,6 @@ export class CrewsService {
         return this.crewsUpdated.asObservable();
     }
 
-<<<<<<< HEAD
     getUserCrewUpdateListener()
     {
         return this.userCrewsUpdated.asObservable();
@@ -73,8 +64,6 @@ export class CrewsService {
         return this.crewMembersUpdated.asObservable();
     }
 
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     getCrew(id: string) 
     {
 
@@ -128,7 +117,6 @@ export class CrewsService {
 
     }
 
-<<<<<<< HEAD
     getUserCrews(profileId: string, userCrewsPerPage: number, currentPage: number){
         const queryParams = `?pageSize=${userCrewsPerPage}&page=${currentPage}&profileId=${profileId}`;
         this.http
@@ -195,21 +183,10 @@ export class CrewsService {
         .subscribe((responseData) => {
             console.log(responseData);
 
-=======
-    joinCrew(crewId: string)
-    {
-        const userCrewData = new FormData();
-        userCrewData.append("crewId", crewId);
-
-        this.http.post<{message: string}>(BACKEND_URL + crewId, userCrewData)
-        .subscribe((responseData) => {
-            console.log(responseData);
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
             this.router.navigate(["/crews/" + crewId]);
         });
     }
 
-<<<<<<< HEAD
     leaveCrew(crewId: string, profileId: string)
     {
         return this.http.delete(BACKEND_URL + crewId + "/" + profileId).subscribe(response => {
@@ -220,9 +197,6 @@ export class CrewsService {
 
     deleteCrew(crewId: string) 
     {
-=======
-    deleteCrew(crewId: string) {
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
         return this.http.delete(BACKEND_URL + crewId).subscribe(response => {
             this.router.navigate(["/crews"]);
         });

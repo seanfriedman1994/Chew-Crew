@@ -15,15 +15,6 @@
     <p class="crew-description">{{ crew.description }}</p>
     
       <mat-action-row>
-<<<<<<< HEAD
-=======
-          <button mat-button class="green" (click)="onJoin(crew.id)" *ngIf="userIsAuthenticated">
-            <i class="material-icons">
-              add_circle
-            </i>
-              JOIN
-          </button>
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
           <a mat-button color="primary" [routerLink]="['/crews', crew.id]" *ngIf="userIsAuthenticated">
             <i class="material-icons">
               forward

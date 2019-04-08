@@ -25,15 +25,13 @@ export class DishCreateComponent implements OnInit, OnDestroy{
   form: FormGroup;
   imagePreview: string;
   private authStatusSub: Subscription;
-<<<<<<< HEAD
   eventId: string;
-=======
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
   
   constructor(public dishesService: DishesService, public route: ActivatedRoute, private authService: AuthService) {}
 
   ngOnInit() 
   {
+    
     this.authStatusSub = this.authService.getAuthStatusListener()
     .subscribe(getAuthStatus => {
       this.isLoading = false;
@@ -69,12 +67,8 @@ export class DishCreateComponent implements OnInit, OnDestroy{
             description: dishData.description,
             tags: dishData.tags,
             imagePath: dishData.imagePath,
-<<<<<<< HEAD
             creator: dishData.creator,
             eventId: dishData.eventId
-=======
-            creator: dishData.creator
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
           };
           this.form.setValue({
             'name': this.dish.name,
@@ -110,6 +104,8 @@ export class DishCreateComponent implements OnInit, OnDestroy{
     {
       return;
     }
+    this.eventId = localStorage.getItem("eventId");
+    console.log("event Id is " + this.eventId);
     this.isLoading = true;
     if(this.mode === 'create')
     {
@@ -117,12 +113,8 @@ export class DishCreateComponent implements OnInit, OnDestroy{
         this.form.value.name, 
         this.form.value.description, 
         this.form.value.tags,
-<<<<<<< HEAD
         this.form.value.image,
         this.eventId);
-=======
-        this.form.value.image);
->>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
     }else
     {
       this.dishesService.updateDish(
@@ -130,7 +122,8 @@ export class DishCreateComponent implements OnInit, OnDestroy{
         this.form.value.name, 
         this.form.value.description,
         this.form.value.tags,
-        this.form.value.image
+        this.form.value.image,
+        this.eventId
         );
     }
     this.form.reset();
