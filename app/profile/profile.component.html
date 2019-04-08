@@ -1,0 +1,193 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<<<<<<< HEAD
+<div class="profile-container" >
+<mat-card class="profile" *ngIf="!isLoading" >
+
+    <div class="colored-section">
+        <img  class="profile-image center" [src]="profile.image" [alt]="profile.name">
+    </div>
+    
+
+    <div class="title-container center">
+
+        <section id="lab_social_icon_footer">
+            <mat-card-title class="big-heading">{{profile.name}}</mat-card-title>
+            <!-- Include Font Awesome Stylesheet in Header -->
+            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+              <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+              <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+              <a href="mailto:#"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+              <h3>  
+                {{profile.email}}
+              </h3>
+              <section class="profile-bio">
+                  <p>
+                      {{profile.bio}}
+                  </p>
+                </section>
+            </section>
+    </div>
+    <!-- <mat-card-header>  
+    <img mat-card-avatar class="header.image" [src]="profile.image" [alt]="profile.name">
+    <mat-card-title>{{profile.name}}</mat-card-title>
+    <mat-card-subtitle>{{profile.email}}</mat-card-subtitle>
+    </mat-card-header> -->
+=======
+  <mat-card class="profile" *ngIf="!isLoading">
+    <mat-card-header>  
+    <img mat-card-avatar class="header.image" [src]="profile.image" [alt]="profile.name">
+    <mat-card-title>{{profile.name}}</mat-card-title>
+    <mat-card-subtitle>{{profile.email}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
+    <!-- <span class="pull right">
+        <img mat-card-sm-image 
+        [src]="profile.image" 
+        [alt]="profile.name"
+         class="img-responsive" 
+        style="max-height: 150px;">
+    </span> -->
+<<<<<<< HEAD
+    
+
+    <div class="colored-section">
+        <h1 class="my-crews med-heading">My Crews</h1>
+    </div>
+
+        <mat-accordion multi="true" *ngIf="userCrews.length > 0 && !isLoading">
+            <mat-expansion-panel *ngFor="let userCrew of userCrews">
+              <mat-expansion-panel-header>
+                {{ userCrew.name }}
+              </mat-expansion-panel-header>
+              <span class="pull-right">
+                  <img [src]="userCrew.image" 
+                  [alt]="userCrew.name" 
+                  class="img-responsive" 
+                  style="max-height: 150px;">
+              </span>
+              <p class="crew-description">{{ userCrew.description }}</p>
+                <mat-action-row>
+                    <a mat-button color="primary" [routerLink]="['/crews', userCrew.id]" *ngIf="userIsAuthenticated">
+                      <i class="material-icons">
+                        forward
+                      </i>
+                      ENTER
+                    </a>
+                </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-paginator [length]="totalUserCrews" [pageSize]="userCrewsPerPage" [pageSizeOptions]="pageSizeOptions" 
+              (page)="onChangedPageCrews($event)"  *ngIf="userCrews.length > 0">
+          </mat-paginator>
+          <p class="info-text mat-body-1 center" *ngIf="userCrews.length <= 0 && !isLoading">No crews joined yet!</p>
+    
+      <div class="colored-section">
+          <h1 class="my-crews med-heading">My Events</h1>
+      </div>
+          <mat-accordion multi="true" *ngIf="userEvents.length > 0 && !isLoading">
+            <mat-expansion-panel *ngFor="let userEvent of userEvents">
+              <mat-expansion-panel-header>
+                {{ userEvent.name }}
+              </mat-expansion-panel-header>
+              <mat-panel-title>
+                  {{ userEvent.date }}
+              </mat-panel-title>
+              <mat-panel-title>
+                  {{ userEvent.location }}
+              </mat-panel-title>
+              <p class="event-description">{{ userEvent.description }}</p>   
+                <mat-action-row>
+                    <a mat-button color="primary" [routerLink]="['/events', userEvent.id]" *ngIf="userIsAuthenticated">
+                      <i class="material-icons">
+                        forward
+                      </i>
+                      ENTER
+                    </a>
+                </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-paginator [length]="totalUserEvents" [pageSize]="userEventsPerPage" [pageSizeOptions]="eventPageSizeOptions" 
+          (page)="onChangedPageEvents($event)"  *ngIf="userEvents.length > 0">
+          </mat-paginator>
+          <p class="info-text mat-body-1 center" *ngIf="userEvents.length <= 0 && !isLoading">No events added yet!</p>
+    <div class="colored-section">
+        <h1 class="my-crews med-heading">Favorite Dishes</h1>
+    </div>
+=======
+    <mat-card-content class="profile-bio">
+      <p>
+          Bio: {{profile.bio}}
+      </p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <h3 mat-subheader >My Crews</h3>
+    <mat-accordion class="my-crews" multi="true" *ngIf="userCrews.length > 0 && !isLoading">
+        <mat-expansion-panel *ngFor="let userCrew of userCrews">
+          <mat-expansion-panel-header>
+            {{ crew.name }}
+          </mat-expansion-panel-header>
+          <span class="pull-right">
+              <img [src]="crew.image" 
+              [alt]="crew.name" 
+              class="img-responsive" 
+              style="max-height: 150px;">
+          </span>
+          <p class="crew-description">{{ crew.description }}</p>
+          <mat-list dense>
+            <h3 mat-subheader>Members</h3>
+            <mat-list-item *ngIf="crewMembers.length <= 0 && !isLoading">
+                No Members!
+            </mat-list-item>
+            <mat-list-item *ngFor="let crewMember of crewMembers">
+              <img matListAvatar [src]="crewMember.image" [alt]="crewMember.name">
+              <h3 matLine>{{ crewMember.name }}</h3>
+            </mat-list-item>
+          </mat-list>
+          <mat-divider></mat-divider>
+            <mat-action-row>
+                <a mat-button color="primary" [routerLink]="['/crews', crew.id]" *ngIf="userIsAuthenticated && userId == crew.creator">
+                  <i class="material-icons">
+                    forward
+                  </i>
+                  ENTER
+                </a>
+              <a mat-button class="blue" [routerLink]="['/crews/edit', crew.id]" *ngIf="userIsAuthenticated && userId == crew.creator">
+                <i class="material-icons">
+                    edit
+                </i>
+                EDIT</a>
+              <button mat-button color="warn" (click)="onDelete(crew.id)" *ngIf="userIsAuthenticated && userId == crew.creator">
+                <i class="material-icons">
+                    delete
+                  </i>
+                DELETE</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <p *ngIf="userCrews.length <= 0 && !isLoading">No crews joined yet!</p>
+      <a mat-button class="green" [routerLink]="['/crews']" *ngIf="userIsAuthenticated">
+        <i class="material-icons">
+          add_circle
+        </i>
+          JOIN CREW
+      </a>
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/profile/edit', profile.id]">
+        <i class="material-icons">
+            edit
+        </i>
+        EDIT PROFILE
+      </a>
+    </mat-action-row>
+<<<<<<< HEAD
+  </mat-card>
+</div>
+  
+=======
+  </mat-card>
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac

@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSaveDish()" *ngIf="!isLoading">
+    <mat-form-field>
+      <input 
+      matInput
+      type="text"
+      formControlName="name"
+      placeholder="Dish Name">
+      <mat-error *ngIf="form.get('name').invalid">Please enter a dish name!</mat-error>
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Upload Image</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+      <img [src]="imagePreview" [alt]="form.value.name">
+    </div>
+    <mat-form-field>
+      <textarea 
+      matInput
+      rows="6"
+      formControlName="description"
+      placeholder="Description"
+      ></textarea>
+      <mat-error *ngIf="form.get('description').invalid">Please enter a dish description!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+      matInput
+      type="text"
+      formControlName="tags"
+      placeholder="Tags (seperate with commas)"
+      >
+      <mat-error *ngIf="form.get('tags').invalid">Please enter at least one tag!</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">
+      <i class="material-icons">
+        save_alt
+      </i>
+      Save Dish
+    </button>
+  </form>
+</mat-card>

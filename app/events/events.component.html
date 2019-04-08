@@ -1,0 +1,103 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+  <mat-card class="profile" *ngIf="!isLoading">
+    <mat-card-header>  
+    <mat-card-title>{{event.name}}</mat-card-title>
+    </mat-card-header>
+    <section >
+        <mat-card-subtitle>When: {{event.date}}</mat-card-subtitle>
+        <mat-card-subtitle>Where: {{event.location}}</mat-card-subtitle>
+    </section>
+    <mat-divider></mat-divider>
+    <mat-card-content class="profile-bio">
+      <p>
+          {{event.description}}
+      </p>
+    </mat-card-content>
+<<<<<<< HEAD
+
+    <h3 mat-subheader>Attending</h3>
+    <p *ngIf="eventMembers.length <= 0 && !isLoading">
+      None yet!
+    </p>
+    <mat-list dense *ngIf="eventMembers.length > 0 && !isLoading">
+        <mat-list-item *ngFor="let eventMember of eventMembers">
+          <img matListAvatar [src]="eventMember.image" [alt]="eventMember.name">
+          <h3 matLine>{{ eventMember.name }}</h3>
+        </mat-list-item>
+    </mat-list>
+
+
+
+    <section class="example-section">
+        <mat-checkbox color="primary" [checked]='isAttending' (change)="joinOrLeaveEvent($event)">Going?</mat-checkbox>
+    </section>
+
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <!-- <mat-icon class="restaurant-icon" aria-hidden="true" aria-label="restaurant icon">restaurant</mat-icon> -->
+    <mat-accordion multi="true" *ngIf="dishes.length > 0 && !isLoading">
+      <mat-expansion-panel *ngFor="let dish of dishes">
+        <mat-expansion-panel-header>
+          {{ dish.name }}
+        </mat-expansion-panel-header>
+        <span class="pull-right">
+            <img [src]="dish.imagePath" 
+            [alt]="dish.name" 
+            class="img-responsive" 
+            style="max-height: 150px;">
+        </span>
+        <p class="dish-description">{{ dish.description }}</p>
+        <mat-divider></mat-divider>
+        <mat-chip-list aria-label="Tags">
+            <mat-chip color="accent" selected>{{ dish.tags }} </mat-chip>
+        </mat-chip-list>
+        
+          <mat-action-row *ngIf="userIsAuthenticated && userId == dish.creator">
+            <a mat-button class="blue" [routerLink]="['/dishes/edit', dish.id]">
+              <i class="material-icons">
+                  edit
+              </i>
+              EDIT
+            </a>
+            <button mat-button color="warn" (click)="onDelete(dish.id)">
+              <i class="material-icons">
+                delete
+              </i>
+              DELETE
+            </button>
+          </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-divider></mat-divider>
+    <a mat-raised-button color="accent" routerLink="/dishes/create" >
+      <i class="material-icons">
+          local_dining
+          </i>
+      Add Dish
+    </a>
+    <mat-paginator [length]="totalDishes" [pageSize]="dishesPerPage" [pageSizeOptions]="pageSizeOptions" 
+    (page)="onChangedPage($event)"  *ngIf="dishes.length > 0">
+    </mat-paginator>
+    <p class="info-text mat-body-1" *ngIf="dishes.length <= 0 && !isLoading">No dishes added yet!</p>
+
+
+=======
+    <section class="example-section">
+        <mat-checkbox color="primary" [(ngModel)]="checked">Going?</mat-checkbox>
+    </section>
+>>>>>>> e4624b39072281853e1ccac3a466139ae5c621ac
+    <mat-action-row >
+      <a mat-button color="primary" [routerLink]="['/events/edit', event.id]" *ngIf="userIsAuthenticated && userId == event.creator">
+        <i class="material-icons">
+            edit
+        </i>
+        EDIT EVENT
+      </a>
+      <a mat-button color="warn" (click)="onDelete(event.id, event.crewId)" *ngIf="userIsAuthenticated && userId == event.creator">
+        <i class="material-icons">
+            delete
+        </i>
+        DELETE EVENT
+      </a>
+    </mat-action-row>
+  </mat-card>
