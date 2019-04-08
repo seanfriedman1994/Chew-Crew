@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ChewCrew</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,900|Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<!-- inline spinner styles to be able to display spinner right away -->
+<style type="text/css">
+  body, html {
+    height: 100%;
+  }
+  .app-loading {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .app-loading .spinner {
+    height: 200px;
+    width: 200px;
+    animation: rotate 2s linear infinite;
+    transform-origin: center center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .app-loading .spinner .path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s ease-in-out infinite;
+    stroke-linecap: round;
+    stroke: #ff4c68;;
+  }
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -35px;
+    }
+    100% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -124px;
+    }
+  }
+</style>
+
+
+</head>
+<body>
+  <app-root>
+    <div class="app-loading">
+    
+          <img src="./assets/images/chewcrewlogo.png"  style="max-height: 100px;" alt="My App Logo">
+      
+      <svg class="spinner" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+      </svg>
+    </div>
+  </app-root>
+
+
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ChewCrew</title> -->
+
+  <!-- Google Fonts -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,900|Ubuntu" rel="stylesheet"> -->
+
+  <!-- CSS Style sheets -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css"> -->
+
+  <!-- Font Awesome -->
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <link rel="icon" href="images/chewcrewlogo.ico">
+
+  Bootstrap Scripts
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <section class="colored-section" id="title"> -->
+
+    <!-- This allows anything that is contained inside your container to be fully
+      responsive relative to the size of the screen
+      container jumps through the different widths but the fluid container
+      simply adapts to the width of the screen and always takes up 100 percent
+      of the screen width -->
+    <!-- <div class="container-fluid"> -->
+
+      <!-- Nav Bar -->
+      <!-- <nav class="navbar navbar-expand-lg navbar-dark">
+
+
+        <a class="navbar-brand" href=""><img height="80px" width="80px" src="./images/chewcrewlogo.png" alt="">chew crew</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mt-1">
+              <input class="login" type="text" name="username" placeholder="Username">
+            </li>
+            <li class="nav-item mt-1">
+              <input class="login" type="text" name="password" placeholder="Password">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Log in</a>
+            </li>
+          </ul>
+
+        </div>
+      </nav> -->
+
+
+
+      <!-- Title -->
+<!-- 
+
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 class="big-heading">Take control of your potluck by organizing what the crew chews</h1>
+          <button type="button" class="btn btn-outline-light btn-lg download-button"><i class="fab fa-google-play"></i> Download</button>
+        </div>
+        <div class="col-lg-6 form-signin">
+            <h1 class="h3 mb-3 font-weight-normal align-middle">Sign up to join Chew Crew</h1>
+            The autofocus will put that blue highlight around the element -->
+            <!-- <input name="username" type="text" class="form-control top" placeholder="Username" required autofocus>
+            <input name="first" type="text" class="form-control middle" placeholder="First Name" required>
+            <input name="last" type="text" class="form-control middle" placeholder="Last Name" required>
+            <input name="email" type="email" class="form-control bottom" placeholder="Email" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Me Up!</button>
+        </div>
+      </div>
+
+    </div>
+
+  </section> --> 
+
+
+  <!-- Features -->
+<!-- 
+  <section class="white-section" id="features">
+    <div class="row">
+      <div class="col-lg-4 col-md-12 col-sm-12 feature-box">
+        <img class="icon" src="./images/picnic-basket.png" height="70px" width="70px" alt="">
+        <h3 class="feature-title">Organize Potlucks</h3>
+        <p>A place where people can communicate what they are bringing to the potluck</p>
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12 feature-box">
+        <img class="icon" src="./images/salad.png" height="70px" width="70px" alt="">
+        <h3 class="feature-title">Exchange Ingredients</h3>
+        <p>Share and find new special ingredients with friends</p>
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12 feature-box">
+        <img class="icon" src="./images/dish.png" height="70px" width="70px" alt="">
+        <h3 class="feature-title">Tag dishes</h3>
+        <p>Tag your favorite dishes to save for later</p>
+      </div>
+    </div>
+
+  </section> -->
+
+
+
+
+  <!-- Pricing -->
+
+  <!-- <section class="white-section" id="pricing">
+
+    <h2 class="section-heading">A Plan for Every Chew Crew</h2>
+    <p>We have two packages</p>
+    <div class="row plans">
+      <div class="pricing-column col-lg-4 col-sm-12 offset-lg-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="">Standard</h3>
+          </div>
+          <div class="card-body">
+            <h2 class="price-text">Free</h2>
+            <p>Make potluck groups of up to 15 people</p>
+            <p></p>
+            <button type="button" class="btn btn-outline-dark btn-lg btn-block">Sign Up</button>
+          </div>
+        </div>
+      </div>
+      <div class="pricing-column col-lg-4 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h3>Premium</h3>
+          </div>
+          <div class="card-body">
+            <h2 class="price-text">$5 / mo</h2>
+            <p>Add more than 15 people to a potluck</p>
+            <button type="button" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section> -->
+
+
+  <!-- Download App -->
+
+  <!-- <section class="colored-section" id="app">
+
+    <h3 class="big-heading">Download our app for Android and connect with your Crew on the go</h3>
+    <button type="button" class="btn btn-light btn-lg download-button"><i class="fab fa-google-play"></i> Download</button>
+
+  </section> -->
+
+
+  <!-- Footer -->
+<!-- 
+  <footer class="white-section" id="footer">
+    <i class="social-icon fab fa-facebook-f"></i>
+    <i class="social-icon fab fa-twitter"></i>
+    <i class="social-icon fab fa-instagram"></i>
+    <i class="social-icon fas fa-envelope"></i>
+    <p>© Copyright 2019 ChewCrew</p>
+
+  </footer>
+
+
+</body>
+
+</html> -->
+
