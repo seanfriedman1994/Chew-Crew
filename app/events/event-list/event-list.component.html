@@ -1,0 +1,28 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<mat-accordion multi="true" *ngIf="events.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let event of events">
+    <mat-expansion-panel-header>
+      {{ event.name }}
+    </mat-expansion-panel-header>
+    <mat-panel-title>
+        {{ event.date }}
+    </mat-panel-title>
+    <mat-panel-title>
+        {{ event.location }}
+    </mat-panel-title>
+    <p class="event-description">{{ event.description }}</p>   
+      <mat-action-row>
+          <a mat-button color="primary" [routerLink]="['/events', event.id]" *ngIf="userIsAuthenticated">
+            <i class="material-icons">
+              forward
+            </i>
+            ENTER
+          </a>
+      </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator [length]="totalEvents" [pageSize]="eventsPerPage" [pageSizeOptions]="pageSizeOptions" 
+(page)="onChangedPage($event)"  *ngIf="events.length > 0">
+</mat-paginator>
+<p class="info-text mat-body-1" *ngIf="events.length <= 0 && !isLoading">No events added yet!</p>
