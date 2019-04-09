@@ -93,7 +93,8 @@ mat-spinner
     border-radius: 50%;
     /* max-height: 50px; */
     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .center {

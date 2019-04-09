@@ -7,6 +7,35 @@
     color: #fff;
     position: absolute;
   }
+
+  .title
+  {
+      font-size: 3rem;
+      margin-top: 10px;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
+  }
+
+.colored-section
+{
+    background-color: #ff4c68;
+    color: #fff;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+    border-radius: 8px;
+}
+
+.eventDate
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    font-size: 1rem;
+}
   
   #addButton:hover{
     color:#333333;
@@ -18,6 +47,23 @@
     margin-top: 1rem;
 }
 
+.action-row
+{
+    margin-top: 100px;
+}
+
+
+.example-section
+{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.pull-right
+{
+    width: 50%;
+}
+
 .info-text {
     text-align: center;
 }
@@ -26,6 +72,12 @@ mat-spinner
 {
     margin: auto;
 }
+
+.profile
+{
+    font-family: 'Montserrat';
+}
+
 
 .profile-image 
 {
@@ -36,8 +88,15 @@ mat-spinner
 
 .profile-bio
 {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 20px;
+}
+
+.desc
+{
+    font-size: 2rem;
+    font-weight: 400;
 }
 
 .my-crews

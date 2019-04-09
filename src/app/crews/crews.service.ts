@@ -197,8 +197,6 @@ export class CrewsService {
 
     deleteCrew(crewId: string) 
     {
-        return this.http.delete(BACKEND_URL + crewId).subscribe(response => {
-            this.router.navigate(["/crews"]);
-        });
+        return this.http.delete(BACKEND_URL + crewId);
     }
 }
