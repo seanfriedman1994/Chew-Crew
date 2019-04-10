@@ -11,6 +11,8 @@ import { ProfileService } from '../profile/profile.service';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { Dish } from '../models/dish.model';
 import { DishesService } from '../dishes/dishes.service';
+import { PageEvent } from '@angular/material';
+
 
 
 
@@ -40,7 +42,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   dishesPerPage = 3;
   pageSizeOptions = [1,3,5,10];
   currentPage = 1;
-  totalEventMembers: number;
+  totalEventMembers = 0;
   private eventsSub: Subscription;
   private authStatusSub: Subscription;
   private eventMembersSub: Subscription;
@@ -95,17 +97,8 @@ export class EventsComponent implements OnInit, OnDestroy {
         }
       });
 
-      this.profileId = localStorage.getItem("profileId");
   
-      if(this.profileService.userEvents)
-      {
-        this.profileService.userEvents.forEach(item => {
-          if(this.eventId === item.id)
-          {
-            this.isAttending = true;
-          }
-        });
-      }
+     
 
 
       this.userId = this.authService.getUserId();
@@ -126,7 +119,22 @@ export class EventsComponent implements OnInit, OnDestroy {
             this.totalEventMembers = eventMemberData.eventMembersCount;
             this.eventMembers =eventMemberData.eventMembers;
             console.log(this.eventMembers);
+
+            this.profileId = localStorage.getItem("profileId");
+
+            if(this.profileId)
+              {
+                this.eventMembers.forEach(item => {
+                  if(this.profileId === item.id)
+                  {
+                    this.isAttending = true;
+                    console.log(this.isAttending);
+                  }
+                })
+              }
+
         });
+
     }
 
     joinOrLeaveEvent()
@@ -134,19 +142,51 @@ export class EventsComponent implements OnInit, OnDestroy {
       if(!this.isAttending)
       {
         this.isLoading = true;
-        this.isAttending = true;
-        this.eventsService.joinEvent(this.event.id, this.profileId);
-        this.isLoading = false;
+        this.eventsService.joinEvent(this.event.id, this.profileId).subscribe(() => {
+          this.isAttending = true;
+          this.isLoading = false;
+          this.eventsService.getEventMembers(this.eventId);
+        this.eventMembersSub = this.eventsService.getEventMembersUpdateListener()
+        .subscribe((eventMemberData: {eventMembers: User[], eventMembersCount: number}) => {
+            this.totalEventMembers = eventMemberData.eventMembersCount;
+            this.eventMembers =eventMemberData.eventMembers;
+            console.log(this.eventMembers);
+
+            this.profileId = localStorage.getItem("profileId");
+
+            if(this.profileId)
+              {
+                this.eventMembers.forEach(item => {
+                  if(this.profileId === item.id)
+                  {
+                    this.isAttending = true;
+                    console.log(this.isAttending);
+                  }
+                })
+              }
+        });
+      });
+
       }
       else
       {
         this.isLoading = true;
-        this.isAttending = false;
-        this.eventsService.leaveEvent(this.event.id, this.profileId);
-        this.isLoading = false;
-      }
+        this.eventsService.leaveEvent(this.event.id, this.profileId).subscribe(() => {
+          this.isAttending = false;
+          this.isLoading = false;
+          this.eventsService.getEventMembers(this.eventId);
+        this.eventMembersSub = this.eventsService.getEventMembersUpdateListener()
+        .subscribe((eventMemberData: {eventMembers: User[], eventMembersCount: number}) => {
+            this.totalEventMembers = eventMemberData.eventMembersCount;
+            this.eventMembers =eventMemberData.eventMembers;
+            console.log(this.eventMembers);
+
+            this.profileId = localStorage.getItem("profileId");
+        });
+      });
       
     }
+  }
   
     onDelete(eventId: string, crewId: string) 
     {
@@ -163,6 +203,14 @@ export class EventsComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       });
 
+    }
+
+    onChangedPage(pageData: PageEvent)
+    {
+      this.isLoading = true;
+      this.currentPage = pageData.pageIndex + 1;
+      this.dishesPerPage = pageData.pageSize;
+      this.dishesService.getEventDishes(this.dishesPerPage, this.currentPage, this.eventId);
     }
   
     ngOnDestroy()

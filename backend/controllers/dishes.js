@@ -1,4 +1,6 @@
 const Dish = require("../models/dish");
+const UserDish = require("../models/user-dish");
+
 
 exports.createDish = (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
@@ -106,6 +108,41 @@ exports.getAllDishes = (req, res, next) => {
         });
       });
     }
+    //get favorite dishes for a particular user
+    else if(req.query.profileId)
+    {
+        console.log("get user's favorite dishes");
+        const profileId = req.query.profileId;
+        console.log("profileId");
+        console.log(profileId);
+        let fetchedUserDishes = [];
+        const userDishQuery = UserDish.find({profile: profileId}).populate('dish');
+        if(pageSize && currentPage)
+        {
+            userDishQuery
+                .skip(pageSize * (currentPage - 1))
+                .limit(pageSize);
+        }
+        userDishQuery.then(documents => {
+          console.log(documents);
+          for(let i = 0; i < documents.length; i++)
+          {
+            fetchedUserDishes.push(documents[i].dish);
+          }
+          console.log(fetchedUserDishes);
+          return fetchedUserDishes.length;
+         }).then(count => {
+            res.status(200).json({
+                message: "User dishes fetched successfully!",
+                dishes: fetchedUserDishes,
+                maxDishes: count
+            });
+          }).catch(error => {
+            res.status(500).json({
+              message: "Fetching user dishes failed"
+            })
+          });
+    }
     else
     {
       //get all dishes
@@ -136,6 +173,36 @@ exports.getAllDishes = (req, res, next) => {
 
     
 };
+
+exports.favoriteDish = (req, res, next) => {
+  console.log(req.body.dishId);
+  console.log(req.body.profileId);
+
+  const profileId = req.body.profileId;
+  const dishId = req.body.dishId;
+
+  const userDish = new UserDish({
+    profile: profileId,
+    dish: dishId
+  });
+
+  console.log(userDish);
+
+  userDish.save().then(createdUserDish => {
+    res.status(201).json({
+      message: "UserDish added successfully",
+      userDish: {
+        ...createdUserDish,
+        id: createdUserDish._id
+      }
+    });
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: "User Dish creation failed!"
+    });
+  });
+}
 
 exports.getOneDish = (req, res, next) => {
     Dish.findById(req.params.id).then(dish => {

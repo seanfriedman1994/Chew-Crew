@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class DishListComponent implements OnInit, OnDestroy {
 
   dishes: Dish[] = [];
+  profileId: string;
   isLoading = false;
   totalDishes = 0;
   dishesPerPage = 3;
@@ -41,6 +42,9 @@ export class DishListComponent implements OnInit, OnDestroy {
           this.userIsAuthenticated = isAuthenticated;
           this.userId = this.authService.getUserId();
         });
+    
+    this.profileId = localStorage.getItem("profileId");
+    console.log("profileId" + this.profileId);
   }
 
   onChangedPage(pageData: PageEvent)
@@ -54,6 +58,16 @@ export class DishListComponent implements OnInit, OnDestroy {
   onDelete(dishId: string) {
     this.isLoading = true;
     this.dishesService.deleteDish(dishId).subscribe(() => {
+      this.dishesService.getDishes(this.dishesPerPage, this.currentPage);
+    }, () => {
+      this.isLoading = false;
+    });
+  }
+
+  onFavoriteDish(dishId: string)
+  {
+    this.isLoading = true;
+    this.dishesService.favoriteDish(dishId, this.profileId).subscribe(() => {
       this.dishesService.getDishes(this.dishesPerPage, this.currentPage);
     }, () => {
       this.isLoading = false;

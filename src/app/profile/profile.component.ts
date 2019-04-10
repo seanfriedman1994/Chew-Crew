@@ -10,9 +10,11 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ProfileService } from './profile.service';
 import { ParamMap } from '@angular/router';
 import { Crew} from '../models/interface-models';
+import { Dish } from '../models/dish.model';
 import { CrewsService } from '../crews/crews.service';
 import { PageEvent } from '@angular/material';
 import { EventsService } from '../events/events.service';
+import { DishesService } from '../dishes/dishes.service';
 
 
 
@@ -48,12 +50,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
   eventPageSizeOptions = [1,3,5,10];
   currentPage = 1;
   currentEventPage = 1;
+  dishes: Dish[] = [];
+  profileId: string;
+  totalDishes = 0;
+  dishesPerPage = 3;
+  currentDishPage = 1;
+  private dishesSub: Subscription;
 
   constructor(private route: ActivatedRoute, 
     public profileService: ProfileService, 
     private authService: AuthService, 
     public crewsService: CrewsService,
-    public eventsService: EventsService) { }
+    public eventsService: EventsService,
+    public dishesService: DishesService) { }
 
   ngOnInit() 
   {
@@ -130,6 +139,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.currentEventPage = pageData.pageIndex + 1;
     this.userEventsPerPage = pageData.pageSize;
     this.eventsService.getUserEvents(this.userEventsPerPage, this.currentEventPage, this.profile.id);
+    this.isLoading = false;
+  }
+
+  onChangedPageDishes(pageData: PageEvent)
+  {
+    this.isLoading = true;
+    this.currentPage = pageData.pageIndex + 1;
+    this.dishesPerPage = pageData.pageSize;
+    this.dishesService.getFavoriteDishes(this.profile.id, this.dishesPerPage, this.currentPage);
     this.isLoading = false;
   }
 

@@ -11,7 +11,9 @@ const BACKEND_URL = environment.apiUrl + "/dishes/";
 @Injectable({providedIn: 'root'})
 export class DishesService {
     private dishes: Dish[] = [];
+    private favoriteDishes: Dish[] = [];
     private eventDishes: Dish[] = [];
+    private favoriteDishesUpdated = new Subject<{favoriteDishes: Dish[], favoriteDishCount: number}>();
     private eventDishesUpdated = new Subject<{eventDishes: Dish[], eventDishCount: number}>();
     private dishesUpdated = new Subject<{dishes: Dish[], dishCount: number}>();
 
@@ -79,6 +81,36 @@ export class DishesService {
         });
     }
 
+    getFavoriteDishes(profileId: string, dishesPerPage: number, currentPage: number){
+        const queryParams = `?pageSize=${dishesPerPage}&page=${currentPage}&profileId=${profileId}`;
+        this.http
+        .get<{message: string; dishes: any, maxDishes: number}>(
+            BACKEND_URL + queryParams
+        )
+        .pipe(map((dishData) => {
+            return { 
+                dish: dishData.dishes.map(dish => {
+                return {
+                    id: dish._id,
+                    name: dish.name,
+                    description: dish.description,
+                    tags: dish.tags,
+                    image: dish.image,
+                    creator: dish.creator,
+                    eventId: dish.eventId
+                };
+            }), 
+            maxDishes: dishData.maxDishes
+        };
+        }))
+        .subscribe(transformedDishData => {
+            this.favoriteDishes = transformedDishData.dish;
+            this.favoriteDishesUpdated.next({
+                favoriteDishes: [...this.favoriteDishes], favoriteDishCount: transformedDishData.maxDishes
+            });
+        });
+    }
+
     getDishUpdateListener()
     {
         return this.dishesUpdated.asObservable();
@@ -141,7 +173,7 @@ export class DishesService {
                 tags: tags,
                 imagePath: image,
                 creator: null,
-                eventId: eventId
+                eventId: null
             };
         }
         this.http.put(BACKEND_URL + id, dishData)
@@ -149,6 +181,15 @@ export class DishesService {
             this.router.navigate(["/events/" + eventId]);
         });
 
+    }
+
+    favoriteDish(dishId: string, profileId: string)
+    {
+        const userDishData = new FormData();
+        userDishData.append("dishId", dishId);
+        userDishData.append("profileId", profileId);
+
+        return this.http.post<{message: string}>(BACKEND_URL + profileId, userDishData);
     }
 
     deleteDish(dishId: string) {

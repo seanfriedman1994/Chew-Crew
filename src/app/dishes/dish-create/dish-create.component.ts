@@ -21,33 +21,6 @@ export interface Tag {
 })
 
 export class DishCreateComponent implements OnInit, OnDestroy{
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  tags: Tag[] = [];
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    // Add our fruit
-    if ((value || '').trim()) {
-      this.tags.push({name: value.trim()});
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-  }
-  remove(tag: Tag): void {
-    const index = this.tags.indexOf(tag);
-
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
-  }
   enteredName = "";
   enteredDescription = "";
   enteredTags = "";
@@ -74,6 +47,9 @@ export class DishCreateComponent implements OnInit, OnDestroy{
         validators: [Validators.required]
       }),
       'description': new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      'tags': new FormControl(null, {
         validators: [Validators.required]
       }),
       'image': new FormControl(null, {
@@ -134,11 +110,12 @@ export class DishCreateComponent implements OnInit, OnDestroy{
     {
       return;
     }
-    this.eventId = localStorage.getItem("eventId");
-    console.log("event Id is " + this.eventId);
     this.isLoading = true;
+     this.eventId = localStorage.getItem("eventId");
+      console.log("event Id is " + this.eventId);
     if(this.mode === 'create')
     {
+
       this.dishesService.addDish(
         this.form.value.name,
         this.form.value.description,

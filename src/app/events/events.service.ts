@@ -165,21 +165,12 @@ export class EventsService {
         userEventData.append("eventId", eventId);
         userEventData.append("profileId", profileId);
 
-        this.http.post<{message: string}>(BACKEND_URL + profileId, userEventData)
-        .subscribe((responseData) => {
-            console.log(responseData);
-            this.router.navigate(["/events/" + eventId]);
-
-        });
+        return this.http.post<{message: string}>(BACKEND_URL + profileId, userEventData);
     }
 
     leaveEvent(eventId: string, profileId: string)
     {
-        return this.http.delete(BACKEND_URL + eventId + "/" + profileId).subscribe(response => {
-            console.log(response);
-            this.router.navigate(["/events/" + eventId]);
-
-        });
+        return this.http.delete(BACKEND_URL + eventId + "/" + profileId);
     }
 
     getEventMembers(eventId: string){

@@ -18,7 +18,7 @@
           {{crew.description}}
       </p>
     </mat-card-content>
-    <h3 mat-subheader>Members</h3>
+    <h3 mat-subheader>Members ({{totalCrewMembers}})</h3>
     <p *ngIf="crewMembers.length <= 0 && !isLoading">
       No Members!
     </p>
@@ -71,12 +71,12 @@
             </i>
               LEAVE CREW
           </button>
-        <a mat-button class="blue" [routerLink]="['/crews/edit', crew.id]" *ngIf="userIsAuthenticated && userId == crew.creator">
+        <a mat-button class="blue" [routerLink]="['/crews/edit', crew.id]" *ngIf="crew && userIsAuthenticated && userId == crew.creator">
           <i class="material-icons">
               edit
           </i>
           EDIT CREW</a>
-        <button mat-button color="warn" (click)="onDelete(crew.id)" *ngIf="userIsAuthenticated && userId == crew.creator">
+        <button mat-button color="warn" (click)="onDelete(crew.id)" *ngIf="crew && userIsAuthenticated && userId == crew.creator">
           <i class="material-icons">
               delete
             </i>

@@ -12,3 +12,12 @@ mat-spinner
 {
     margin: auto;
 }
+
+#eventButton.mat-raised-button.mat-accent{
+    background-color: #ff4c68;
+    color: #fff;
+    position: relative;
+  }
+#eventButton.mat-raised-button.mat-accent:hover{
+    color: #333333;
+  }

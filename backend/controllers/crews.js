@@ -235,6 +235,7 @@ exports.joinCrew = (req, res, next) => {
 }
 
 exports.deleteCrew = (req, res, next) => {
+  console.log("delete Crew");
     Crew.deleteOne({_id: req.params.id, creator: req.userData.userId})
     .then(result => {
       if(result.n > 0)

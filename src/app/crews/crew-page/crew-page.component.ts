@@ -4,7 +4,7 @@ import { Crew } from '../../models/interface-models';
 import { CrewsService } from '../crews.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from '../../models/interface-models';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { EventActivity } from '../../models/interface-models';
 import { EventsService } from '../../events/events.service';
 import { ProfileService } from 'src/app/profile/profile.service';
@@ -39,7 +39,8 @@ export class CrewPageComponent implements OnInit, OnDestroy{
     public eventsService: EventsService, 
     public profileService: ProfileService,
     private authService: AuthService, 
-    public route: ActivatedRoute) { }
+    public route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() 
   {
@@ -69,15 +70,24 @@ export class CrewPageComponent implements OnInit, OnDestroy{
               this.crewMembers = crewMemberData.crewMembers;
               console.log(this.crewMembers);
     
-          if(this.profileService.userCrews)
-          {
-            this.profileService.userCrews.forEach(item => {
-              if(this.crewId === item.id)
+              this.profileId = localStorage.getItem("profileId");
+              console.log("profileId" + this.profileId);
+
+              if(this.profileId)
               {
-                this.isMember = true;
+                this.crewMembers.forEach(item => {
+                  if(this.profileId === item.id)
+                  {
+                    this.isMember = true;
+                    console.log(this.isMember);
+                  }
+                })
               }
-            });
-          }
+
+
+
+
+          
         });
         
       }else
@@ -86,8 +96,6 @@ export class CrewPageComponent implements OnInit, OnDestroy{
       }
     });
 
-    this.profileId = localStorage.getItem("profileId");
-    console.log("profileId" + this.profileId);
 
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -111,19 +119,62 @@ export class CrewPageComponent implements OnInit, OnDestroy{
   onDelete(crewId: string) 
   {
     this.isLoading = true;
-    this.crewsService.deleteCrew(crewId);
+    this.crewsService.deleteCrew(crewId).subscribe(() => {
+      this.isLoading = false;
+      this.router.navigate(["/crews"]);
+    });
   }
 
   onLeave(crewId: string)
   {
     this.isLoading = true;
-    this.crewsService.leaveCrew(crewId, this.profileId);
+    this.crewsService.leaveCrew(crewId, this.profileId).subscribe(() => {
+      this.isLoading = false;
+      this.crewsService.getCrewMembers(this.crewId);
+        this.crewMembersSub = this.crewsService.getCrewMembersUpdateListener()
+          .subscribe((crewMemberData: {crewMembers: User[], crewMemberCount: number}) => {
+              this.totalCrewMembers = crewMemberData.crewMemberCount;
+              this.crewMembers = crewMemberData.crewMembers;
+              console.log(this.crewMembers);
+    
+              this.profileId = localStorage.getItem("profileId");
+              console.log("leave profileId" + this.profileId);
+
+              this.isMember = false;
+          
+        });
+    });
   }
 
   onJoin(crewId: string)
   {
     this.isLoading = true;
-    this.crewsService.joinCrew(crewId, this.profileId);
+    this.crewsService.joinCrew(crewId, this.profileId).subscribe(() => {
+      this.isLoading = false;
+      this.crewsService.getCrewMembers(this.crewId);
+        this.crewMembersSub = this.crewsService.getCrewMembersUpdateListener()
+          .subscribe((crewMemberData: {crewMembers: User[], crewMemberCount: number}) => {
+              this.totalCrewMembers = crewMemberData.crewMemberCount;
+              this.crewMembers = crewMemberData.crewMembers;
+              console.log(this.crewMembers);
+    
+              this.profileId = localStorage.getItem("profileId");
+              console.log("profileId" + this.profileId);
+
+              if(this.profileId)
+              {
+                this.crewMembers.forEach(item => {
+                  if(this.profileId === item.id)
+                  {
+                    this.isMember = true;
+                    console.log(this.isMember);
+                  }
+                })
+              }
+
+        });
+        
+    });
   }
   
   ngOnDestroy()

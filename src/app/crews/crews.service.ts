@@ -179,20 +179,12 @@ export class CrewsService {
         userCrewData.append("crewId", crewId);
         userCrewData.append("profileId", profileId);
 
-        this.http.post<{message: string}>(BACKEND_URL + profileId, userCrewData)
-        .subscribe((responseData) => {
-            console.log(responseData);
-
-            this.router.navigate(["/crews/" + crewId]);
-        });
+        return this.http.post<{message: string}>(BACKEND_URL + profileId, userCrewData);
     }
 
     leaveCrew(crewId: string, profileId: string)
     {
-        return this.http.delete(BACKEND_URL + crewId + "/" + profileId).subscribe(response => {
-            console.log(response);
-            this.router.navigate(["/crews/" + crewId]);
-        });
+        return this.http.delete(BACKEND_URL + crewId + "/" + profileId);
     }
 
     deleteCrew(crewId: string) 

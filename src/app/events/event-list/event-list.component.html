@@ -1,5 +1,9 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
+<div class="colored-section">
+  <h1 class="my-crews med-heading">Events</h1>
+</div>
+
 <mat-accordion multi="true" *ngIf="events.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let event of events">
     <mat-expansion-panel-header>

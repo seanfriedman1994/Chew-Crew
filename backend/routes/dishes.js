@@ -21,6 +21,8 @@ router.put("/:id",
 );
 
 
+router.post("/:dishId", checkAuth, extractFile, DishController.favoriteDish);
+
 router.get("", DishController.getAllDishes);
 
 router.get("/:id", DishController.getOneDish);

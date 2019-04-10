@@ -67,6 +67,7 @@ p{
 .chew-heading{
   font-family: "Montserrat";
   font-weight: bold;
+  color: white;
   font-size: 4rem;
 }
 
@@ -82,7 +83,7 @@ p{
 /* Sections */
 .colored-section{
   background-color: #ff4c68;
-  color: #fff;
+  color: white;
   box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
   border-radius: 8px;
 }
