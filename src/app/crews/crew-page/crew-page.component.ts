@@ -105,6 +105,8 @@ export class CrewPageComponent implements OnInit, OnDestroy{
           this.userIsAuthenticated = isAuthenticated;
           this.userId = this.authService.getUserId();
         });
+        console.log(this.userIsAuthenticated);
+
     
 
     this.eventsService.getEvents(this.eventsPerPage, this.currentPage, this.crewId);

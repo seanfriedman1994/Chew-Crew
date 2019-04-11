@@ -20,7 +20,7 @@ router.put("/:id",
   CrewController.updateCrew
 );
 
-router.post("/:crewId", checkAuth, extractFile, CrewController.joinCrew);
+router.post("/:crewId", extractFile, CrewController.joinCrew);
 
 router.get("", CrewController.getAllCrews);
 
@@ -28,7 +28,7 @@ router.get("/:id", CrewController.getOneCrew);
 
 router.delete("/:id", checkAuth, CrewController.deleteCrew);
 
-router.delete("/:crewId/:profileId", checkAuth, CrewController.deleteUserCrew);
+router.delete("/:crewId/:profileId", CrewController.deleteUserCrew);
 
 
 module.exports = router;

@@ -14,6 +14,7 @@ export class DishListComponent implements OnInit, OnDestroy {
 
   dishes: Dish[] = [];
   profileId: string;
+  favorite = true;
   isLoading = false;
   totalDishes = 0;
   dishesPerPage = 3;
@@ -36,7 +37,9 @@ export class DishListComponent implements OnInit, OnDestroy {
         this.totalDishes = dishData.dishCount;
         this.dishes = dishData.dishes;
         });
+      
       this.userIsAuthenticated = this.authService.getIsAuth();
+      console.log(this.userIsAuthenticated);
       this.authStatusSub = this.authService.getAuthStatusListener()
         .subscribe(isAuthenticated => {
           this.userIsAuthenticated = isAuthenticated;
@@ -64,7 +67,7 @@ export class DishListComponent implements OnInit, OnDestroy {
     });
   }
 
-  onFavoriteDish(dishId: string)
+  favoriteOrUnfavoriteDish(dishId: string)
   {
     this.isLoading = true;
     this.dishesService.favoriteDish(dishId, this.profileId).subscribe(() => {

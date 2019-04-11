@@ -3,12 +3,12 @@
 <div class="profile-container" >
 <mat-card class="profile" *ngIf="!isLoading" >
 
-    <div class="colored-section view overlay zoom">
+    <div class="colored-section view overlay zoom back-image">
         <img  class="profile-image center img-fluid" [src]="profile.image" [alt]="profile.name">
     </div>
     
 
-    <div class="title-container center">
+    <div class="title-container">
 
         <section id="lab_social_icon_footer">
             <mat-card-title class="big-heading">{{profile.name}}</mat-card-title>
@@ -121,7 +121,7 @@
           <p class="dish-description">{{ dish.description }}</p>
           <mat-divider></mat-divider>
           <mat-chip-list aria-label="Tags">
-              <mat-chip color = "blue" selected>{{ dish.tags }} </mat-chip>
+              <mat-chip  class="mat-standard-chip" >{{ dish.tags }} </mat-chip>
           </mat-chip-list>
         </mat-expansion-panel>
       </mat-accordion>

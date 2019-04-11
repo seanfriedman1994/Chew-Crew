@@ -19,12 +19,14 @@
     <mat-chip-list aria-label="Tags">
         <mat-chip class="mat-standard-chip">{{ dish.tags }} </mat-chip>
         
-        <button mat-button  (click)="onFavoriteDish(dish.id)">
-            <i class="far fa-heart">
+        <button mat-button (click)="favoriteOrUnfavoriteDish(dish.id)">
+            <i class="material-icons"  [ngStyle]="favorite ? {'color': 'red'} : {'color': 'white'}">
+                favorite
             </i>
         </button>
+        
     </mat-chip-list>
-    
+ 
     
 
       <mat-action-row *ngIf="userIsAuthenticated && userId == dish.creator">

@@ -175,11 +175,12 @@ exports.getAllDishes = (req, res, next) => {
 };
 
 exports.favoriteDish = (req, res, next) => {
-  console.log(req.body.dishId);
-  console.log(req.body.profileId);
 
   const profileId = req.body.profileId;
   const dishId = req.body.dishId;
+
+  console.log("profileId " + profileId);
+  console.log("dishId " + dishId);
 
   const userDish = new UserDish({
     profile: profileId,

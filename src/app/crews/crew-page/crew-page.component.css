@@ -7,6 +7,30 @@
   color: #333333;
 }
 
+/* mat-card
+{
+    background-image: url("https://cdn.pixabay.com/photo/2016/01/13/06/00/banner-1137276_1280.jpg");
+} */
+
+.back-image
+{
+    background-image: url("https://image.freepik.com/free-photo/light-blue-grunge-texture-with-space-text-design_24972-243.jpg");
+    border-radius: 8px;
+}
+
+.member-name
+{
+   border-radius: 4px;
+
+}
+
+.white
+{
+    background-color: white;
+    border-radius: 20px;
+    width: 50px;
+}
+
 :host {
     display: block;
     margin-top: 1rem;
@@ -21,11 +45,46 @@ mat-spinner
     margin: auto;
 }
 
+.big-heading{
+    font-family: "Montserrat";
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 1.5;
+    text-align: center;
+    /* color: white; */
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
+
+  }
+
+  .med-heading{
+    font-family: "Montserrat";
+    font-weight:  500;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
 .crew-image
 {
-
-    max-height: 50px;
+    max-height: 300px;
+    width: auto;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+
+.colored-section
+{
+    background-color: #ff4c68;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+    border-radius: 8px;
+
 }
 
 .crew-description
@@ -39,6 +98,13 @@ mat-paginator
     margin-top: 1 rem;
 }
 
+
+.desc
+{
+    font-size: 1.75rem;
+    font-weight: 400;
+}
+
 .restaurant-icon
 {
     text-align: center;
@@ -46,10 +112,15 @@ mat-paginator
 
 .green
 {
-    color: green;
+    background-color:green;
 }
 
 .blue
 {
-    color: blue;
+    background-color: blue;
+}
+
+.warn
+{
+    background-color: red;
 }

@@ -95,7 +95,7 @@ export class DishesService {
                     name: dish.name,
                     description: dish.description,
                     tags: dish.tags,
-                    image: dish.image,
+                    imagePath: dish.imagePath,
                     creator: dish.creator,
                     eventId: dish.eventId
                 };
@@ -119,6 +119,11 @@ export class DishesService {
     getEventDishUpdateListener()
     {
         return this.eventDishesUpdated.asObservable();
+    }
+
+    getFavoriteDishUpdateListener()
+    {
+        return this.favoriteDishesUpdated.asObservable();
     }
 
     getDish(id: string) 

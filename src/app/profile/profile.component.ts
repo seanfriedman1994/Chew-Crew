@@ -119,6 +119,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
           this.profileService.profile = this.profile;
 
+          this.dishesService.getFavoriteDishes(this.profile.id, this.dishesPerPage, this.currentDishPage);
+          this.dishesSub = this.dishesService.getFavoriteDishUpdateListener()
+          .subscribe((favoriteDishData: {favoriteDishes: Dish[], favoriteDishCount: number}) => {
+            this.totalDishes = favoriteDishData.favoriteDishCount;
+            this.dishes = favoriteDishData.favoriteDishes;
+
+          });
+
     });
 
 
@@ -158,5 +166,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.authStatusSub.unsubscribe();
     this.userCrewsSub.unsubscribe();
     this.userEventsSub.unsubscribe();
+    this.dishesSub.unsubscribe();
   }
 }
