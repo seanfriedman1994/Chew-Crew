@@ -10,6 +10,7 @@ import { User, EventActivity, Crew} from '../models/interface-models';
 import { identifierModuleUrl } from '@angular/compiler';
 import { Dish } from '../models/dish.model';
 import { EmailValidator } from '@angular/forms';
+import { useAnimation } from '@angular/animations';
 
 const BACKEND_URL = environment.apiUrl + "/profile/";
 

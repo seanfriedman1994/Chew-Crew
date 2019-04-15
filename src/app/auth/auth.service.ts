@@ -47,6 +47,10 @@ export class AuthService
         return this.authStatusListener.asObservable();
     }
 
+    getAuthStatusListenerRawValue() {
+        return this.authStatusListener;
+    }
+
     createUser(email: string, password: string)
     {
         const authData: AuthData = {
@@ -78,7 +82,7 @@ export class AuthService
                 this.setAuthTimer(expiresInDuration);
                 this.isAuthenticated = true;
                 this.userId = response.userId;
-                this.authStatusListener.next(true);
+                // this.authStatusListener.next(true);
                 const now = new Date();
                 const expirationDate = new Date(now.getTime() + expiresInDuration * 2000);
                 console.log(this.userId);

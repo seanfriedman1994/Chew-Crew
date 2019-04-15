@@ -95,6 +95,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
       };
       console.log("profileId" + this.profile.id);
       localStorage.setItem("profileId", this.profile.id);
+      const loggedInUser = {id: profileData._id, email: profileData.email, name: profileData.name, bio: profileData.bio, image: profileData.image};
+      this.profileService.profile = loggedInUser;
+      this.authService.getAuthStatusListenerRawValue().next(true)
 
 
       this.crewsService.getUserCrews(this.profile.id, this.userCrewsPerPage, this.currentPage);

@@ -56,7 +56,8 @@ body{
   .colored-section{
     background-color: #ff4c68;
     color: white;
-    box-shadow: white 0 1px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+    border-radius: 4px;
   }
 
   .container-fluid{

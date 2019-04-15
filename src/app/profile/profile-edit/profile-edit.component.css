@@ -31,3 +31,11 @@ input[type="file"]
 {
     height: 100%;
 }
+
+#saveButton.mat-raised-button.mat-accent{
+    background-color: #ff4c68;
+    color: #fff;
+  }
+  #saveButton.mat-raised-button.mat-accent:hover{
+    color: #333333;
+  }
