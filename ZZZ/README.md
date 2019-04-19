@@ -1,25 +1,3 @@
-<h2>Repository only for web files<h2>
-  mobile here: https://github.com/derekmccr/ChewCrewMobile
-
-## HOW TO USE
-
-*IMPORTANT*
-If you are encountering errors, try typing in your command line: npm update
-
--in a terminal within the project type the following (without the ""):
-    "ng serve"
-    -this will run the website on localhost:4200
-
--in a seperate terminal within the project type the following (without the ""):
-    "npm run start:server"
-    -this will run the development server which will connect to the database. I have it setup where anytime code is changed the server is restarted and updated.
-    
-*Important* You MUST have both of these commands running simultaneously, so you need two terminals to be open. Also these commands MUST be run WITHIN the project directory.
-
--the database itself is on MongoDB. Direct access to the database is not necessary for development. If you would like access to the database create an account and i will invite you to access the cluster. Cluster link: https://cloud.mongodb.com/v2/5c95ca07d5ec135005eb2781#clusters
-
-
-
 # PotluckProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
