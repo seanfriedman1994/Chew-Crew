@@ -1,0 +1,160 @@
+.header-image {
+    background-size: cover;
+}
+
+#addButton{
+    background-color: #ff4c68;
+    color: #fff;
+    position: absolute;
+  }
+
+  .title
+  {
+      font-size: 3rem;
+      margin-top: 10px;
+  }
+
+  .dish-image
+  {
+      max-height: 200px;
+      width: auto;
+  }
+
+  .big-heading{
+    font-family: "Montserrat";
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .med-heading{
+    font-family: "Montserrat";
+    font-weight:  500;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+.colored-section
+{
+    background-color: #ff4c68;
+    color: #fff;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+    border-radius: 8px;
+}
+
+mat-chip.mat-standard-chip{
+    background-color: #ff4c68;
+    color: #fff;
+  }
+
+.eventDate
+{
+    margin-top: 25px;
+    font-size: 1rem;
+    text-align: center;
+}
+  
+  #addButton:hover{
+    color:#333333;
+  }
+
+
+:host {
+    display: block;
+    margin-top: 1rem;
+}
+
+.action-row
+{
+    margin-top: 100px;
+}
+
+
+.example-section
+{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.pull-right
+{
+    width: 50%;
+}
+
+.info-text {
+    text-align: center;
+}
+
+mat-spinner
+{
+    margin: auto;
+}
+
+.profile
+{
+    font-family: 'Montserrat';
+}
+
+
+.profile-image 
+{
+    
+    max-height: 50px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.profile-bio
+{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 20px;
+}
+
+.desc
+{
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.my-crews
+{
+    margin-bottom: 50px;
+}
+
+.section
+{
+    display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+h2
+{
+    margin: 10px;
+}
+
+.colored-section{
+    background-color: #ff4c68;
+    color: rgb(0, 0, 0);
+
+  }
+
+.sub-margin
+{
+    margin: 0 10px;
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-color: purple;
+    /* background-color: #ff4c68; */
+}

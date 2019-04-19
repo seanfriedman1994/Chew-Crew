@@ -1,0 +1,90 @@
+<mat-toolbar class="colored-section">
+    <span>
+        <a mat-button class="mat-display-1" routerLink="/" routerLinkActive="mat-accent">
+            <img class="animated pulse infinite" height="55px" width="55px" src="https://i.imgur.com/K3Crbf8.png" alt="">
+            <!-- <i class="material-icons">
+                home
+            </i> -->
+            Chew Crew
+        </a>
+        
+    </span>
+    <span class="spacer"></span>
+    <ul>
+            <li *ngIf="profile && userIsAuthenticated">
+                    <a mat-button routerLink="/profile" routerLinkActive="mat-accent">
+                        <img [src]="profile.image" alt="Profile" class="avatar rounded-circle z-depth-0 img-fluid">
+                        {{ profile.name }}
+                    </a>
+            </li>
+        <!-- <li *ngIf="userIsAuthenticated">
+            <a mat-button routerLink="/dishes/create" routerLinkActive="mat-accent">New Dish</a>
+        </li> -->
+        <li *ngIf="userIsAuthenticated">
+            <a mat-button routerLink="/dishes" routerLinkActive="mat-accent">
+                <i class="material-icons">
+                        fastfood
+                </i>
+                Dishes
+            </a>
+        </li>
+        <li *ngIf="userIsAuthenticated">
+            <a mat-button routerLink="/events" routerLinkActive="mat-accent">
+                <i class="material-icons">
+                    event
+                </i>
+                Events
+            </a>
+        </li>
+        <li *ngIf="userIsAuthenticated">
+            <a mat-button routerLink="/crews" routerLinkActive="mat-accent">
+                <i class="material-icons">
+                    group
+                </i>
+                Crews
+            </a>
+        </li>
+        <!-- <li *ngIf="userIsAuthenticated">
+                <a mat-button routerLink="/profile" routerLinkActive="mat-accent">
+                    <i class="material-icons">
+                        face
+                    </i>
+                    Profile
+                </a>
+        </li> -->
+        <!-- <li>
+            <a mat-button routerLink="/" routerLinkActive="mat-accent">
+                <mat-icon class="home-icon" aria-hidden="true" aria-label="Example home icon"></mat-icon>
+            </a>
+        </li> -->
+        <li *ngIf="!userIsAuthenticated">
+            <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">
+                <i class="material-icons">
+                    how_to_reg
+                </i>
+                    Login
+            </a>
+        </li>
+        <li *ngIf="!userIsAuthenticated">
+            <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">
+                <i class="material-icons">
+                    assignment_ind
+                </i>
+                Sign Up
+            </a>
+        </li>
+        
+
+    
+
+        <li *ngIf="userIsAuthenticated">
+                <button mat-button (click)="onLogout()" id="outButton">
+                    <i class="material-icons" width="55px" height="55px">
+                        exit_to_app
+                    </i>
+                    Logout
+                </button>
+            </li>
+        
+    </ul>
+</mat-toolbar>

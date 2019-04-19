@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="form" (submit)="onSaveEvent()" *ngIf="!isLoading">
+      <mat-form-field>
+        <input 
+        matInput
+        type="text"
+        formControlName="name"
+        placeholder="Event Name">
+        <mat-error *ngIf="form.get('name').invalid">Please enter an event name!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input 
+            matInput
+            type="text"
+            formControlName="date"
+            placeholder="Event Date and Time">
+          <mat-error *ngIf="form.get('date').invalid">Please enter an event date and time!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input 
+          matInput
+          type="text"
+          formControlName="location"
+          placeholder="Location">
+          <mat-error *ngIf="form.get('location').invalid">Please enter an event location!</mat-error>
+        </mat-form-field>
+      <mat-form-field>
+        <textarea 
+        matInput
+        rows="6"
+        formControlName="description"
+        placeholder="Description"
+        ></textarea>
+        <mat-error *ngIf="form.get('description').invalid">Please enter an event description!</mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        id="eventButton"
+        color="accent"
+        type="submit">
+        <i class="material-icons">
+          save_alt
+        </i>
+        Save Event
+      </button>
+    </form>
+  </mat-card>
+  

@@ -1,0 +1,349 @@
+h1, h2, h3, h4, h5, h6{
+  font-family: "Montserrat";
+  font-weight: bold;
+}
+
+p{
+  color: #8f8f8f;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+ 
+}
+
+.logo
+{
+  max-width:100px;
+  height: auto;
+}
+
+.home-image
+{
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+}
+
+.android-icon
+{
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.view {
+  height: 100vh;
+ }
+
+ .rgba-gradient .full-bg-img {
+  background: linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
+}
+@media (max-width: 450px) {
+  .margins {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+}
+@media (max-width: 740px) {
+  .full-height,
+  .full-height body,
+  .full-height header,
+  .full-height header .view {
+    height: 1020px;
+  }
+}
+/* Headings */
+.big-heading{
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+.chew-heading{
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: white;
+  font-size: 4rem;
+}
+
+.section-heading{
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+.container-fluid{
+  padding: 3% 10% 7%;
+}
+
+/* Sections */
+.colored-section{
+  background-color: #ff4c68;
+  color: white;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+  border-radius: 8px;
+}
+
+.login{
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  font-weight: 400;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.top{
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+
+}
+
+.middle{
+  border-radius: 0;
+  margin-bottom: -1px;
+}
+
+.bottom{
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.white-section{
+  background-color: #fff;
+  width: 100%;
+}
+
+
+/* Navagation Bar */
+
+.navbar{
+  padding: 0 0 4.5rem;
+}
+
+.navbar-brand{
+  font-family: Ubuntu;
+  font-size: 2.5rem;
+  font-weight:bold;
+}
+
+.nav-item{
+  padding: 0 18px;
+}
+
+.nav-link{
+  font-size: 1.2rem;
+  font-family: "Montserrat";
+  font-weight: light;
+}
+
+/* Download Button */
+.download-button{
+  margin: 5% 3% 5% 0;
+}
+
+/* Title Image */
+.title-image{
+  transform: rotate(25deg);
+  width: 60%;
+  position: absolute;
+  right: 30%;
+}
+
+/* Media Queries help you handle different situations independently */
+@media (max-width: 1028px) {
+  #title{
+    text-align: center;
+  }
+}
+
+/* Features Section */
+
+#features{
+  padding: 7% 15%;
+
+  /* z-indexing */
+  /* We changed the background to white so it is not transparent when it sits on top of something*/
+  background-color: #fff;
+  /* Changing the position to relative allows our features to have a position and also keep it in the html flow */
+  position: relative;
+  z-index: 1;
+}
+
+.feature-title{
+  font-size: 1.5rem;
+}
+
+.feature-box{
+  text-align: center;
+  padding: 5%;
+}
+
+.icon{
+  margin-bottom: 1rem;
+}
+
+
+/* Pricing Section */
+#pricing{
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.pricing-column{
+  padding: 3% 2%;
+}
+
+.price-text{
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+
+/* cta section */
+#app{
+  text-align: center;
+  padding: 7% 15%;
+}
+
+/* footer */
+/* #footer{
+  padding: 7% 15%;
+  text-align: center;
+}
+
+.social-icon{
+  margin: 20px 10px;
+} */
+
+#lab_social_icon_footer {
+  padding: 40px 0;
+  background-color: #ffff;
+}
+
+#lab_social_icon_footer a {
+  color: #333;
+}
+
+#lab_social_icon_footer .social:hover {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+#lab_social_icon_footer .social {
+  -webkit-transform: scale(0.8);
+  /* Browser Variations: */
+  
+  -moz-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+}
+/*
+    Multicoloured Hover Variations
+*/
+
+#lab_social_icon_footer #social-fb:hover {
+  color: #3B5998;
+}
+
+#lab_social_icon_footer #social-tw:hover {
+  color: #4099FF;
+}
+
+#lab_social_icon_footer #social-gp:hover {
+  color: #d34836;
+}
+
+#lab_social_icon_footer #social-em:hover {
+  color: #f39c12;
+}
+
+.big-btn{
+  padding: 10px 0px 11px 0px;
+  width: 215px;
+  margin-top:5px;
+  }
+  
+  .big-btn i{
+  font-size: 65px;
+  margin-right: 0px !important;
+  }
+  .big-btn strong{
+  font-size: 25px;
+  text-shadow: 1px 2px 0px #34659B;
+  color: #fff;
+  line-height: 24px;
+  }
+  .big-btn .btn-text{
+  margin-top:6px;
+  }
+  
+  .big-btn small{font-size: 75%;}
+  
+  .android-btn{
+  
+  width: 240px;
+  padding: 13px 17px 13px 0px;
+  background-color: #000;
+  border-color: #000;
+  
+  }
+  .android-btn:hover{
+  background-color: #272727;
+  }
+  
+  .android-btn i{
+  font-size: 55px;
+  }
+  
+  .android-btn .btn-text{
+  margin-top: 10px;
+  }
+  
+  .android-btn strong{
+  font-size: 24px;
+  text-shadow: none;
+  color: #fff;
+  line-height: 24px;
+  }
+  
+  .windows-btn{
+  background-color:#008A00;
+  width: 235px;
+  padding: 13px 5px 13px 10px;
+  border-color: #055805;
+  }
+  
+  .windows-btn:hover{
+  background-color: #008A00;
+  }
+  .windows-btn .btn-text{
+  text-shadow: none;
+  font-size: 26px;
+  line-height: 25px;
+  }

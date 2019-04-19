@@ -1,0 +1,46 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div class="colored-section">
+  <h1 class="my-crews med-heading">Dishes</h1>
+</div>
+<!-- <mat-icon class="restaurant-icon" aria-hidden="true" aria-label="restaurant icon">restaurant</mat-icon> -->
+<mat-accordion multi="true" *ngIf="dishes.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let dish of dishes">
+    <mat-expansion-panel-header>
+      {{ dish.name }}
+    </mat-expansion-panel-header>
+    <span class="pull-right">
+        <img [src]="dish.imagePath"
+        [alt]="dish.name"
+        class="img-responsive dish-image pull-right">
+    </span>
+    <p class="dish-description">{{ dish.description }}</p>
+    <mat-divider></mat-divider>
+    <mat-chip-list aria-label="Tags">
+        <mat-chip class="mat-standard-chip">{{ dish.tags }} </mat-chip>
+        
+        <button mat-button (click)="favoriteOrUnfavoriteDish(dish.id)">
+            <i class="material-icons"  [ngStyle]="favorite ? {'color': 'red'} : {'color': 'white'}">
+                favorite
+            </i>
+        </button>
+        
+    </mat-chip-list>
+ 
+    
+
+      <mat-action-row *ngIf="userIsAuthenticated && userId == dish.creator">
+        <button mat-button color="warn" (click)="onDelete(dish.id)">
+          <i class="material-icons">
+            delete
+          </i>
+          DELETE
+        </button>
+      </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-divider></mat-divider>
+<mat-paginator [length]="totalDishes" [pageSize]="dishesPerPage" [pageSizeOptions]="pageSizeOptions" 
+(page)="onChangedPage($event)"  *ngIf="dishes.length > 0">
+</mat-paginator>
+<p class="info-text mat-body-1" *ngIf="dishes.length <= 0 && !isLoading">No dishes added yet!</p>

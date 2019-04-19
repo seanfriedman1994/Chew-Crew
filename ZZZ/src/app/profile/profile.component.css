@@ -1,0 +1,256 @@
+.header-image {
+    background-size: cover;
+}
+
+.back-image
+{
+      /* background-image: url("https://cdn.pixabay.com/photo/2016/01/13/06/00/banner-1137276_1280.jpg"); */
+
+      background-image: url("https://image.freepik.com/free-photo/copper-vintage-brick-wall_53876-90829.jpg");
+}
+
+/* .profile-container
+{
+    background-color:  #ffff;
+    font-family: "Montserrat";
+} */
+
+mat-chip.mat-standard-chip{
+  background-color: #ff4c68;
+  color: #fff;
+}
+
+
+.big-heading{
+    font-family: "Montserrat";
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 1.5;
+  }
+
+  .med-heading{
+    font-family: "Montserrat";
+    font-weight:  500;
+    font-size: 2.5rem;
+    line-height: 1.5;
+  }
+
+
+.email-text
+{
+    font-family: "Montserrat";
+    font-size: 2rem;
+}
+
+:host {
+    display: block;
+    margin-top: 1rem;
+}
+
+.info-text {
+    text-align: center;
+}
+
+mat-spinner
+{
+    margin: auto;
+}
+
+.profile
+{
+    font-family: "Montserrat";
+    width: 100%;
+    margin: auto;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+
+}
+
+.title-container
+{
+    text-align: center;
+}
+
+.image-container
+{
+    position: relative;
+}
+
+
+.container
+{
+    width: 280px;
+    height: 350px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.16);
+}
+
+.colored-section
+{
+    background-color: #ff4c68;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+    border-radius: 8px;
+
+}
+.profile-image 
+{
+    /* width: 250px;
+    height: 250px; */
+    max-width: 200px;
+    max-height: 200px;
+    position: center;
+    border-radius: 50%;
+    /* max-height: 50px; */
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+  }
+
+
+
+.profile-bio
+{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.my-crews
+{
+    text-align: center;
+    font-family: "Montserrat";
+}
+
+h3
+{
+    font-size: 20px;
+}
+
+.green
+{
+    color: green;
+}
+
+#lab_social_icon_footer {
+    padding: 40px 0;
+    background-color: #ffff;
+  }
+  
+  #lab_social_icon_footer a {
+    color: #333;
+  }
+  
+  #lab_social_icon_footer .social:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+  }
+  
+  #lab_social_icon_footer .social {
+    -webkit-transform: scale(0.8);
+    /* Browser Variations: */
+    
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+  }
+  /*
+      Multicoloured Hover Variations
+  */
+  
+  #lab_social_icon_footer #social-fb:hover {
+    color: #3B5998;
+  }
+  
+  #lab_social_icon_footer #social-tw:hover {
+    color: #4099FF;
+  }
+  
+  #lab_social_icon_footer #social-gp:hover {
+    color: #d34836;
+  }
+  
+  #lab_social_icon_footer #social-em:hover {
+    color: #f39c12;
+  }
+
+  .big-btn{
+    padding: 10px 0px 11px 0px;
+    width: 215px;
+    margin-top:5px;
+    }
+    
+    .big-btn i{
+    font-size: 65px;
+    margin-right: 0px !important;
+    }
+    .big-btn strong{
+    font-size: 25px;
+    text-shadow: 1px 2px 0px #34659B;
+    color: #fff;
+    line-height: 24px;
+    }
+    .big-btn .btn-text{
+    margin-top:6px;
+    }
+    
+    .big-btn small{font-size: 75%;}
+    
+    .android-btn{
+    
+    width: 240px;
+    padding: 13px 17px 13px 0px;
+    background-color: #000;
+    border-color: #000;
+    
+    }
+    .android-btn:hover{
+    background-color: #272727;
+    }
+    
+    .android-btn i{
+    font-size: 55px;
+    }
+    
+    .android-btn .btn-text{
+    margin-top: 0px;
+    }
+    
+    .android-btn strong{
+    font-size: 25px;
+    text-shadow: none;
+    color: #fff;
+    line-height: 24px;
+    }
+    
+    .windows-btn{
+    background-color:#008A00;
+    width: 235px;
+    padding: 13px 5px 13px 10px;
+    border-color: #055805;
+    }
+    
+    .windows-btn:hover{
+    background-color: #008A00;
+    }
+    .windows-btn .btn-text{
+    text-shadow: none;
+    font-size: 26px;
+    line-height: 25px;
+    }
+    
+  
