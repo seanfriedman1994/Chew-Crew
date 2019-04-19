@@ -1,5 +1,7 @@
 # Chew-Crew
 # Website URL: http://chew-crew.s3-website.us-east-2.amazonaws.com/
+# Demo User: 
+username: new@new.com   password: new
 
 # This a website created with the MEAN stack. Angular for the frontend, NodeJS, Express, Mongoose, and MongoDB for the backend. It is hosted on AWS.
 # The website frontend is styled with Google Material and Bootstrap styling and animations.
