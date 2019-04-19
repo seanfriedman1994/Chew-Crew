@@ -1,6 +1,7 @@
-# Chew-Crew
+## Chew-Crew
+## Website URL: http://chew-crew.s3-website.us-east-2.amazonaws.com/
 
-# This a website created with the MEAN stack. Angular for the frontend, NodeJS, Express, Mongoose, and MongoDB for the backend.
+# This a website created with the MEAN stack. Angular for the frontend, NodeJS, Express, Mongoose, and MongoDB for the backend. It is hosted on AWS.
 # The website frontend is styled with Google Material and Bootstrap styling and animations.
 
 # Chew Crew is a social media website used to create and host food events like dinner parties, potlucks, brunches, holiday events, etc.
